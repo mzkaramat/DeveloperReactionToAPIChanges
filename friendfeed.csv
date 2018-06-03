@@ -1,0 +1,119 @@
+title,Body,creationdate,acceptedanswerid,Score,tags,answercount,commentcount
+"How can i make a friendfeed like window scroll control system?","<p>When you active real-time updates, new entries dynamically adding a div. At this stage scroll is automatically moving. This action provides the content you do not miss on visible area. </p>
+
+<p>If you want to see this action, you can also watch this screencast; <a href=""http://www.viddler.com/explore/itod/videos/45/"" rel=""nofollow noreferrer"">http://www.viddler.com/explore/itod/videos/45/ </a></p>
+
+<p>My method;  </p>
+
+<pre><code>    // Firstly, i am storing the first entry's(in view) positions in window object;
+jQuery(window).scroll(function() { 
+  var q = 0;
+  jQuery("".entry"").each(function (i) {
+    if (jQuery(this).offset().top &gt; jQuery(window).scrollTop()) {
+      if (q == 0) {
+      window.show_id = jQuery(this).attr(""id"");
+      window.pos_y = jQuery(this).offset().top - jQuery(window).scrollTop();
+      q = 1;
+      }
+    }
+  });
+    });
+
+// After coming to the new entry, i call this function;
+function scroll_control() {
+  var scroll_top = jQuery(window).scrollTop();
+  if (scroll_top != 0) {
+    if (jQuery('#'+window.show_id).length != 0) {
+      var scr = jQuery('#'+window.show_id).offset().top - window.pos_y;
+      window.scrollTo(0, scr);
+    }
+  }
+}
+
+// but this is due to flashing. I guess not fast enough
+</code></pre>
+","2009-12-25 09:56:11","","2","<javascript><jquery><scroll><real-time><friendfeed>","1","1"
+"Are There Any Applications That Use The FriendFeed API?","<p>Does anyone know any applications that make use of the friendfeed API?</p>
+","2009-01-21 06:42:57","","0","<api><friendfeed>","4","0"
+"No feed output when working with Friendfeed and Wordpress API?","<p>This is probably a Wordpress issue more than a Friendfeed issue but could be either. I have tried to debug with Firebug, wP_DEBUG, and error_log() but no issues have appeared.</p>
+
+<p>I'm trying to initalize a set of ajax-powered feeds (using Friendfeed API) in the middle sidebar on various Wordpress category pages using a conditional statement. I can get one feed to display on one page no problem but when I add the conditional, it no longer displays.</p>
+
+<p>Relevant lines:</p>
+
+<pre><code>function farmball_feed() {
+    global $post;
+        if ( is_category('3')) { $category = ""farmball"";
+        } elseif ( is_category('4')) { $category = ""new-redsox"";
+        } else { $category = ""red-sox-on-farmball""; }
+
+        $feed = $friendfeed-&gt;fetch_room_feed($category, null, 0+($ind*30), 30);
+</code></pre>
+
+<p>Here is the full plugin code: <a href=""http://www.pastie.org/private/vja7eisby93e3odh628xg"" rel=""nofollow noreferrer"">http://www.pastie.org/private/vja7eisby93e3odh628xg</a></p>
+
+<p>I call the function within the plugin using the following line in the sidebar-[category].php template file: </p>
+
+<pre><code>&lt;?php if (function_exists('farmball_feed')) { farmball_feed(); } ?&gt;
+</code></pre>
+
+<p>Here is the full sidebar code: <a href=""http://pastie.org/private/lgxsdwxja08v93pkmvz3ug"" rel=""nofollow noreferrer"">http://pastie.org/private/lgxsdwxja08v93pkmvz3ug</a></p>
+
+<p>I've checked in with the WP.org forum, MIRC, WP Tavern forum, and Friendfeed forum but no solution yet. I looked into the Developing a Widget codex but this plugin uses a couple other JS files so I don't think making it a custom widget would work. I'm not great with PHP so the answer could be a simple one. Appreciate the help.</p>
+
+<p>Demo site: <a href=""http://farmball.com/boston"" rel=""nofollow noreferrer"">http://farmball.com/boston</a></p>
+","2009-10-06 18:32:44","1534831","0","<wordpress><friendfeed>","1","0"
+"SoundCloud upload using email","<p>Is there a way to use email (i.e., the SoundCloud user's registered email) to upload an audio file?  FriendFeed uses this method, which bypasses the need to integrate their APIs and solves the problem of queuing if the mobile device is not on the network when the upload request is made.  They use the subject line for title and the message content for description.  It makes it easy for any app that can email a sound to load into FriendFeed.</p>
+","2012-06-16 19:37:44","","2","<email><upload><soundcloud><friendfeed>","2","0"
+"Can anyone provide me some information in integrating FriendFeed API","<p>Integrating FriendFeed API thorough PHP, How can I acheive that. I am developing a website where in i want to integrate FriendFeed..</p>
+","2011-06-27 11:47:09","6492394","0","<friendfeed>","2","0"
+"Integrating Facebook, Twitter, FriendFeed, Picasa and other Social Media or Networking Sites in to a website","<p>Iam developing a website in PHP, which has to integrate facebook, twitter, friendfeed, picasa etc..</p>
+
+<p>Is there a common API using which we can integrate various famous social networking sites like facebook, twitter and etc. So that If i post a comment in my site, that should be sent to all the registered social sites. That is with a single button click i want to write to my wall in facebook and tweet to my twitter account.</p>
+
+<p>Or should i use the social networking sites individual APIs to achieve this.</p>
+
+<p>Please suggest me...</p>
+","2011-06-27 11:57:12","6492509","3","<facebook><twitter><picasa><google-buzz><friendfeed>","1","1"
+"Simple Message Poster for Friendfeed","<p>I am trying to integrate a function into an application that posts a message to friendfeed using the C# API. Being a total novice I cannot work out how to make the connection and then publish a message to it.</p>
+
+<p>Can anyone help with this?</p>
+
+<p>I have the HTTP Basic Auth working fine, just not the function to post to my friendfeed account.</p>
+","2009-05-23 15:25:07","931628","0","<c#><.net><friendfeed>","2","0"
+"How to remove border from FriendFeed widget?","<p>FriendFeed offers a <a href=""http://friendfeed.com/embed/widget"" rel=""nofollow"">widget</a> with some <a href=""http://friendfeed.com/embed/css"" rel=""nofollow"">CSS customization possible</a>.  But it seems you can't remove the border (the blue big one around all cotent)?  The widget has a URL like</p>
+
+<pre><code>http://friendfeed.com/embed/widget/FOOBAR?v=2&amp;amp;num=30&amp;amp;hide_logo=1&amp;amp;hide_comments_likes=0&amp;amp;hide_subscribe=1
+</code></pre>
+
+<p>where <code>FOOBAR</code> is a user name.</p>
+","2012-08-18 01:11:47","12015107","0","<css><widget><border><feed><friendfeed>","1","0"
+"Friendfeed schemaless data in MYSQL","<p>I read an article around schema-less database which sounds cool. (<a href=""http://bret.appspot.com/entry/how-friendfeed-uses-mysql"" rel=""nofollow noreferrer"">http://bret.appspot.com/entry/how-friendfeed-uses-mysql</a>)</p>
+
+<p>But what isn't clear to me is how do they run search queries on this data? Since the data is in JSON format how do we look for it?</p>
+","2010-06-06 17:21:14","2986255","2","<mysql><friendfeed>","3","0"
+"MySQL joins for friend feed","<p>I'm currently logging all actions of users and want to display their actions for the people following them to see - kind of like Facebook does it for friends. </p>
+
+<p>I'm logging all these actions in a table with the following structure:</p>
+
+<ul>
+<li><strong>id</strong> - PK</li>
+<li><strong>userid</strong> - id of the user whose action gets logged</li>
+<li><strong>actiondate</strong> - when the action happened</li>
+<li><strong>actiontypeid</strong> - id of the type of action (actiontypes stored in a different table - i.e. following other users, writing on people's profiles, creating new content, commenting on existing content, etc.)</li>
+<li><strong>objectid</strong> - id of the object they just created (i.e. comment id)</li>
+<li><strong>onobjectid</strong> - id of the object they did the action to (i.e. id of the content that they commented on)</li>
+</ul>
+
+<p>Now the problem is there are several types of actions that get logged (<strong>actiontypeid</strong>).</p>
+
+<p>What would be the best way of retrieving the data to display to the user? </p>
+
+<p>The easiest way out would be gabbing the people the user follows dataset and then just go from there and grab all other info from the other tables (i.e. the names of the users the people you're following just started following, names of the user profiles they wrote on, etc.). This however would create a a huge amount of small queries and trips to the database in a while loop. Not a good idea.</p>
+
+<p>I could use joins to retrieve everything in one massive data set, but how would I know where to grab the data from in just one query? - there's different types of actions that require me to look into several different tables to retrieve data, based on the <strong>actiontypeid</strong>...</p>
+
+<p>i.e. To get <strong><em>User X is now following User Y</em></strong> I'd have to get my data (User Y's username) from the <em>followers</em> table, whereas <strong><em>User X commented on content Y</em></strong> would need me to look in the <em>content</em> table to get the content's title and URL. </p>
+
+<p>Any tips are welcome, thanks!</p>
+","2010-10-06 03:30:11","4123335","1","<sql><mysql><join><friendfeed>","1","2"
