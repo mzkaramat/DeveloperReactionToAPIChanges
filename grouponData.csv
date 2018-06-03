@@ -1,0 +1,892 @@
+title,Body,creationdate,acceptedanswerid,Score,tags,answercount,commentcount
+"groupon api - not getting all the deals","<p>when i run the groupon api in apigee for division equals los angeles, thousands of deals come up, but when i run my code below, i'm only getting like 50 ?? please help</p>
+
+<pre><code>var $result = $('#container')
+$.ajax({
+    type: 'GET',
+    url: 'https://api.groupon.com/v2/deals.json?    client_id=b252ad3634a4ab2985b79d230ccc4e49a3ea9d19&amp;show=all&amp;division_id=los-angeles',
+    dataType: 'jsonp',
+}).done(function(data){
+console.log(data)
+$.each(data.deals, function(idx, deal){
+    var html = '&lt;div class=""dealSmall""&gt;&lt;div class=""image""&gt;&lt;div class=""merchant""&gt;' +     deal.merchant.name + '&lt;img src=""' + deal.grid4ImageUrl + '""/&gt;&lt;/div&gt;&lt;/div&gt;&lt;div     class=""dealDetail""&gt;&lt;div class=""dealName""&gt;' + deal.announcementTitle+ '&lt;/div&gt;&lt;div     class=""price""&gt;' + deal.options[0].price.formattedAmount + '&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;'
+    $result.append(html)
+    })
+});
+});
+</code></pre>
+","2013-08-14 19:37:59","","4","<jquery><json><api><groupon>","1","1"
+"GroupOn - Material Design UI ListItem to Activity Animation Transition","<p>I am developing a mobile android app. Inside the GroupOn application, when the deals are listed inside of a ListView. If you click on a ListItem, there will be an animated transition into the newly launched Activity. How is this achieved? What library or API is being used? Thank you.</p>
+","2015-11-10 18:58:04","","1","<android><android-activity><android-listview><material-design><groupon>","0","1"
+"Changing the view inside my code, can't add row multipls at time","<p>Create a view named VDept_Headcount that reports headcount for each department. The report includes 3 columns as follow: Dept_Name, Dept_Number, No_Emp. Include all the departments. Show the content of the view through SQL (Select * from VDept_Headcount;)</p>
+
+<pre><code>USE COMPANY
+GO
+
+--1-1) Create a view named VDept_Headcount that reports headcount for each department.
+CREATE VIEW VDept_Headcount(Dept_Name, Dept_Number, No_Emp)
+AS
+SELECT d.DNAME, d.DNUMBER, COUNT(e.DNO) 
+FROM DEPARTMENT d LEFT OUTER JOIN EMPLOYEE e ON e.DNO = d.DNUMBER
+GROUP BY d.DNAME, d.DNUMBER;
+GO
+
+SELECT *
+FROM VDept_Headcount;
+
+
+
+USE COMPANY
+
+GO
+
+--Add yourself into Employee
+INSERT INTO EMPLOYEE
+VALUES('Dan', NULL, 'Chan', '122345687', '13-Nov-1948', '323 Williams Ct, Columbus, OH', 'M', 55000, '987654321', 5);
+
+SELECT *
+FROM VDept_Headcount;
+</code></pre>
+
+<p>Basically I want to know is there a way to add row without using groupon?</p>
+","2017-02-20 17:45:41","","-2","<sql><view><groupon>","1","0"
+"Does Groupon provide an official way to connect to their user accounts?","<p>Is there an official way provided by Groupon to connect remotely to a user's account using password/username?
+I am asking because on dealsgoround.com you can automatically connect your Groupon account and save all your vouchers to their database. 
+I couldn't figure out how they are doing it.</p>
+","2012-01-16 18:13:38","","1","<api><connect><groupon>","1","0"
+"What are the options to implement a Groupon like system?","<p>I like to build a system that will allow users to ""commit buy"" a deal, but will only be charged after a minimum # of committers are reached. The time span in which the ""deal"" will continue can be either weekly or monthly.  </p>
+
+<p>I like to stay away from building one from the ground up as much as possible.</p>
+
+<p>I know there's another thread on StackOverflow that asked paypal, amazon, or google checkout API to serve this purpose, but this seems too much like a hack?</p>
+
+<p>I did some reading on using a gateway like Authorize.net to process credit card information and they can store the user information and has a service like pay-as-you-go. Would using their API be a better choice? Can their pay-as-you-go method provide the system that I'm looking for?</p>
+","2011-12-29 06:37:51","","1","<e-commerce><credit-card><groupon>","1","3"
+"User and Administrator Java Project","<p>I am creating a Java Project for my exam. The project asks me to do a groupon-like program using Object-oriented programming. 
+It asks me to realize a program to sell discounted products. 
+I have holidays, dinners and normal objects. I decided to create a super-class Product and then to extend it creating the other three classes, dinners, holidays, and objects. But it also asks me to manage a catalog of the products making have to every product an unique identifier, how can I? Even if I create a Catalog class, managing the product with an ArrayList, how can I add an identifier to each element? I also have to distinguish between users and administrator.Each of them can do different things, the administrator can add and remove products from the catalog, see the active offers and order them, and can see the no longer affordable offers. 
+The User can register to the system, buy credits, see the avaible offers, buy something and can see everything that he bought, sorting them by the price or by the date of purchase.</p>
+
+<p>My question is, how can i distinguish the user and allow them to do different things ? I have to allow a log-in operation at the beginning and show different button for users and administrator. Could help me? Give me an idea of how to manage the situation? (Should they be a superclass(user) with an administrator that extends the user?)</p>
+
+<p>Thanks! </p>
+","2014-01-21 17:44:24","","2","<java><project><groupon>","1","0"
+"Groupon API returning small sample of deals for a division","<p>The Groupon API is returning small sample of deals for a division, it doesn't seem to be possible to get all the deals.</p>
+
+<p>For example looking at food and drink category for Orlando (<a href=""http://www.groupon.com/browse/orlando?lat=28.5383355&amp;lng=-81.37923649999999&amp;address=Orlando%2C%20FL%2C%20USA&amp;category=food-and-drink"" rel=""nofollow"">http://www.groupon.com/browse/orlando?lat=28.5383355&amp;lng=-81.37923649999999&amp;address=Orlando%2C%20FL%2C%20USA&amp;category=food-and-drink</a>) there are currently 65 food and drink deals. Calling the API and requesting the Orlando deals with <a href=""https://api.groupon.com/v2/deals.json?division_id=orlando"" rel=""nofollow"">https://api.groupon.com/v2/deals.json?division_id=orlando</a> (note: you need to include your client id with the url call) returns a total of 27 deals, 2 of which can be found on the food and drinks page but the other 63 are no where to be found. </p>
+
+<p>Is it possible to get more of the deals for a division? </p>
+","2014-04-10 15:12:51","","0","<json><api><groupon>","0","2"
+"what did facebook, twitter, groupon, foursquare... used when they were started?","<p>I wonder which 
+ - programming language
+ - platform
+ - db type
+ - host provider/ server type and configuration
+ - 
+that some big companies (Fb, twitter, groupon, foursquare...) used when they were started?</p>
+
+<p>ex: Linux, Apache, Mysql, Php (LAMP) on Core2Duo 4GB ram, 2TB HDD; Python on Google AppEngine...</p>
+
+<p>This would give me some idea on which one to choose for my startup :D</p>
+","2011-12-27 12:41:39","8645086","1","<facebook><twitter><startup><foursquare><groupon>","2","0"
+"File_get_contents function does not work with windows?","<pre><code>file_get_contents(""https://api.groupon.com/v2/deals.xml?division_id=cleveland&amp;client_id=39ddf70c45844d5a9d5a92e5106f1b229b2e1df8"");
+</code></pre>
+
+<p>This code does not work on windows, but does with Linux. Because of https. Is there any solution.</p>
+","2013-07-13 17:21:57","17632578","-1","<php><linux><windows><file-get-contents><groupon>","1","9"
+"Change Magento CMS Home page","<p>I am using this <a href=""http://grouponclone.contussupport.com"" rel=""nofollow noreferrer"">groupon clone</a> from contus</p>
+
+<p>I am try to change the <strong>cms home page</strong> .Which as what i have observed can be found in </p>
+
+<blockquote>
+  <p>System > Configuration > Web > Default Pages</p>
+</blockquote>
+
+<p>I tried changing the <strong>CMS Home Page</strong> .i chose the template that i made in</p>
+
+<blockquote>
+  <p>CMS > Pages</p>
+</blockquote>
+
+<p>I am expecting the template to be loaded .and ugh after several tries, clearing the cache and even changing the <strong>Default Web URL</strong> into the templates <strong>URL Key</strong> .it didn't work</p>
+
+<p>any suggestions?</p>
+
+<p>Here's a screenshot of the default cms_home_page</p>
+
+<p><img src=""https://i.stack.imgur.com/NIK7X.png"" alt=""enter image description here""></p>
+
+<p>I tried editing the <strong>config.xml</strong> in the </p>
+
+<blockquote>
+  <p>app\code\core\Mage\Cms\etc</p>
+</blockquote>
+
+<p>I changed the <strong>default > web > default > cms_home_page</strong> node into the <strong>coming-soon</strong> URL key .Still didn't work</p>
+
+<p>I can access the <a href=""http://127.0.0.1/mg/coming-soon/"" rel=""nofollow noreferrer"">http://127.0.0.1/mg/coming-soon/</a> page and the <a href=""http://127.0.0.1/mg/home/"" rel=""nofollow noreferrer"">http://127.0.0.1/mg/home/</a> page as well .I just wonder, why the settings i applied in the admin (and can also be seen in the db) doesn't work.</p>
+","2011-11-22 13:25:34","","0","<magento><content-management-system><clone><groupon>","3","6"
+"Groupon coupon code system in PHP","<p>I am trying to create a system just like groupon but where merchants input voucher codes into the system that customers can use to get their products.</p>
+
+<p>So let's say Merchant 1 has the following product</p>
+
+<ul>
+<li>Product Name: Camera</li>
+<li>Product ID: 2</li>
+</ul>
+
+<p>He would add coupon codes for Product ID 2 into the system.</p>
+
+<p>Coupons get added to the COUPON table with the following fields:</p>
+
+<ul>
+<li>id</li>
+<li>code</li>
+<li>product_id (refers back to Product table</li>
+<li>num_available</li>
+<li>max</li>
+</ul>
+
+<p>max is the maximum of the coupon that can be given out. num_available is the number of that coupon available. So if a Merchant puts in 5 as max, then num_available starts out as 5. but whenever a customer gets assigned that coupon, num_available gets decreased by 1</p>
+
+<p>Then when customers order they get assigned a coupon</p>
+
+<p>User orders get added to the following table Orders:
+Orders:</p>
+
+<ul>
+<li>order_id</li>
+<li>user_id</li>
+</ul>
+
+<p>OrderPosition:</p>
+
+<ul>
+<li>id </li>
+<li>order_id</li>
+<li>product_id</li>
+<li>amount</li>
+<li>coupon_id</li>
+</ul>
+
+<p>Each Order (stored in Orders) has multiple products associated with it (stored in OrderPosition). </p>
+
+<p>So User 1 orders Product 2 and gets assigned Coupon ID 1 that was added for Product 2. The num_available for Coupon ID 1 (in the COUPON table) gets decreased by 1 in the database.</p>
+
+<p>but what if User 1 orders TWO Product 2s - one for her and one for her friend - does she get two different coupon codes? </p>
+
+<p>Basically, I would like to make his process more efficient, and I don't know how Groupon has designed this process, but if anyone has good ideas on how best to do so, please let me know! </p>
+
+<p>I would love to know if I should change the database schema to make this more efficient ... </p>
+
+<p>My end goal is to allow people to buy deals. Once they buy a deal, they get a coupon. I could have automatically generated that coupon, but I'm guessing some merchants want to input their own coupons that work on their own system, right? </p>
+
+<p>The question is - how should I design the system to achieve my goals described above? </p>
+
+<p>I would also like to stress that the products that will be listed on my website will be from different merchants. I won't be listing my own products. Merchants list their own products just like on Groupon.com.</p>
+
+<p>Is it feasible to generate coupon codes instead of having merchants input their codes? Wouldn't that mean that they would have to also support these codes on their own systems? Like If jcpenny.com inputs products on my website, I could generate coupon codes for these products, but what if jcpenny.com does not support these coupon codes? I am guessing that Merchants would want to input their own codes... Or maybe I am wrong? </p>
+","2011-10-30 15:15:37","","-4","<php><mysql><groupon>","1","3"
+"Dynamics Nav exchange with Groupon","<p>I need to build an interface between Dynamics NAV 2013 and Groupon API V2
+It seems to me that Groupons API data comes in json format - how could I get this information in Dynamics NAV (orders for example) ?
+Should I use webservices ? </p>
+
+<p>Thanks</p>
+
+<p>EDIT :
+I worked a lot on this and got receiving data from groupon working
+The problem is send information :
+I have a problem to send a post request with parameters - this is my code :</p>
+
+<pre><code>WebServiceURL := 'https://...';
+Request := Request.Create(WebServiceURL);
+Request.Method := 'POST';
+Request.KeepAlive := TRUE;
+Request.Timeout := 30000;
+Request.Accept('application/json');
+Request.ContentType('multipart/form-data');
+postString := 'param1=123&amp;param2=456';
+Request.ContentLength := STRLEN(postString); 
+StreamWriter := StreamWriter.StreamWriter(Request.GetRequestStream);
+StreamWriter.Write(postString);
+StreamWriter.Close;
+</code></pre>
+
+<p>I get a 500 error so I don't know anything about why its rejected
+But if there is something that seems to be wrong to you, please help !</p>
+","2015-10-13 10:19:02","","0","<microsoft-dynamics><dynamics-nav><groupon><dynamics-nav-2013>","2","0"
+"Is that a good idea to create a groupon like website using Angularjs?","<p>I'm new to Angularjs. Now I'm going to create a groupon like website. So I checked lots of similar websites. None of them using the one-page style. So I'm thinking when to use Angularjs. Is that a good idea to create a groupon like website using Angularjs?</p>
+","2014-01-18 10:43:55","21203229","-1","<angularjs><groupon>","1","1"
+"In Groupon's feeds API, what value should be used for tsToken?","<p>I am a new user of <a href=""https://partner-api.groupon.com/feeds"" rel=""nofollow"">Groupon's feeds API</a>.</p>
+
+<p>Here is an example request:</p>
+
+<pre><code>https://partner-api.groupon.com/deals.json?tsToken=insert_tracking_token_here&amp;division_id=amarillo&amp;offset=0&amp;limit=100
+</code></pre>
+
+<p><strong>My question</strong>: What value should be used for <strong><code>tsToken</code></strong> in place of <strong><em><code>insert_tracking_token_here</code></em></strong>?</p>
+","2014-05-30 13:52:34","23956394","0","<xml><json><parsing><groupon>","2","0"
+"Does groupon API show deals from India","<p>Does groupon affiliate API show deals from India? If no then any link to document mentioning that groupon api is not available for india. Specially the deals which are shown on groupon.co.in</p>
+","2015-01-16 08:31:38","","0","<groupon>","2","0"
+"Authorize/Capture for PayPal","<p>Using PayPal IPN, can we implement delayed payment. Perfect example is Groupon where card is charged only when deal is tipped. Can someone throw light on implementation part using PayPal IPN and also how multiple cards can be charged at once when deal is tipped. </p>
+","2011-06-10 11:35:16","6305965","2","<paypal><paypal-ipn><groupon>","1","1"
+"groupon json request not working","<p>I can't seem to get jquery to return anything from the groupon API.</p>
+
+<p>When I check in <a href=""https://apigee.com/console/groupon_api2#"" rel=""nofollow"">apigee</a> I can do a simple get request to get all divisions.</p>
+
+<p>But when I try in JSFiddle it ain't working</p>
+
+<pre><code>$.get('https://api.groupon.com/v2/divisions.json?client_id=b91d375e38147f3c1e0339a3588d0b791c190424', function(data) {
+        console.log(data);
+    });
+</code></pre>
+
+<p>The $.get above returns a response that's empty.</p>
+
+<pre><code>$.getJSON(""https://api.groupon.com/v2/divisions.json?client_id=b91d375e38147f3c1e0339a3588d0b791c190424&amp;jsoncallback=?"", function(json) {
+        console.log(data);
+    });
+</code></pre>
+
+<p>This one returns an error</p>
+
+<pre><code>invalid label
+[Break On This Error] {""divisions"":[{""id"":""abbotsford"",""name...owCustomerEnabled"":false,""areas"":[]}]}
+</code></pre>
+
+<p>What am I doing wrong here?</p>
+
+<p>Here is the JSFIDDLE : </p>
+
+<blockquote>
+  <p><a href=""http://jsfiddle.net/fMzeK/2/"" rel=""nofollow"">http://jsfiddle.net/fMzeK/5/</a></p>
+</blockquote>
+","2011-06-28 20:56:24","6513197","2","<json><jquery><jsonp><groupon>","1","2"
+"Clue on how to program a discount system site like groupon","<p>I found this post: 
+<a href=""https://stackoverflow.com/questions/5632683/programming-a-contest-based-on-cupon-codes-in-drupal"">programming a contest based on cupon codes in drupal</a></p>
+
+<p>I wonder if there is any sort of module that does something like <a href=""http://www.eversave.com/"" rel=""nofollow noreferrer"">http://www.eversave.com/</a> or <a href=""http://www.groupon.com"" rel=""nofollow noreferrer"">http://www.groupon.com</a>;</p>
+
+<p>Does anybody knows some module(s) that can give me a ""head start""? </p>
+
+<p>Maybe a little code clue on how to start? </p>
+
+<p>I really need to make a clone, thanks in advance.</p>
+","2011-07-12 02:35:00","","4","<drupal><discount><groupon>","1","0"
+"Parse date from javascript countdown (jQuery plugin)","<p>I'm trying to parse ""Time Left To Buy"" from a Groupon clone. Don't worry, everything is legal. The Javascript looks like </p>
+
+<pre><code>var untilDate = new Date(1316206740000);
+        $(""#wlt-DealTimeLeft .timer"").countdown({until: untilDate,
+        layout: ""&lt;div class='timerDiv withDay clearfix'&gt;&lt;div class='countdownItem days'&gt;&lt;p&gt;{dn}&lt;/p&gt;{dl}&lt;/div&gt;&lt;div class='countdownItem'&gt;&lt;p&gt;{hn}&lt;/p&gt;{hl}&lt;/div&gt;&lt;div class='countdownSep'&gt;:&lt;/div&gt;&lt;div class='countdownItem'&gt;&lt;p&gt;{mn}&lt;/p&gt;{ml}&lt;/div&gt;&lt;div class='countdownSep'&gt;:&lt;/div&gt;&lt;div class='countdownItem'&gt;&lt;p&gt;{sn}&lt;/p&gt;{sl}&lt;/div&gt;&lt;/div&gt;"", onTick: function(periods){
+            $(""#wlt-DealTimeLeft"").uTimeLeftTick(periods,259080);
+        }});
+</code></pre>
+
+<p>I was thinking about the Date value, but it isn't only regular unix timestamp. How can I get the date when the deal ends? It's some kind of jQuery countdown plugin. Thank you for any hints or advices.</p>
+","2011-09-14 11:52:40","7416500","0","<php><javascript><parsing><countdown><groupon>","1","2"
+"How to get the JSON data from the Groupon API","<p>I am struggling to get the ""merchant"" -> ""id"" from the Groupon API below, while I don't have any problems to return the discountPercent.</p>
+
+<pre><code>&lt;?php
+
+$url = 'https://partner-int-api.groupon.com/deals.json?country_code=IE&amp;tsToken=IE_AFF_0_200012_212556_0&amp;division_id=dublin&amp;offset=0&amp;limit=10';
+$content = file_get_contents($url);
+$json = json_decode($content, true);
+
+foreach($json['deals'] as $results) {
+
+$discountPercent = $results['options'][0]['discountPercent'];
+$merchantId = $results['merchant'][0]-&gt;id;
+
+    echo $discountPercent.'&lt;br&gt;'; 
+    echo $merchantId;  
+
+}   
+?&gt;
+</code></pre>
+
+<p>If someone could point me to the right direction.</p>
+
+<p>Many Thanks,</p>
+","2017-04-29 21:25:43","","0","<json><api><groupon>","2","0"
+"Groupon deals api work with limit parameter","<p>I want to get top popular deals using group-on deals API. when we pass limit parameter with URL then how it works it gives top deals according to limit or randomly?  </p>
+","2017-04-21 07:25:40","","0","<groupon>","1","0"
+"The Groupon API - What is the difference between endAt and expiresAt?","<p>There is a lot of data provided in the Groupon API, but I can't find information anywhere on what the different fields mean. </p>
+
+<p>""endAt"" and ""expiresAt"" is quite ambiguous to me. The time at which a deal is no longer valid is quite important to get it wrong is no option.</p>
+
+<p>Any ideas?</p>
+","2015-09-02 16:08:32","","0","<json><api><groupon>","1","0"
+"Titanium - Slide menu like Groupon","<p>Can you show me a method for make a slider menu like Groupon apps in Titanium??</p>
+
+<p>Video example --><a href=""http://www.youtube.com/watch?v=R_NkdNA33oY"" rel=""nofollow"">click here</a></p>
+
+<p>I have tried to use two scroller: one scrollableView in the page and a ScrollView in the menu, but this approach it's too difficult and redundant...
+Someone can shows me easiest way or a tutorial?? 
+Thanks!
+Sorry for my english</p>
+","2013-12-03 17:04:25","20357808","0","<ios><menu><slider><titanium><groupon>","3","0"
+"How to correctly convert from PHP and CURL post to C# HTTP Client post for groupon API","<p>I've tried to convert the following code</p>
+
+<pre><code>&lt;?php
+   // requires PHP cURL http://no.php.net/curl
+   $datatopost = array (
+      ""supplier_id"" =&gt; ""1"",
+      ""token"" =&gt; ""xYRPKcoakMoiRzWgKLV5TqPSdNAaZQT"",
+      ""ci_lineitem_ids"" =&gt; json_encode ( array (54553919, 54553920) ),
+   );
+   $ch = curl_init (""https://scm.commerceinterface.com/api/v4/mark_exported"");
+   curl_setopt ($ch, CURLOPT_POST, true);
+   curl_setopt ($ch, CURLOPT_POSTFIELDS, $datatopost);
+   curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+   $response = curl_exec ($ch);
+   if( $response ) {
+      $response_json = json_decode( $response );
+      if( $response_json-&gt;success == true ) {
+        //Successfully marked as exported (only items which are not already marked exported
+      } else {
+
+      }
+   }
+</code></pre>
+
+<p>to work with the HTTP client in C# by using the form url encoded content class as below in place of the <code>$datatopost</code> array in the PHP</p>
+
+<pre><code>FormUrlEncodedContent markExportedContent = new FormUrlEncodedContent(new[] {
+    new KeyValuePair&lt;string,string&gt;(""supplier_id"",country.supplier_id),
+    new KeyValuePair&lt;string, string&gt;(""token"",country.token),
+    new KeyValuePair&lt;string, string&gt;(""ci_lineitem_id"", JsonConvert.SerializeObject(country.ci_lineitem_ids))
+});
+</code></pre>
+
+<p>and then using a http client to post this to the API however i get the below response </p>
+
+<pre><code>{""reason"": ""Missing Parameters (ci_lineitem_ids)."", ""reason_code"": 400, ""success"": false}
+</code></pre>
+
+<p>I assume it has something to do with the <code>JsonConvert.SerializeObject(country.ci_lineitem_ids)</code> from the <a href=""https://www.newtonsoft.com/json"" rel=""nofollow noreferrer"">Newtonsoft Json</a> package I am using to convert from a array of strings to a json encoded array as it shows in the PHP code. </p>
+
+<p>Anyone able to help with some ideas as to why this isn't working as expect as i'm all out of ideas at this now having tried multiple different ways to do this before this one?</p>
+","2017-10-17 10:20:45","46788610","2","<c#><php><json><curl><groupon>","1","1"
+"No EU Groupon API Results","<p>For some reasons I can't print any results from the European Groupon API feeds while the US feed works fine:</p>
+
+<p>The US feed URL can be found on the US Groupon site - see: <a href=""https://partner-api.groupon.com/help/deal-api"" rel=""nofollow"">https://partner-api.groupon.com/help/deal-api</a> (Scroll down to ""Location Sample Calls"").</p>
+
+<p>See below my PHP code to print the results from the US feed in XML, this works fine i.e. I can print the results from the Groupon API.</p>
+
+<pre><code>&lt;?php
+$xml=simplexml_load_file(""https://partner-api.groupon.com/deals.xml?tsToken=US_AFF_0_201236_212556_0&amp;division_id=amarillo&amp;offset=0&amp;limit=10"") or die(""Error: Cannot create object"");
+print_r($xml);
+?&gt;
+</code></pre>
+
+<p>Now when I try one of the European countries feed with exactly the same code, I cannot print any results and I have the following error: Error: Cannot create object.</p>
+
+<p>For the EU, The feed URL can be found on the EU Groupon site - see: <a href=""https://partner-int-api.groupon.com/help/deal-api"" rel=""nofollow"">https://partner-int-api.groupon.com/help/deal-api</a> (Scroll down to ""Location Sample Calls"").</p>
+
+<p>See below my PHP code to print the results from the IE feed in XML, this does not work while the code is exactly the same as the US above, what's strange is that it works in Xampp, and it also works if you call the IE feed URL in a browser. But I can't print any results when I put that piece of code below on my server and call it in my browser while it works fine with the US. </p>
+
+<p>Thanks for your help.</p>
+
+<pre><code>&lt;?php
+$xml=simplexml_load_file(""https://partner-int-api.groupon.com/deals.xml?country_code=IE&amp;tsToken=IE_AFF_0_200012_212556_0&amp;division_id=dublin&amp;offset=0&amp;limit=20"") or die(""Error: Cannot create object"");
+print_r($xml);
+?&gt;
+</code></pre>
+","2016-09-17 14:14:34","","0","<php><xml><api><groupon>","0","3"
+"Get Groupon Deals by tag using Groupon API","<p>I am playing around with the Groupon API and I would like to get a list of deals based on a specific tag. </p>
+
+<p>Using the www.apigee.com console, I am doing a GET request on this URL:
+<a href=""https://api.groupon.com/v2/deals.json?division_id=new-york&amp;tag=Arcade&amp;client_id="" rel=""nofollow"">https://api.groupon.com/v2/deals.json?division_id=new-york&amp;tag=Arcade&amp;client_id=</a>{myId}</p>
+
+<p>However, the response I am getting appears to just be all the deals for that division (In this case, New York).</p>
+
+<p>Here is a link to the relevant API documentation: 
+<a href=""http://sites.google.com/site/grouponapiv2/api-resources/deals"" rel=""nofollow"">http://sites.google.com/site/grouponapiv2/api-resources/deals</a></p>
+","2011-06-01 23:35:18","","2","<php><api><groupon>","1","1"
+"Import user accounts data from other websites with user sign-in","<p><a href=""http://dealsgoround.com"" rel=""nofollow"">dealsgoround.com</a> and <a href=""http://citypockets.com"" rel=""nofollow"">citypockets.com</a> access user accounts and their daily deals from <a href=""http://livingsocial.com"" rel=""nofollow"">livingsocial.com</a> and other daily deal websites. These websites ask users to give their credentials to sign them in to respective websites and then import account details. LivingSocial and other deal website don't provide API access to user accounts.</p>
+
+<p>I also want such access to other websites and import data from there. But I am unable to find out the backend process by which <a href=""http://dealsgoround.com"" rel=""nofollow"">dealsgoround.com</a> and <a href=""http://citypockets.com"" rel=""nofollow"">citypockets.com</a> import data from Groupon and LivingSocial etc.</p>
+
+<p>By now I am able to find out that web crawlers/spiders can be used to scrap data from web pages. But I am not sure web crawlers can be useful in a scenario where we need user sign in and the page urls are encrypted or at least are dynamically generated urls.</p>
+
+<p>Please help me and suggest me a way to do this. If crawlers are the solution to this please provide links to some web crawler APIs that I can use in my .net application.</p>
+
+<p>Thanks</p>
+
+<p>Atif</p>
+","2011-09-09 14:04:15","7471399","0","<api><import><web-crawler><groupon>","2","2"
+"Groupon API not returning category to related deal","<p>I am working on groupon deals API to show  deals on my website, I am getting all the results which API returns, but it is not giving me any category to related deal. I want a categories to categorized the deals. </p>
+
+<p>Any idea to get categories from groupon ? I am coping one result for better understanding.</p>
+
+<pre><code>{
+""deals"": [
+    {
+        ""type"": ""groupon"",
+        ""tippingPoint"": 0,
+        ""isOptionListComplete"": true,
+        ""division"": {
+            ""lng"": -99.7331,
+            ""timezone"": ""Central Time (US &amp; Canada)"",
+            ""lat"": 32.4487,
+            ""timezoneIdentifier"": ""America/Chicago"",
+            ""name"": ""Abilene, TX"",
+            ""id"": ""abilene"",
+            ""timezoneOffsetInSeconds"": -21600
+        },
+        ""announcementTitle"": ""Sterling Silver Swarovski Elements Double Crystal Ball Earrings"",
+        ""allowedInCart"": true,
+        ""isTipped"": true,
+        ""dealUrl"": ""http://tracking.groupon.com/r?tsToken=US_AFF_0_201236_212556_0&amp;url=http%3A%2F%2Fwww.groupon.com%2Fdeals%2Fgg-sterling-silver-swarovski-elements-double-crystal-ball-earrings%3Fz%3Dskip%26utm_medium%3Dafl%26utm_source%3DGPN%26utm_campaign%3D201236%26mediaId%3D212556"",
+        ""areas"": [],
+        ""status"": ""open"",
+        ""soldQuantity"": 50,
+        ""pitchHtml"": ""&lt;p&gt;&lt;/p&gt;\n\n&lt;h4&gt;Sterling Silver Swarovski Elements Double Crystal Ball Earrings&lt;/h4&gt;\n\n&lt;ul&gt;\n  &lt;li&gt;Unique double-ball earrings&lt;/li&gt;\n  &lt;li&gt;Genuine Swarovski Elements crystals&lt;/li&gt;\n  &lt;li&gt;.925 sterling silver&lt;/li&gt;\n  &lt;li&gt;Nickel- and lead-free&lt;/li&gt;\n  &lt;li&gt;6mm ball on top, 10mm ball on bottom&lt;/li&gt;\n  &lt;li&gt;Butterfly post backs&lt;/li&gt;\n  &lt;li&gt;Overall dimensions: 17mm x 10mm x 0.1mm&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;hr /&gt;\n\n&lt;p&gt;&lt;i&gt;For questions pertaining to this deal, click the Ask a Question button below. For post-purchase inquiries, please contact &lt;a href=\""http://gr.pn/zmfvIT\""&gt;Groupon customer support&lt;/a&gt;.\n&lt;br /&gt;&lt;br /&gt;\nGoods sold by Groupon Goods. View the &lt;a href=\""http://gr.pn/1gH6Dm7\""&gt;Groupon Goods FAQ&lt;/a&gt; to learn more.\n&lt;/i&gt;&lt;/p&gt;"",
+        ""accessType"": ""featured"",
+        ""grid6ImageUrl"": ""https://img.grouponcdn.com/deal/oqUZuNtSqpmnaX88v3bx/B2-4200x2544/v1/t460x279.jpg"",
+        ""says"": null,
+        ""isTravelBookableDeal"": false,
+        ""sidebarImageUrl"": ""https://img.grouponcdn.com/deal/oqUZuNtSqpmnaX88v3bx/B2-4200x2544/v1/t200x300.jpg"",
+        ""displayOptions"": [
+            {
+                ""enabled"": true,
+                ""name"": ""timer""
+            },
+            {
+                ""enabled"": true,
+                ""name"": ""quantity""
+            },
+            {
+                ""enabled"": true,
+                ""name"": ""discount""
+            },
+            {
+                ""value"": ""goods"",
+                ""name"": ""merchandisingType""
+            }
+        ],
+        ""placementPriority"": ""nearby"",
+        ""isAutoRefundEnabled"": false,
+        ""title"": ""Sterling Silver Swarovski Elements Double Crystal Ball Earrings"",
+        ""shippingAddressRequired"": true,
+        ""finePrint"": ""Limit 3 per person, May buy 2 more as gifts. &lt;b&gt;Free returns.&lt;/b&gt; Does not ship to AK/HI/Canada/Puerto Rico.Most orders are delivered within 12 business days from the purchase date Does not ship to PO boxes &lt;a target=\""_blank\"" href=\""http://gr.pn/wqDomX\""&gt;See return policy.&lt;/a&gt; &lt;a target=\""_blank\"" href=\""http://gr.pn/hqEozV\""&gt;Must pay applicable tax and provide name and shipping address at checkout, which will be shared to facilitate shipping.&lt;/a&gt;  Goods sold by Groupon Goods."",
+        ""channels"": [
+            {
+                ""name"": ""Goods"",
+                ""id"": ""goods""
+            }
+        ],
+        ""placeholderUrl"": ""https://secure-assets.grouponcdn.com/images/groupon/grayPlaceholder.png"",
+        ""tippedAt"": ""2015-02-24T06:00:34Z"",
+        ""vip"": """",
+        ""soldQuantityMessage"": ""50+"",
+        ""redemptionLocation"": null,
+        ""merchant"": {
+            ""websiteUrl"": """",
+            ""facebookUrl"": null,
+            ""twitterUrl"": null,
+            ""uuid"": ""d8389750-664e-11e2-beb6-00259060b5bc"",
+            ""ratings"": [],
+            ""name"": ""Sterling Silver Swarovski Elements Double Crystal Ball Earrings"",
+            ""id"": ""golden-moon-inc""
+        },
+        ""isMerchandisingDeal"": true,
+        ""dealTypes"": [
+            {
+                ""description"": ""For those who dress to thrill"",
+                ""name"": ""Threads"",
+                ""id"": ""wearables""
+            }
+        ],
+        ""shortAnnouncementTitle"": ""Swarovski Elements Ball Earrings"",
+        ""largeImageUrl"": ""https://img.grouponcdn.com/deal/oqUZuNtSqpmnaX88v3bx/B2-4200x2544/v1/t440x300.jpg"",
+        ""uuid"": ""7e831c0a-554e-43ea-a47d-d8e1ba4bf776"",
+        ""textAd"": {
+            ""headline"": """",
+            ""line2"": """",
+            ""line1"": """"
+        },
+        ""startAt"": ""2015-02-24T06:00:00Z"",
+        ""isGliveInventoryDeal"": false,
+        ""grouponRating"": null,
+        ""smallImageUrl"": ""https://img.grouponcdn.com/deal/oqUZuNtSqpmnaX88v3bx/B2-4200x2544/v1/t50x50.jpg"",
+        ""isInviteOnly"": false,
+        ""locationNote"": """",
+        ""tags"": [
+            {
+                ""name"": ""Shopping""
+            }
+        ],
+        ""limitedQuantityRemaining"": null,
+        ""highlightsHtml"": ""&lt;p&gt;Double-studded earrings, with a 6mm ball and 10mm ball, draw onlookers&amp;#8217; eyes with the impressive sparkle of Swarovski Elements crystals&lt;/p&gt;"",
+        ""endAt"": ""2015-03-10T04:59:59Z"",
+        ""grid4ImageUrl"": ""https://img.grouponcdn.com/deal/oqUZuNtSqpmnaX88v3bx/B2-4200x2544/v1/t300x182.jpg"",
+        ""id"": ""gg-sterling-silver-swarovski-elements-double-crystal-ball-earrings"",
+        ""fulfillmentMethod"": ""Drop ship (Supplier small parcel)"",
+        ""salesforceLink"": ""https://login.salesforce.com/006C000000wDIhdIAG"",
+        ""options"": [
+            {
+                ""traits"": [
+                    {
+                        ""name"": ""Stone"",
+                        ""value"": ""Lt Amethyst""
+                    }
+                ],
+                ""remainingQuantity"": 0,
+                ""expiresInDays"": null,
+                ""customFields"": [],
+                ""status"": ""open"",
+                ""soldQuantity"": 1,
+                ""externalUrl"": null,
+                ""maximumPurchaseQuantity"": 5,
+                ""discountPercent"": 88,
+                ""value"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$125.00"",
+                    ""amount"": 12500
+                },
+                ""price"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$14.99"",
+                    ""amount"": 1499
+                },
+                ""initialQuantity"": 0,
+                ""buyUrl"": ""https://www.groupon.com/deals/gg-sterling-silver-swarovski-elements-double-crystal-ball-earrings/confirmation?pledge_id=12601090"",
+                ""title"": ""Sterling Silver Swarovski Elements Double-Studded Earrings-Lt Amethyst"",
+                ""minimumPurchaseQuantity"": 1,
+                ""expiresAt"": null,
+                ""uuid"": ""0717d2b9-178e-45df-9453-d2e1eaba433b"",
+                ""soldQuantityMessage"": ""1"",
+                ""discount"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$110.01"",
+                    ""amount"": 11001
+                },
+                ""details"": [
+                    {
+                        ""description"": ""Limit 3 per person, May buy 2 more as gifts. &lt;b&gt;Free returns.&lt;/b&gt; Does not ship to AK/HI/Canada/Puerto Rico.Most orders are delivered within 12 business days from the purchase date Does not ship to PO boxes &lt;a target=\""_blank\"" href=\""http://gr.pn/wqDomX\""&gt;See return policy.&lt;/a&gt; &lt;a target=\""_blank\"" href=\""http://gr.pn/hqEozV\""&gt;Must pay applicable tax and provide name and shipping address at checkout, which will be shared to facilitate shipping.&lt;/a&gt;  Goods sold by Groupon Goods.""
+                    }
+                ],
+                ""bookable"": false,
+                ""isLimitedQuantity"": true,
+                ""redemptionLocations"": [],
+                ""endAt"": ""2015-03-10T04:59:59Z"",
+                ""id"": 12601090,
+                ""specificAttributes"": {},
+                ""isSoldOut"": false
+            },
+            {
+                ""traits"": [
+                    {
+                        ""name"": ""Stone"",
+                        ""value"": ""Light Rose""
+                    }
+                ],
+                ""remainingQuantity"": 0,
+                ""expiresInDays"": null,
+                ""customFields"": [],
+                ""status"": ""open"",
+                ""soldQuantity"": 4,
+                ""externalUrl"": null,
+                ""maximumPurchaseQuantity"": 5,
+                ""discountPercent"": 88,
+                ""value"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$125.00"",
+                    ""amount"": 12500
+                },
+                ""price"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$14.99"",
+                    ""amount"": 1499
+                },
+                ""initialQuantity"": 0,
+                ""buyUrl"": ""https://www.groupon.com/deals/gg-sterling-silver-swarovski-elements-double-crystal-ball-earrings/confirmation?pledge_id=12601089"",
+                ""title"": ""Sterling Silver Swarovski Elements Double-Studded Earrings--Light Rose"",
+                ""minimumPurchaseQuantity"": 1,
+                ""expiresAt"": null,
+                ""uuid"": ""cb1315f1-3c34-40c5-81fb-a4342edc6549"",
+                ""soldQuantityMessage"": ""4"",
+                ""discount"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$110.01"",
+                    ""amount"": 11001
+                },
+                ""details"": [
+                    {
+                        ""description"": ""Limit 3 per person, May buy 2 more as gifts. &lt;b&gt;Free returns.&lt;/b&gt; Does not ship to AK/HI/Canada/Puerto Rico.Most orders are delivered within 12 business days from the purchase date Does not ship to PO boxes &lt;a target=\""_blank\"" href=\""http://gr.pn/wqDomX\""&gt;See return policy.&lt;/a&gt; &lt;a target=\""_blank\"" href=\""http://gr.pn/hqEozV\""&gt;Must pay applicable tax and provide name and shipping address at checkout, which will be shared to facilitate shipping.&lt;/a&gt;  Goods sold by Groupon Goods.""
+                    }
+                ],
+                ""bookable"": false,
+                ""isLimitedQuantity"": true,
+                ""redemptionLocations"": [],
+                ""endAt"": ""2015-03-10T04:59:59Z"",
+                ""id"": 12601089,
+                ""specificAttributes"": {},
+                ""isSoldOut"": false
+            },
+            {
+                ""traits"": [
+                    {
+                        ""name"": ""Stone"",
+                        ""value"": ""Jet""
+                    }
+                ],
+                ""remainingQuantity"": 0,
+                ""expiresInDays"": null,
+                ""customFields"": [],
+                ""status"": ""open"",
+                ""soldQuantity"": 8,
+                ""externalUrl"": null,
+                ""maximumPurchaseQuantity"": 5,
+                ""discountPercent"": 88,
+                ""value"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$125.00"",
+                    ""amount"": 12500
+                },
+                ""price"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$14.99"",
+                    ""amount"": 1499
+                },
+                ""initialQuantity"": 0,
+                ""buyUrl"": ""https://www.groupon.com/deals/gg-sterling-silver-swarovski-elements-double-crystal-ball-earrings/confirmation?pledge_id=12601088"",
+                ""title"": ""Sterling Silver Swarovski Elements Double-Studded Earrings-Jet"",
+                ""minimumPurchaseQuantity"": 1,
+                ""expiresAt"": null,
+                ""uuid"": ""c539d338-20d7-4c2a-a3eb-a0cb11583914"",
+                ""soldQuantityMessage"": ""8"",
+                ""discount"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$110.01"",
+                    ""amount"": 11001
+                },
+                ""details"": [
+                    {
+                        ""description"": ""Limit 3 per person, May buy 2 more as gifts. &lt;b&gt;Free returns.&lt;/b&gt; Does not ship to AK/HI/Canada/Puerto Rico.Most orders are delivered within 12 business days from the purchase date Does not ship to PO boxes &lt;a target=\""_blank\"" href=\""http://gr.pn/wqDomX\""&gt;See return policy.&lt;/a&gt; &lt;a target=\""_blank\"" href=\""http://gr.pn/hqEozV\""&gt;Must pay applicable tax and provide name and shipping address at checkout, which will be shared to facilitate shipping.&lt;/a&gt;  Goods sold by Groupon Goods.""
+                    }
+                ],
+                ""bookable"": false,
+                ""isLimitedQuantity"": true,
+                ""redemptionLocations"": [],
+                ""endAt"": ""2015-03-10T04:59:59Z"",
+                ""id"": 12601088,
+                ""specificAttributes"": {},
+                ""isSoldOut"": false
+            },
+            {
+                ""traits"": [
+                    {
+                        ""name"": ""Stone"",
+                        ""value"": ""Crystal AB""
+                    }
+                ],
+                ""remainingQuantity"": 0,
+                ""expiresInDays"": null,
+                ""customFields"": [],
+                ""status"": ""open"",
+                ""soldQuantity"": 3,
+                ""externalUrl"": null,
+                ""maximumPurchaseQuantity"": 5,
+                ""discountPercent"": 88,
+                ""value"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$125.00"",
+                    ""amount"": 12500
+                },
+                ""price"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$14.99"",
+                    ""amount"": 1499
+                },
+                ""initialQuantity"": 0,
+                ""buyUrl"": ""https://www.groupon.com/deals/gg-sterling-silver-swarovski-elements-double-crystal-ball-earrings/confirmation?pledge_id=12601087"",
+                ""title"": ""Sterling Silver Swarovski Elements Double-Studded Earrings-Crystal AB"",
+                ""minimumPurchaseQuantity"": 1,
+                ""expiresAt"": null,
+                ""uuid"": ""58fcb76c-17c5-40af-8303-7eb1c65171d0"",
+                ""soldQuantityMessage"": ""3"",
+                ""discount"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$110.01"",
+                    ""amount"": 11001
+                },
+                ""details"": [
+                    {
+                        ""description"": ""Limit 3 per person, May buy 2 more as gifts. &lt;b&gt;Free returns.&lt;/b&gt; Does not ship to AK/HI/Canada/Puerto Rico.Most orders are delivered within 12 business days from the purchase date Does not ship to PO boxes &lt;a target=\""_blank\"" href=\""http://gr.pn/wqDomX\""&gt;See return policy.&lt;/a&gt; &lt;a target=\""_blank\"" href=\""http://gr.pn/hqEozV\""&gt;Must pay applicable tax and provide name and shipping address at checkout, which will be shared to facilitate shipping.&lt;/a&gt;  Goods sold by Groupon Goods.""
+                    }
+                ],
+                ""bookable"": false,
+                ""isLimitedQuantity"": true,
+                ""redemptionLocations"": [],
+                ""endAt"": ""2015-03-10T04:59:59Z"",
+                ""id"": 12601087,
+                ""specificAttributes"": {},
+                ""isSoldOut"": false
+            },
+            {
+                ""traits"": [
+                    {
+                        ""name"": ""Stone"",
+                        ""value"": ""Crystal""
+                    }
+                ],
+                ""remainingQuantity"": 0,
+                ""expiresInDays"": null,
+                ""customFields"": [],
+                ""status"": ""open"",
+                ""soldQuantity"": 30,
+                ""externalUrl"": null,
+                ""maximumPurchaseQuantity"": 5,
+                ""discountPercent"": 88,
+                ""value"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$125.00"",
+                    ""amount"": 12500
+                },
+                ""price"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$14.99"",
+                    ""amount"": 1499
+                },
+                ""initialQuantity"": 0,
+                ""buyUrl"": ""https://www.groupon.com/deals/gg-sterling-silver-swarovski-elements-double-crystal-ball-earrings/confirmation?pledge_id=12601086"",
+                ""title"": ""Sterling Silver Swarovski Elements Double-Studded Earrings-Crystal"",
+                ""minimumPurchaseQuantity"": 1,
+                ""expiresAt"": null,
+                ""uuid"": ""7374ae5d-c2d5-4cf9-8ffa-cfb469217c72"",
+                ""soldQuantityMessage"": ""30+"",
+                ""discount"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$110.01"",
+                    ""amount"": 11001
+                },
+                ""details"": [
+                    {
+                        ""description"": ""Limit 3 per person, May buy 2 more as gifts. &lt;b&gt;Free returns.&lt;/b&gt; Does not ship to AK/HI/Canada/Puerto Rico.Most orders are delivered within 12 business days from the purchase date Does not ship to PO boxes &lt;a target=\""_blank\"" href=\""http://gr.pn/wqDomX\""&gt;See return policy.&lt;/a&gt; &lt;a target=\""_blank\"" href=\""http://gr.pn/hqEozV\""&gt;Must pay applicable tax and provide name and shipping address at checkout, which will be shared to facilitate shipping.&lt;/a&gt;  Goods sold by Groupon Goods.""
+                    }
+                ],
+                ""bookable"": false,
+                ""isLimitedQuantity"": true,
+                ""redemptionLocations"": [],
+                ""endAt"": ""2015-03-10T04:59:59Z"",
+                ""id"": 12601086,
+                ""specificAttributes"": {},
+                ""isSoldOut"": false
+            },
+            {
+                ""traits"": [
+                    {
+                        ""name"": ""Stone"",
+                        ""value"": ""Light Peach""
+                    }
+                ],
+                ""remainingQuantity"": 0,
+                ""expiresInDays"": null,
+                ""customFields"": [],
+                ""status"": ""open"",
+                ""soldQuantity"": 1,
+                ""externalUrl"": null,
+                ""maximumPurchaseQuantity"": 5,
+                ""discountPercent"": 88,
+                ""value"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$125.00"",
+                    ""amount"": 12500
+                },
+                ""price"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$14.99"",
+                    ""amount"": 1499
+                },
+                ""initialQuantity"": 0,
+                ""buyUrl"": ""https://www.groupon.com/deals/gg-sterling-silver-swarovski-elements-double-crystal-ball-earrings/confirmation?pledge_id=12601091"",
+                ""title"": ""Sterling Silver Swarovski Elements Double-Studded Earrings-Light Peach"",
+                ""minimumPurchaseQuantity"": 1,
+                ""expiresAt"": null,
+                ""uuid"": ""43cb8093-aecc-4664-a782-d18905d8377c"",
+                ""soldQuantityMessage"": ""1"",
+                ""discount"": {
+                    ""currencyCode"": ""USD"",
+                    ""formattedAmount"": ""$110.01"",
+                    ""amount"": 11001
+                },
+                ""details"": [
+                    {
+                        ""description"": ""Limit 3 per person, May buy 2 more as gifts. &lt;b&gt;Free returns.&lt;/b&gt; Does not ship to AK/HI/Canada/Puerto Rico.Most orders are delivered within 12 business days from the purchase date Does not ship to PO boxes &lt;a target=\""_blank\"" href=\""http://gr.pn/wqDomX\""&gt;See return policy.&lt;/a&gt; &lt;a target=\""_blank\"" href=\""http://gr.pn/hqEozV\""&gt;Must pay applicable tax and provide name and shipping address at checkout, which will be shared to facilitate shipping.&lt;/a&gt;  Goods sold by Groupon Goods.""
+                    }
+                ],
+                ""bookable"": false,
+                ""isLimitedQuantity"": true,
+                ""redemptionLocations"": [],
+                ""endAt"": ""2015-03-10T04:59:59Z"",
+                ""id"": 12601091,
+                ""specificAttributes"": {},
+                ""isSoldOut"": false
+            }
+        ],
+        ""isSoldOut"": false,
+        ""isNowDeal"": false,
+        ""mediumImageUrl"": ""https://img.grouponcdn.com/deal/oqUZuNtSqpmnaX88v3bx/B2-4200x2544/v1/t100x100.jpg""
+    }
+],
+""facets"": [],
+""pagination"": {
+    ""offset"": 0,
+    ""count"": 9886
+}
+</code></pre>
+
+<p>}</p>
+","2015-02-26 07:36:02","","2","<api><groupon>","1","0"
+"How to find Client Id in Groupon Affiliate account","<p>I have a gruopon affiliate account.I want to get the deals for my site.
+I have used this following code:</p>
+
+<pre><code>$.ajax({
+url: 'https://api.groupon.com/v2/divisions.json?client_id=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 
+dataType: 'jsonp',
+beforeSend: function() {
+    alert('ok');
+},
+success: function(data) {
+    $('#result').html(data);
+    alert(data.divisions);
+},
+error: function(xhr) { // if error occured
+    alert(""Error occured.please try again"");
+    alert(xhr);
+},
+complete: function() {
+    alert('done');
+}
+</code></pre>
+
+<p>});</p>
+
+<p>The error I am getting is : </p>
+
+<pre><code>{""error"":{""httpCode"":401,""message"":""'client_id' is invalid""}}
+</code></pre>
+
+<p>I thought the <strong>Reporting API key</strong> in my account is the client id,but I am having doubts now.Please help me finding the client id.</p>
+","2015-04-09 09:26:44","","1","<php><groupon>","0","0"
+"Groupon divison json call error","<p>I am new to PHP and trying to call this json to get all groupon divisons... I do not see the names. Not sure what is wrong.. any help ?</p>
+
+<pre><code>&lt;?php
+$divs = ""https://partner-api.groupon.com/division.json';
+$curldivs = curl_init($divs);
+curl_setopt($curldivs, CURLOPT_RETURNTRANSFER, true);
+$respdivs = curl_exec($curldivs);
+curl_close($curldivs);
+$divarry = json_decode($respdivs);
+
+foreach($divarry-&gt;divisions as $divn)
+{
+
+echo $divn-&gt;name;
+
+}
+?&gt;
+</code></pre>
+","2015-04-17 01:37:11","","1","<json><call><groupon>","1","0"
