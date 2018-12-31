@@ -66,12 +66,9 @@ def preprocess(s, lowercase=False):
 
 # sentiment extract
 def sentiment_value(s):
-    if (TextBlob(s).sentiment.polarity > 0):
-        return 'postive'
-    elif (TextBlob(s).sentiment.polarity < 0):
-        return 'negative'
-    else:
-        return 'neutral'
+    return TextBlob(s).sentiment.polarity
+def sentiment_subject(s):
+    return TextBlob(s).sentiment.subjectivity
 
 
 def load_csv_to_df(file_name):
@@ -84,6 +81,7 @@ if __name__== "__main__":
     dataset = df.filter(['post','topic'], axis=1)
     dataset['processed_post'] = dataset['post'].apply(lambda x: preprocess(x, True))
     dataset['sentiment'] = dataset['processed_post'].apply(lambda x: sentiment_value(x))
-    dataset.to_csv("labelled_ycombi.csv")
+    dataset['subject'] = dataset['processed_post'].apply(lambda x: sentiment_subject(x))
+    dataset.to_csv("labelled_ycombi_v2.csv")
     print(dataset.head(10))
 
