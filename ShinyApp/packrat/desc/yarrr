@@ -1,0 +1,28 @@
+Package: yarrr
+Title: A Companion to the e-Book "YaRrr!: The Pirate's Guide to R"
+Version: 0.1.6
+Date: 2017-10-30
+Authors@R: person("Nathaniel", "Phillips", email = "yarrr.book@gmail.com",
+                  role = c("aut", "cre"))
+Description: Contains a mixture of functions and data sets referred to in the introductory e-book "YaRrr!: The Pirate's Guide to R". The latest version of the e-book is available for free at <https://www.thepiratesguidetor.com>.
+Depends: jpeg,BayesFactor,circlize
+License: GPL-2
+LazyData: true
+URL: www.thepiratesguidetor.com
+BugReports: https://github.com/ndphillips/yarrr/issues
+RoxygenNote: 6.0.1
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+Author: Nathaniel Phillips [aut, cre]
+Maintainer: Nathaniel Phillips <yarrr.book@gmail.com>
+Built: R 3.5.0; ; 2018-06-21 09:30:50 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: yarrr
+RemoteUsername: ndphillips
+RemoteRef: master
+RemoteSha: e2e4488cd065b2e2cad71411fe8e651e3cea1336
+GithubRepo: yarrr
+GithubUsername: ndphillips
+GithubRef: master
+GithubSHA1: e2e4488cd065b2e2cad71411fe8e651e3cea1336

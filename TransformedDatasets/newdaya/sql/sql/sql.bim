@@ -1,0 +1,275 @@
+{
+  "name": "sql",
+  "description": "Imported database from sql server 'tanalyticsserver.database.windows.net' and database 'tAnalyticsStore'",
+  "compatibilityLevel": 1400,
+  "model": {
+    "name": "sql",
+    "description": "A Tabular data model at the 1400 compatibility level.",
+    "defaultMode": "directQuery",
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer tanalyticsserver.database.windows.net tAnalyticsStore",
+        "description": "A data source definition that uses explicit sql server credentials from connection string",
+        "connectionString": "Provider=SQLNCLI11;Server=tcp:tanalyticsserver.database.windows.net;Initial Catalog=tAnalyticsStore;Persist Security Info=False;User ID=lambda;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30",
+        "impersonationMode": "impersonateServiceAccount"
+      }
+    ],
+    "tables": [
+      {
+        "name": "access_filter",
+        "description": "All data from access_filter",
+        "columns": [
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "displayOrdinal": 1
+          },
+          {
+            "name": "market_group",
+            "dataType": "string",
+            "sourceColumn": "market_group",
+            "displayOrdinal": 2
+          },
+          {
+            "name": "cluster",
+            "dataType": "string",
+            "sourceColumn": "cluster",
+            "displayOrdinal": 3
+          }
+        ],
+        "partitions": [
+          {
+            "name": "access_filter",
+            "source": {
+              "query": "SELECT [customer_id],[country],[market_group],[cluster] FROM [dbo].[access_filter]",
+              "dataSource": "SqlServer tanalyticsserver.database.windows.net tAnalyticsStore"
+            }
+          }
+        ]
+      },
+      {
+        "name": "customer_billing_tbl",
+        "description": "All data from customer_billing_tbl",
+        "columns": [
+          {
+            "name": "FinalCustomer",
+            "dataType": "string",
+            "sourceColumn": "FinalCustomer"
+          },
+          {
+            "name": "matr",
+            "dataType": "string",
+            "sourceColumn": "matr",
+            "displayOrdinal": 1
+          },
+          {
+            "name": "matr_desc",
+            "dataType": "string",
+            "sourceColumn": "matr_desc",
+            "displayOrdinal": 2
+          },
+          {
+            "name": "NormalizedBilledHours",
+            "dataType": "double",
+            "sourceColumn": "NormalizedBilledHours",
+            "displayOrdinal": 3
+          }
+        ],
+        "partitions": [
+          {
+            "name": "customer_billing_tbl",
+            "source": {
+              "query": "SELECT [FinalCustomer],[matr],[matr_desc],[NormalizedBilledHours] FROM [dbo].[customer_billing_tbl]",
+              "dataSource": "SqlServer tanalyticsserver.database.windows.net tAnalyticsStore"
+            }
+          }
+        ]
+      },
+      {
+        "name": "customer_distance",
+        "description": "All data from customer_distance",
+        "columns": [
+          {
+            "name": "customer_1",
+            "dataType": "string",
+            "sourceColumn": "customer_1"
+          },
+          {
+            "name": "customer_2",
+            "dataType": "string",
+            "sourceColumn": "customer_2",
+            "displayOrdinal": 1
+          },
+          {
+            "name": "distance",
+            "dataType": "double",
+            "sourceColumn": "distance",
+            "displayOrdinal": 2
+          },
+          {
+            "name": "customer_flag",
+            "dataType": "string",
+            "sourceColumn": "customer_flag",
+            "displayOrdinal": 3
+          }
+        ],
+        "partitions": [
+          {
+            "name": "customer_distance",
+            "source": {
+              "query": "SELECT [customer_1],[customer_2],[distance],[customer_flag] FROM [dbo].[customer_distance]",
+              "dataSource": "SqlServer tanalyticsserver.database.windows.net tAnalyticsStore"
+            }
+          }
+        ]
+      },
+      {
+        "name": "customer_filter",
+        "description": "All data from customer_filter",
+        "columns": [
+          {
+            "name": "Customer",
+            "dataType": "string",
+            "sourceColumn": "Customer"
+          },
+          {
+            "name": "packagetype",
+            "dataType": "string",
+            "sourceColumn": "packagetype",
+            "displayOrdinal": 1
+          },
+          {
+            "name": "Acidity",
+            "dataType": "string",
+            "sourceColumn": "Acidity",
+            "displayOrdinal": 2
+          },
+          {
+            "name": "brand_type",
+            "dataType": "string",
+            "sourceColumn": "brand_type",
+            "displayOrdinal": 3
+          },
+          {
+            "name": "number_of_skus",
+            "dataType": "int64",
+            "sourceColumn": "number_of_skus",
+            "displayOrdinal": 4
+          },
+          {
+            "name": "customer_size",
+            "dataType": "int64",
+            "sourceColumn": "customer_size",
+            "displayOrdinal": 5
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "displayOrdinal": 6
+          },
+          {
+            "name": "MarketGroup",
+            "dataType": "string",
+            "sourceColumn": "MarketGroup",
+            "displayOrdinal": 7
+          },
+          {
+            "name": "Cluster",
+            "dataType": "string",
+            "sourceColumn": "Cluster",
+            "displayOrdinal": 8
+          }
+        ],
+        "partitions": [
+          {
+            "name": "customer_filter",
+            "source": {
+              "query": "SELECT [Customer],[packagetype],[Acidity],[brand_type],[number_of_skus],[customer_size],[Country],[MarketGroup],[Cluster] FROM [dbo].[customer_filter]",
+              "dataSource": "SqlServer tanalyticsserver.database.windows.net tAnalyticsStore"
+            }
+          }
+        ]
+      },
+      {
+        "name": "customer_kpi_tbl",
+        "description": "All data from customer_kpi_tbl",
+        "columns": [
+          {
+            "name": "FinalCustomer",
+            "dataType": "string",
+            "sourceColumn": "FinalCustomer"
+          },
+          {
+            "name": "kpi_key",
+            "dataType": "string",
+            "sourceColumn": "kpi_key",
+            "displayOrdinal": 1
+          },
+          {
+            "name": "kpi_value",
+            "dataType": "double",
+            "sourceColumn": "kpi_value",
+            "displayOrdinal": 2
+          }
+        ],
+        "partitions": [
+          {
+            "name": "customer_kpi_tbl",
+            "source": {
+              "query": "SELECT [FinalCustomer],[kpi_key],[kpi_value] FROM [dbo].[customer_kpi_tbl]",
+              "dataSource": "SqlServer tanalyticsserver.database.windows.net tAnalyticsStore"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "0aade677-6f26-40d2-bc35-ee39fd785c10",
+        "fromTable": "access_filter",
+        "fromColumn": "customer_id",
+        "toTable": "customer_distance",
+        "toColumn": "customer_1",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "6a2f2edc-1d72-45b4-a82b-10f8fb7525b9",
+        "fromTable": "customer_distance",
+        "fromColumn": "customer_2",
+        "toTable": "customer_filter",
+        "toColumn": "Customer",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "3218d998-7584-4c66-81a6-fd11c935257a",
+        "fromTable": "customer_billing_tbl",
+        "fromColumn": "FinalCustomer",
+        "toTable": "customer_filter",
+        "toColumn": "Customer",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "8d81a893-4bae-40b8-8ee8-04da14b5a488",
+        "fromTable": "customer_filter",
+        "fromColumn": "Customer",
+        "toTable": "customer_kpi_tbl",
+        "toColumn": "FinalCustomer",
+        "crossFilteringBehavior": "bothDirections"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ASW-DEFAULT-DIAGRAM",
+        "value": "{\"Version\":1,\"Name\":\"default\",\"Tables\":[{\"TableName\":\"customer_kpi_tbl\",\"X\":877,\"Y\":254,\"Z\":1,\"Width\":225,\"Height\":275},{\"TableName\":\"customer_filter\",\"X\":474,\"Y\":484,\"Z\":5,\"Width\":225,\"Height\":275},{\"TableName\":\"customer_distance\",\"X\":477,\"Y\":134,\"Z\":3,\"Width\":225,\"Height\":275},{\"TableName\":\"customer_billing_tbl\",\"X\":96,\"Y\":516,\"Z\":4,\"Width\":225,\"Height\":275},{\"TableName\":\"access_filter\",\"X\":123,\"Y\":126,\"Z\":2,\"Width\":225,\"Height\":275}]}"
+      }
+    ]
+  }
+}

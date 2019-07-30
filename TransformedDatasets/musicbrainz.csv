@@ -1,0 +1,3359 @@
+title,Body,creationdate,acceptedanswerid,Score,tags,answercount,commentcount
+"Musicbrainz fingerprinting","<p>I've been busy with understanding the <a href=""http://musicbrainz.org"" rel=""noreferrer"">MusicBrainz</a> database in the past few hours and as I noticed there's no command line application to tag or fingerprint audio files. Are there any CLI implementations on Musicbrainz's fingerprinting? And how can I create those fingerprints?</p>
+
+<p>I found some <a href=""http://musicbrainz.org/doc/Products#Developer_resources"" rel=""noreferrer"">development tools</a> on their website (python-musicbrainz2, libdiscid and the XML webs service) but I couldn't find a simple tool or app which creates those fingerprints (the developments tools only seem to be useful for retrieving track/artist information using a fingerprint). Am I understanding something wrong?</p>
+
+<p>Kind regards</p>
+","2010-01-02 19:10:56","1992785","7","<audio><command-line-interface><fingerprint><fingerprinting><musicbrainz>","4","0"
+"How to use existing java data bindings in grails?","<p>I need to add a new datasource to my grails project wich uses the musicbrainz postgresql database. <a href=""http://musicbrainz.org/doc/MusicBrainz_Database"" rel=""nofollow"">http://musicbrainz.org/doc/MusicBrainz_Database</a></p>
+
+<p>I found a project on github where the data bindings are ready to use for a spring project:
+<a href=""https://github.com/lastfm/musicbrainz-data"" rel=""nofollow"">https://github.com/lastfm/musicbrainz-data</a></p>
+
+<p>Am i able to use these data bindings in a grails 2.2.3 project? If yes, how can i do this? (because there is no hibernate xml as needed by grails (regarding to the grails documentation: Hibernate Mapped Domain Classes))</p>
+","2013-08-18 19:07:47","18302958","0","<java><hibernate><grails><musicbrainz>","1","3"
+"PostgreSQL 9.3 Import dump into table psql newbie frustration","<p>I am working on Windows Server 2008 with the musicbrainz database dump. I unzipped the dump no problem and there are about 60 files with no extension whose names mirror the database tables.</p>
+
+<p>I managed to get a createtables sql script I found at the github to work and I have a database schema with empty tables that mirror the files that I unzipped.</p>
+
+<p>The problem is I am at the psql command line interface and I figured out how to issue the large object import command as per</p>
+
+<p>\lo_import 'path/filename'</p>
+
+<p>It seems to work because the files are very large and the moment I execute the CPU light starts blinking like mad. The problem is back in Postgres after I refresh my db the tables are still empty. I have no idea where that data goes if anywhere. </p>
+
+<p>I am a straight up windows programmer (.NET/SQL/JQuery) so I need someone who can explain what's going on from this perspective. Explaining what works in unix or linux or anything other than windows will not be helpful I am afraid.</p>
+","2012-04-17 12:18:22","","0","<windows><postgresql><musicbrainz>","1","2"
+"Locating the mbid for various tracks with musicbrainzws2-java","<p>I have imported the musicbrainzws2-java library into my project and I have been reading through the documentation that MusicBrainz has on their web service. It is very confusing though. I was wondering if someone could help me understand how to navigate through the MusicBrainz data base. I don't understand the terminology and my main goal of using the database is to gather the mbid's for various songs.</p>
+
+<p>Right now this is what I have.</p>
+
+<pre><code>    public static void main(String[] args) {
+
+    ArtistSearchFilterWs2 filter = new ArtistSearchFilterWs2();
+
+    filter.setArtistName(""Lindsey Stirling"");
+    filter.setLimit((long) 100);
+    filter.setMinScore((long) 0);
+    filter.setOffset((long) 0);
+
+    ArtistSearchWs2 search = new ArtistSearchWs2(filter);
+
+    List&lt;ArtistResultWs2&gt; result = search.getFullList();
+
+    /*
+    for(ArtistResultWs2 artist : result) {
+        System.out.println(artist.getArtist().getName() + "" "" + i);
+        i++;
+
+        if(artist.getArtist().getName() == ""Lindsey Stirling"") {
+
+            System.out.println(artist.getArtist().getName() + "" "" + i);
+            break;
+        }
+
+    }
+    */
+
+    String artistName = result.get(0).getArtist().getName();
+    System.out.println(artistName);
+
+    List&lt;ReleaseWs2&gt; releases = result.get(0).getArtist().getReleaseList().getReleases();
+
+    System.out.println(releases.size());
+
+    for(ReleaseWs2 release : releases) {
+        System.out.println(release.getTitle());
+
+    }
+</code></pre>
+
+<p>For some reason it says that there are 0 releases for the artist Lindsey Stirling and on top of that I don't know how to search for a specific song based off of an artist and album</p>
+","2014-11-25 05:33:23","","0","<java><musicbrainz>","1","1"
+"Music Ontology Musicbrainz SPARQL","<p>I am not able to access the Musicbrainz SPARQL page <a href=""http://dbtune.org/musicbrainz/sparql"" rel=""nofollow noreferrer"">http://dbtune.org/musicbrainz/sparql</a> . Is this the right link for accessing the endpoint or am I doing something wrong?</p>
+","2017-03-07 18:08:44","","0","<sparql><music><ontology><musicbrainz>","0","2"
+"Get tracklist of album with MusicBrainz ID","<p>I'm currently using the <a href=""https://github.com/mikealmond/MusicBrainz/"" rel=""nofollow"">mikealmond/MusicBrainz</a> class to get the info I need from the wonderful MusicBrainz database.</p>
+
+<p>But I have one problem, I need to get recordings off a release, I've found how to do it on the web API here in the browser via this url: musicbrainz(dot)org/ws/2/release/61bf0388-b8a9-48f4-81d1-7eb02706dfb0?inc=recordings</p>
+
+<p>But in the class I'm using they require that I add a entity before I add the ID of the release, but I don't know what to add. And if I try to take it away I just end up with a url like this:
+musicbrainz(dot)org/ws/2/release/?=61bf0388-b8a9-48f4-81d1-7eb02706dfb0?inc=recordings and that doesn't work.
+Is there a entity I can add to say that I'm giving the release mbid?</p>
+
+<p>Or maybe someone could help me change the class I'm using to make this work, I've tried doing it myself but failed.</p>
+
+<p><strong>EDIT</strong>: I've tried to contact the author with no luck.</p>
+
+<p>I've tried this code from the class mentioned above:</p>
+
+<pre><code>$includes = array('recordings');
+try {
+    $details = $brainz-&gt;browseRelease('61bf0388-b8a9-48f4-81d1-7eb02706dfb0', $includes, 2);
+    print_r($details);
+} catch (Exception $e) {
+    print $e-&gt;getMessage();
+}
+print ""\n\n"";
+</code></pre>
+","2014-12-22 17:22:37","27872771","2","<php><musicbrainz>","1","3"
+"composer.json / cakephp","<p>I want to use: <a href=""https://github.com/mikealmond/MusicBrainz"" rel=""nofollow"">https://github.com/mikealmond/MusicBrainz</a>
+Copied the lib in myapp->vendor Folder. Installed Guzzle with composer and updated composer.</p>
+
+<pre><code>use GuzzleHttp\Client;
+use MusicBrainz\Filters\ArtistFilter;
+use MusicBrainz\Filters\RecordingFilter;
+use MusicBrainz\HttpAdapters\GuzzleHttpAdapter;
+use MusicBrainz\MusicBrainz;
+
+require __DIR__ . '/vendor/autoload.php';
+</code></pre>
+
+<p>The autoload does not work. I tried many things and don't know, what to write in the composer.json.</p>
+
+<pre><code>Error: Class 'MusicBrainz\MusicBrainz' not found 
+</code></pre>
+
+<p>When i call:</p>
+
+<pre><code>$brainz = new MusicBrainz(new GuzzleHttpAdapter(new Client()));
+</code></pre>
+
+<p>I tried in composer.json</p>
+
+<pre><code>""require-dev"": {
+     ""vendor/MusicBrainz"": ""dev-master""
+    },
+    ""repositories"": [
+        {
+            ""type"": ""vcs"",
+            ""url"":  ""https://github.com/mikealmond/MusicBrainz.git""
+        }
+    ],
+</code></pre>
+
+<p>Then composer update...
+And i get:</p>
+
+<pre><code>Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Your requirements could not be resolved to an installable set of packages.
+
+  Problem 1
+    - The requested package src/musicbrainz could not be found in any version, there may be a typo in the package name.
+
+Potential causes:
+ - A typo in the package name
+ - The package is not available in a stable-enough version according to your minimum-stability setting
+   see &lt;https://getcomposer.org/doc/04-schema.md#minimum-stability&gt; for more details.
+
+Read &lt;https://getcomposer.org/doc/articles/troubleshooting.md&gt; for further common problems.
+</code></pre>
+","2016-02-11 20:14:54","35352890","-2","<php><cakephp><composer-php><musicbrainz>","1","4"
+"Querying MusicBrainz search API and get multiple artists for the specified recording","<p>I would like to get multiple artists for a specified recording. Say I have the (main) artist name like Pat Metheny, and have the album title like ""Bright Size Life"". I would like to get the other (2) artists for my result (Jaco Pastorius, and Bob Moses). When I use interactively the web page displays those two artists, however when I am using the API, only one artist is in the response.</p>
+
+<p><img src=""https://i.stack.imgur.com/MWfTA.jpg"" alt=""enter image description here""></p>
+
+<p>Here are the queries what I am trying:</p>
+
+<pre><code>http://musicbrainz.org/ws/2/work/?query=bright%20size%20life
+</code></pre>
+
+<p>or </p>
+
+<pre><code>http://musicbrainz.org/ws/2/recording?query=Bright%20size%20life
+</code></pre>
+
+<p>and here is the result with only one artist:</p>
+
+<p><img src=""https://i.stack.imgur.com/UKUMZ.jpg"" alt=""enter image description here""></p>
+
+<p>What I am missing?
+Thx in advance</p>
+","2015-01-13 18:45:26","27943139","0","<web-services><rest><musicbrainz>","1","0"
+"Getting database for Echoprint Api using Python getting error","<p>i am trying to get started with Echoprint api .just installed Echoprint server and run it then i run a command for getting database of Echoprint api </p>
+
+<pre><code>ritesh@L901134:~/echoprint/util$ python fastingest.py -b /home/ritesh/Downloads/echoprint-dump.json
+</code></pre>
+
+<p>and the error logs i am getting is</p>
+
+<pre><code>1/1 /home/ritesh/Downloads/echoprint-dump.json
+Traceback (most recent call last):
+  File ""fastingest.py"", line 62, in &lt;module&gt;
+    codes, bigeval = parse_json_dump(f)
+  File ""fastingest.py"", line 14, in parse_json_dump
+    codes = json.load(open(jfile))
+  File ""/usr/lib/python2.7/json/__init__.py"", line 278, in load
+    **kw)
+  File ""/usr/lib/python2.7/json/__init__.py"", line 326, in loads
+    return _default_decoder.decode(s)
+  File ""/usr/lib/python2.7/json/decoder.py"", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File ""/usr/lib/python2.7/json/decoder.py"", line 384, in raw_decode
+    raise ValueError(""No JSON object could be decoded"")
+ValueError: No JSON object could be decoded
+</code></pre>
+
+<p>can any one please tell why i am facing this error and how to remove it so that i can get complete database ??</p>
+","2013-06-22 12:45:32","","0","<solr><music><audio-fingerprinting><musicbrainz><tokyo-tyrant>","0","2"
+"Filter fetched JSON data based on a certain criteria in Python","<p>I am new to python and am trying to fetch JSON data from musicbrainz using urllib and am able to parse some data. However, for some artists, certain fields / keys in the JSON data do not come as they might not be required. I am not sure how to filter the fetched JSON data based on a further filter criteria. </p>
+
+<p>In the below example, I will need to filter the fetched JSON data only for the ones that have release-list>>release>>release-group>>type as 'Single'. The JSON fetched can have iterations up to 50 at times, but I only feed to further filter this to just the ones that were category 'Single'. Please let me know how one can go about. Thanks!</p>
+
+<p>Sample JSON:</p>
+
+<pre><code>{
+    ""created"": ""2012-12-27T13:22:55.834Z"",
+    ""recording-list"": {
+        ""count"": 3,
+        ""offset"": 0,
+        ""recording"": [{
+            ""score"": ""100"",
+            ""title"": ""Stronger"",
+            ""artist-credit"": {
+                ""name-credit"": [{
+                    ""artist"": {
+                        ""name"": ""Britney Spears"",
+                        ""sort-name"": ""Spears, Britney""
+                    }
+                }]
+            },
+            ""release-list"": {
+                ""release"": [{
+                    ""id"": ""13c5511f-1f99-4ffe-97d5-562c05e9d8d5"",
+                    ""title"": ""Hit Hammer 2001 (disc 1)"",
+                    ""status"": ""Official"",
+                    ""artist-credit"": {
+                        ""name-credit"": [{
+                            ""artist"": {
+                                ""id"": ""89ad4ac3-39f7-470e-963a-56509c546377"",
+                                ""name"": ""Various Artists""
+                            }
+                        }]
+                    },
+                      ""release-group"": {
+                        ""id"": ""6c4c2cc3-3d8e-3a19-9d46-da076c34b6e9"",
+                        ""type"": ""Compilation"",
+                        ""primary-type"": ""Album"",
+                        ""secondary-type-list"": {
+                            ""secondary-type"": [""Compilation""]
+                        }
+                    },
+                    ""medium-list"": {
+                        ""track-count"": 20,
+                        ""medium"": [{
+                            ""position"": 1,
+                            ""track-list"": {
+                                ""count"": 20,
+                                ""offset"": 0,
+                                ""track"": [{
+                                    ""number"": ""1"",
+                                    ""title"": ""Stronger"",
+                                    ""length"": 203266
+                                }]
+                            }
+                        }]
+                    }
+                }]
+            }
+        }, {
+            ""id"": ""feb9acbf-1d3d-4395-9512-bfbdcfa72eb9"",
+            ""score"": ""100"",
+            ""title"": ""Stronger"",
+            ""artist-credit"": {
+                ""name-credit"": [{
+                    ""joinphrase"": """",
+                    ""artist"": {
+                        ""name"": ""Britney Spears"",
+                        ""sort-name"": ""Spears, Britney""
+                    }
+                }]
+            },
+            ""release-list"": {
+                ""release"": [{
+                    ""id"": ""45e2a271-2f6b-4029-b11e-b6d94d169f9a"",
+                    ""title"": ""Stronger: The Remixes"",
+                    ""status"": ""Official"",
+                    ""release-group"": {
+                        ""id"": ""4d018ba8-f05e-4817-8c70-34307161a0fc"",
+                        ""type"": ""Single"",
+                        ""primary-type"": ""Single""
+                    },
+                    ""date"": ""2000-12-12"",
+                    ""country"": ""US"",
+                    ""medium-list"": {
+                        ""track-count"": 6,
+                        ""medium"": [{
+                            ""position"": 1,
+                            ""format"": ""CD"",
+                            ""track-list"": {
+                                ""count"": 6,
+                                ""offset"": 0,
+                                ""track"": [{
+                                    ""number"": ""1"",
+                                    ""title"": ""Stronger"",
+                                    ""length"": 203000
+                                }]
+                            }
+                        }]
+                    }
+                }]
+            },
+            ""puid-list"": {
+                ""puid"": [{
+                    ""id"": ""28550845-c68a-314d-90c1-010dff730f4a""
+                }]
+            }
+        }]
+    }
+}
+</code></pre>
+
+<p>Python Code:</p>
+
+<pre><code>def get_mbid(artist, song):
+    artist=urllib.quote_plus(artist)
+    song=urllib.quote_plus(song)
+    recording_url = 'http://search.musicbrainz.org/ws/2/recording/?&amp;fmt=json&amp;query=artist:""'+artist+'""%20AND%20recording:""'+song+'""'
+    search_results = urllib.urlopen(recording_url)
+
+    json = simplejson.loads(search_results.read())
+    search_results.close()
+    if json['recording-list']['count'] == 0:
+        return get_mbid_artist(artist)
+    else:
+        recordings = json['recording-list']['recording']
+        for recording in recordings:
+            mbid = recording['artist-credit']['name-credit'][0]['artist']['id']
+            print mbid
+</code></pre>
+","2012-12-29 14:52:56","","1","<python><json><musicbrainz>","1","4"
+"Querying https://musicbrainz.org for all artists","<p>How can I query for all artists who were born after 1720 and died before 1900 on <a href=""https://musicbrainz.org"" rel=""nofollow noreferrer"">https://musicbrainz.org</a>? </p>
+
+<p>I need to retrieve their IDs and some information about them.
+Is it possible to get data in JSON format?</p>
+","2017-03-02 13:55:27","42563206","0","<json><fetch><musicbrainz>","2","1"
+"Error installing pip pyicu","<p>I have been trying to install musicbrainz server on my mac and there is a step where I have to install pip pyicu. I keep getting this error:</p>
+
+<pre><code>Collecting pyicu
+Downloading PyICU-1.9.5.tar.gz (181kB)
+100% |████████████████████████████████| 184kB 515kB/s 
+Complete output from command python setup.py egg_info:
+Traceback (most recent call last):
+  File ""&lt;string&gt;"", line 1, in &lt;module&gt;
+  File ""/private/tmp/pip-build-E50o2C/pyicu/setup.py"", line 11, in &lt;module&gt;
+    ICU_VERSION = subprocess.check_output(('icu-config', '--version')).strip()
+  File ""/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py"", line 566, in check_output
+    process = Popen(stdout=PIPE, *popenargs, **kwargs)
+  File ""/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py"", line 710, in __init__
+    errread, errwrite)
+  File ""/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py"", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+
+----------------------------------------
+Command ""python setup.py egg_info"" failed with error code 1 in /private/tmp/pip-build-E50o2C/pyicu/
+</code></pre>
+
+<p>I have tried downloading ez_setup.py and doing python ez_setup.py. I have upgraded the setuptools and downloaded those separately as well. I am not sure what else there is to try. Please help!</p>
+","2016-12-02 20:16:10","41281825","11","<python><python-2.7><pip><musicbrainz>","5","3"
+"Musicbrainz query case sensitive?","<p>I'm running a Java application that queries the Musicbrainz database for info and I ran into a peculiar problem. The query that my application builds (using <code>java.net.URL.URL</code>) is as follows:</p>
+
+<pre><code>http://musicbrainz.org/ws/2/recording?query=%22Gilt+Complex%22+AND+artistname%3A+%22Sons+And+Daugthers%22
+</code></pre>
+
+<p>The above query returns an empty response:</p>
+
+<pre><code>&lt;metadata xmlns=""http://musicbrainz.org/ns/mmd-2.0#"" xmlns:ext=""http://musicbrainz.org/ns/ext#-2.0"" created=""2018-04-25T14:25:36.224Z""&gt;
+  &lt;recording-list count=""0"" offset=""0""/&gt;
+&lt;/metadata&gt;
+</code></pre>
+
+<p>However, if I change the AND to lower case, the query works properly:</p>
+
+<pre><code>http://musicbrainz.org/ws/2/recording?query=%22Gilt+Complex%22+and+artistname%3A+%22Sons+And+Daugthers%22
+</code></pre>
+
+<p>returns:</p>
+
+<pre><code>&lt;metadata xmlns=""http://musicbrainz.org/ns/mmd-2.0#"" xmlns:ext=""http://musicbrainz.org/ns/ext#-2.0"" created=""2018-04-25T14:25:36.224Z""&gt;
+  &lt;recording-list count=""526823"" offset=""0""&gt;
+    ...
+  &lt;/recording-list&gt;
+&lt;/metadata&gt;
+</code></pre>
+
+<p>The same thing happens if I copy&amp;paste the queries into Chrome. This hasn't happened to me with other songs yet. Can anyone explain what is going on here?</p>
+","2018-04-26 19:48:58","50051089","0","<java><http><musicbrainz>","1","2"
+"Perl: How to retrieve album metadata from MusicBrainz?","<p>I am creating a Perl script which will move a mp3 file to my music folder in format <code>artist/album/mp3file</code>. Now it is possible that some of my mp3 files don't have an <code>album tag</code> so I thought of querying the <a href=""http://musicbrainz.org/"" rel=""nofollow"">MusicBrainz</a> database to retrieve album metadata given <code>track title &amp; artist</code>.</p>
+
+<p>I am using <a href=""http://search.cpan.org/~bfaist/WebService-MusicBrainz-0.93/lib/WebService/MusicBrainz.pm"" rel=""nofollow"">WebService::MusicBrainz</a> Perl module for this task, but I am not able to see any method that gives album metadata info. My current code is:</p>
+
+<pre><code>use WebService::MusicBrainz::Track;
+
+my $ws = WebService::MusicBrainz::Track-&gt;new();
+my $response = $ws-&gt;search({ ARTIST =&gt; 'Ryan Adams', TITLE =&gt; 'when the stars go blue'  }); 
+
+my $track = $response-&gt;track();
+print $track-&gt;title(), "" - "", $track-&gt;artist()-&gt;name(), ""\n"";
+
+say $track-&gt;id();
+</code></pre>
+
+<p>So, how do I get my the album info for a given track using MusicBrainz and if it is not possible what are my alternative options?</p>
+","2012-10-21 16:28:46","","2","<perl><musicbrainz>","2","0"
+"Convert binary image data to image and display in HTML","<p>I'm working with Musicbrainsngs - the Python lib for Musicbrainz API. Making a request for some album artwork. </p>
+
+<pre><code>import musicbrainzngs as mb
+
+release_group_ID = '5c14fd50-a2f1-3672-9537-b0dad91bea2f'
+artwork = mb.get_release_group_image_front(release_group_ID)
+print(artwork)
+</code></pre>
+
+<p>The <a href=""http://python-musicbrainzngs.readthedocs.io/en/v0.6/api/#musicbrainzngs.get_image"" rel=""nofollow noreferrer"">documentation</a> says it'll return ""The binary image data"" in a string. </p>
+
+<p>My questions for you:
+What type of data is this- (Base 64 encoded PNG? How do I tell?)</p>
+
+<p>But more importantly - What do I do with this? How do I save this as an image, or display it as an image with HTML?</p>
+
+<p>The image data is 1mm characters- here's a short sample of the beginning: </p>
+
+<pre><code>b'x16\x00\xe0}\xc1\x17\xfb_U{R\xd43uL\xbf\xe33\xec3e(,\xa7p\x00\xa2+\x02   \x9c\x92\xb6\x0b\x00\x07\xf9x\xeaa\xd5\x99 i\xab$\xe2\x92\xa3Co\xb9`\xb9\x1cd\x911\x01[\x0c\xd0\x9c\xaa\x81\x08Q|\x13\xe4\xd9:c\xa47\xfe\xca*q\xf5\xd4O\xea\x0fi\x9c\xcc\xf8u\x88\x0b\x16\x11m?#F\x9d\x9a\xe8}I&amp;\xfe\xb5]t\xcf\xf0\x1f\xeb\xce\x9d\xa4iy^\x8b\xf7;2cde\xac\xd0\xc9\x12\x7f&lt;I$)\rI\x90\xe3j\xc2!D\xdbg\xfe&amp;\xf2:""rl;)\x98\n\x80\x9e \x1fS\x8e\x87\xce\xaa\xe0\x8a\xc2\x9b\'
+</code></pre>
+","2018-02-21 23:30:39","","1","<python><image><musicbrainz><binary-image>","1","4"
+"Musicbrainz artist image and information","<p>I have managed to get an artist's information using the following </p>
+
+<pre><code>http://musicbrainz.org/ws/2/artist/?query=artist:michael%20jackson
+</code></pre>
+
+<p>Which returns the MBID (or ID). The response here returns back a lot of information but not an image of the Artist.</p>
+
+<p>So further reading leads me to CoverArt (<a href=""https://musicbrainz.org/doc/Cover_Art"" rel=""nofollow"">https://musicbrainz.org/doc/Cover_Art</a>) and <a href=""https://archive.org/"" rel=""nofollow"">https://archive.org/</a> and to get an image its led me to this link <a href=""https://musicbrainz.org/doc/Cover_Art_Archive/API"" rel=""nofollow"">https://musicbrainz.org/doc/Cover_Art_Archive/API</a>, which is targeting the release and not the Artist (the way i understand it, is, the <code>release</code> is the artwork of an album that an artist has done, but what i require is an image of the <code>artist</code> itself.</p>
+
+<p>I'm not sure how to obtain the artist's image or if im going the wrong way about it as I've read a lot of links but i think im missing something here and wondered if anyone could advise? As far as i know and think i need the ID of the artist to start with but using the <code>release</code> entity doesnt return the image of an artist and ive substituted <code>release</code> with <code>artist</code> but that returns a 404.</p>
+","2015-02-11 15:53:40","28467856","2","<web-services><musicbrainz>","1","1"
+"Plugin not working on MusicBrainz v1.2","<p>As an exercise for learning, I am trying to write a plugin for MusicBrainz that matches the <code>albumartistsort</code> to <code>albumartist</code> and <code>artistsort</code> to <code>artist</code>, as opposed to the (apparently) default of <strong>Last Name, First Name</strong> format it is currently using.</p>
+
+<p>I am just learning about Python and therefore I am trying to use another plugin as a guide, but some important changes need to be done and that's where I probably screwed up.</p>
+
+<p>When I try installing the plug in, it doesn't appear in the plugin list although it is copied to the plugin folder; and the <code>.pyo</code> file is not generated. I am guessing this is due to a compilation error, but I haven't been able to include whatever I need so I can use the <code>picard</code> module (don't know where to find it nor import it) so I can test in my python interpreter.</p>
+
+<p>This is the code I have:</p>
+
+<pre><code>PLUGIN_NAME = ""Sort Artist and Album Artist""
+PLUGIN_AUTHOR = ""Kevin Hernandez""
+PLUGIN_DESCRIPTION = ""Sorts artist/album artist by name as in Artist/Album Artist field instead of Last, First""
+PLUGIN_VERSION = ""0.1""
+PLUGIN_API_VERSIONS = [""0.9.0"", ""0.10"", ""0.15"", ""0.16""]
+
+from picard.metadata import register_album_metadata_processor
+import re
+
+def copy_albumartist_to_albumartistsort(tagger, metadata, release):
+  match = re.search($not($eq(metadata[""albumartistsort""],metadata[""albumartist""])))
+    if match:
+        metadata[""albumartistsort""] = metadata[""albumartist""]
+
+def copy_artist_to_artistsort(tagger, metadata, release):
+  match = re.search($not($eq(metadata[""artistsort""],metadata[""artist""])))
+    if match:
+        metadata[""artistsort""] = metadata[""artist""]
+
+register_album_metadata_processor(copy_albumartist_to_albumartistsort)
+register_album_metadata_processor(copy_artist_to_artistsort)
+</code></pre>
+
+<p>and I also tried defining the functions as:</p>
+
+<pre><code>def copy_albumartist_to_albumartistsort(tagger, metadata, release):
+  metadata[""albumartistsort""] = metadata[""albumartist""]
+
+def copy_artist_to_artistsort(tagger, metadata, release):
+  metadata[""artistsort""] = metadata[""artist""]
+</code></pre>
+
+<p>I must point out that I don't fully understand when these are called. I believe the plugin documentation <a href=""http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins/API"" rel=""nofollow"">here</a>, <a href=""http://musicbrainz.org/doc/MusicBrainz_Picard/Documentation/Scripting"" rel=""nofollow"">here</a> and <a href=""http://musicbrainz.org/doc/MusicBrainz_Picard/Tags"" rel=""nofollow"">here</a> is not enough to follow the plugins they have there (e.g. the <code>search</code> and <code>match</code> methods they use in different plugins with <code>re</code> are not explained in the documentation links I am referring to.</p>
+
+<p>If there's a more thorough documentation for it, you can pinpoint what I am doing wrong in my code, or know how to include the <code>picard</code> module in an interpreter (where to find it AND how to include it), then your comments are very much appreciated and valid answers to this question.</p>
+","2013-12-09 21:36:45","20482672","2","<python><musicbrainz>","1","6"
+"Getting the official release id in MusicBrainz","<p>I am doing the ISRC lookup for eg.</p>
+
+<blockquote>
+  <p><a href=""https://musicbrainz.org/ws/2/isrc/SEUM71401533?inc=releases"" rel=""nofollow noreferrer"">https://musicbrainz.org/ws/2/isrc/SEUM71401533?inc=releases</a></p>
+</blockquote>
+
+<p>In the response I get list of releases. Now how do I filter the one official release. There are many official releases. I just want to get the cover art but many times its difficult to get the correct release id out of the many releases.</p>
+
+<p>If I take this request for example :</p>
+
+<blockquote>
+  <p><a href=""https://musicbrainz.org/ws/2/isrc/SEUM71401533?inc=releases"" rel=""nofollow noreferrer"">https://musicbrainz.org/ws/2/isrc/SEUM71401533?inc=releases</a></p>
+</blockquote>
+
+<p>In the response the release with the id ""1c70f755-8622-41f5-8f69-9c0e8cc082ce"" gives the correct album art(which is the fourth release in the response) from the covert art api doing the following request :</p>
+
+<blockquote>
+  <p><a href=""https://coverartarchive.org/release/1c70f755-8622-41f5-8f69-9c0e8cc082ce"" rel=""nofollow noreferrer"">https://coverartarchive.org/release/1c70f755-8622-41f5-8f69-9c0e8cc082ce</a></p>
+</blockquote>
+
+<p>So can I figure out which release id to choose programmatically so that I get the correct cover art</p>
+","2018-05-08 11:13:29","50272821","0","<musicbrainz>","1","0"
+"Deserializing XML from MusicBrainz using RestSharp","<p>I'm trying to retrieve XML from MusicBrainz's artist search. The XML is returned correctly from the server, but I cannot get it to deserialize to my classes. Here is a sample of the XML:</p>
+
+<pre><code>&lt;?xml version=""1.0"" standalone=""yes""?&gt;
+&lt;metadata created=""2014-08-04T21:43:02.658Z""
+xmlns=""http://musicbrainz.org/ns/mmd-2.0#""
+xmlns:ext=""http://musicbrainz.org/ns/ext#-2.0""&gt;
+  &lt;artist-list count=""1"" offset=""0""&gt;
+    &lt;artist id=""4d263664-5418-4f6c-b46a-36f413044e73"" type=""Group""
+    ext:score=""100""&gt;
+      &lt;name&gt;Pallbearer&lt;/name&gt;
+      &lt;sort-name&gt;Pallbearer&lt;/sort-name&gt;
+      &lt;country&gt;US&lt;/country&gt;
+      &lt;area id=""489ce91b-6658-3307-9877-795b68554c98""&gt;
+        &lt;name&gt;United States&lt;/name&gt;
+        &lt;sort-name&gt;United States&lt;/sort-name&gt;
+      &lt;/area&gt;
+      &lt;life-span&gt;
+        &lt;begin&gt;2008&lt;/begin&gt;
+        &lt;ended&gt;false&lt;/ended&gt;
+      &lt;/life-span&gt;
+    &lt;/artist&gt;
+  &lt;/artist-list&gt;
+&lt;/metadata&gt;
+</code></pre>
+
+<p>Here is my class for the data:</p>
+
+<pre><code>using System.Collections.Generic;
+
+namespace CelestialAPI.Models
+{
+    public class ArtistList
+    {
+        public List&lt;Artist&gt; Artists { get; set; }
+    }
+
+    public class Artist
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public Area Area { get; set; }
+        public string Disambiguation { get; set; }
+    }
+
+    public class Area
+    {
+        public string Name { get; set; } 
+    }
+}
+</code></pre>
+
+<p>And here is my controller:</p>
+
+<pre><code>using System.Web.Http;
+using System.Xml.Serialization;
+using RestSharp;
+using CelestialAPI.Models;
+
+namespace CelestialAPI.Controllers
+{
+    public class SearchController : ApiController
+    {
+        [HttpGet]
+        public ArtistList Artist(string query, int limit = 10, int offset = 0)
+        {
+            var searchAPI = new MusicBrainzAPI();
+            return searchAPI.SearchByArtist(query, limit, offset);
+        }
+    }
+
+    public class MusicBrainzAPI
+    {
+        readonly string _baseURL = ""http://musicbrainz.org/ws/2"";
+        readonly string _userAgent = ""Celestial/dev (andrew@inmyroom.org)"";
+
+        public ArtistList SearchByArtist(string query, int limit = 10, int offset = 0)
+        {
+            string endPoint = ""artist"";
+
+            var rest = new RestClient(_baseURL);
+            rest.UserAgent = _userAgent;
+
+            var request = new RestRequest();
+            request.XmlNamespace = ""http://musicbrainz.org/ns/mmd-2.0#"";
+            request.Resource = endPoint + ""/?query="" + query + ""&amp;limit="" + limit + ""&amp;offset="" + offset;
+
+            var response = rest.Execute&lt;ArtistList&gt;(request);
+            return response.Data;
+        }
+
+    }
+}
+</code></pre>
+
+<p>The response.Data object is empty. I've researched this issue thoroughly, and tried everything I can think of. Am I overlooking something? Has anyone successfully deserialized data from MusicBrainz in C# before?</p>
+","2014-08-05 04:13:17","","0","<c#><.net><rest><restsharp><musicbrainz>","1","0"
+"Retrieving Metadata from MusicBrainz Web Service","<p>I'm trying to download metadata from MusicBrainz using a 3rd party java library: <a href=""http://code.google.com/p/musicbrainzws2-java/"" rel=""nofollow"">musicbrainzws2-java</a></p>
+
+<p>I'm trying to retrieve the metadata of individual songs in a specified album. I've retrieved the MBID of the album, but when I try to search for the songs in the album I get no return.</p>
+
+<p>Here is my code:</p>
+
+<pre><code>public static void main (String args []) throws MBWS2Exception {
+
+    String artistName = ""Imagine Dragons"";
+    String album_id = null;
+
+     Artist artist = new Artist();
+     artist.search(artistName);
+     List&lt;ArtistResultWs2&gt; results  =  artist.getFullSearchResultList();
+
+     ArtistWs2 song = results.get(0).getArtist();
+     artist = new Artist();
+
+     song = artist.lookUp(song);
+     List&lt;ReleaseGroupWs2&gt; rgl = artist.getFullReleaseGroupList();
+
+
+     for(int i =0; i&lt;rgl.size(); i++){
+         System.out.println(rgl.get(i).getTitle());
+         if(rgl.get(i).getTitle().equals(""Night Visions"")){
+             album_id = rgl.get(i).getId();
+
+         }
+
+     }
+     System.out.println(""Night visions ID: "" + album_id);
+
+     Release release = new Release();
+     release.search(album_id);
+
+     List&lt;ReleaseResultWs2&gt; list = release.getFullSearchResultList();
+
+     for(int i =0; i&lt;list.size(); i++)
+            System.out.println(list.get(i).getEntity());
+</code></pre>
+
+<p>Can someone give me some pointers.
+Thanks</p>
+","2014-02-16 01:08:31","21857175","0","<java><xml><musicbrainz>","1","0"
+"musicbrainz unable to count artists by country","<p>Hi i am using the musicbrainz database and i am having trouble counting all the Artists for each country, but no matter what country's i try i get the same error, even when i try using like. PLease can anyone show me what i have done wrong ?</p>
+
+<blockquote>
+  <p>ERROR:  column ""%u%"" does not exist LINE 7: WHERE AREA.NAME LIKE ""%u%""</p>
+</blockquote>
+
+<pre><code>SELECT COUNT(artist.name)
+FROM artist
+JOIN area ON artist.area = area.id 
+JOIN label ON area.id = label.area
+JOIN country_area ON area.id = country_area.area
+JOIN release_country ON country_area.area = release_country.country
+WHERE AREA.NAME LIKE ""%dom""
+GROUP BY release_country.country
+limit 5;
+</code></pre>
+
+<p>UPDATE:</p>
+
+<pre><code>musicbrainz_db=&gt; SELECT COUNT(artist.name)
+musicbrainz_db-&gt; FROM artist
+musicbrainz_db-&gt; JOIN area ON artist.area = area.id
+musicbrainz_db-&gt; JOIN label ON area.id = label.area
+musicbrainz_db-&gt; JOIN country_area ON area.id = country_area.area
+musicbrainz_db-&gt; JOIN release_country ON country_area.area = 
+release_country.country
+musicbrainz_db-&gt; WHERE AREA.NAME LIKE '%dom'
+musicbrainz_db-&gt; GROUP BY release_country.country
+musicbrainz_db-&gt; limit 5;
+</code></pre>
+
+<blockquote>
+  <p>ERROR:  canceling statement due to statement timeout</p>
+</blockquote>
+
+<p>My teacher just came over and said it wont work with out a sub query ?</p>
+
+<pre><code>select area.name, label_count
+from area
+where label_count in 
+(
+    select area.name, count(label.id) as ""label_count""
+    from area
+    JOIN label on area.id = label.area
+    group by area.name
+);
+</code></pre>
+
+<p>the sub query works fine but the main query fails ? any idea why.</p>
+","2017-11-20 13:53:53","","1","<mysql><sql><musicbrainz>","2","4"
+"musicbrainz get artists by country, possible join issue in sql","<p>hi I have written a sql query to get the number of artist by country, and in fact I did ask this question yesterday and made good progress, however I think the result being return is incorrect. have I joined the tables correctly ?</p>
+
+<pre><code>/* Q2: COUNT the number of artists and the number of labels by country */
+
+
+SELECT COUNT(artist.id) AS ""artist_count""
+FROM artist
+JOIN area ON artist.area = area.id 
+GROUP BY area.name;  
+
+SELECT area.name, COUNT(label.id) AS ""label_count""  &lt;-- WAI
+FROM area
+JOIN label ON area.id = label.area
+GROUP BY area.name;
+</code></pre>
+
+<blockquote>
+  <p>the nested statement with both combined.   </p>
+</blockquote>
+
+<pre><code>SELECT aCounties, a.Label_cnt, b.Artist_cnt FROM 
+    (SELECT area.name AS Counties, COUNT(label.id) AS Label_cnt
+    FROM area
+    JOIN label ON area.id = label.area
+    GROUP BY area.name) AS a,
+        (SELECT COUNT(artist.id) AS Artist_cnt
+        FROM artist
+        JOIN area ON artist.area = area.id 
+        GROUP BY area.name) AS b LIMIT 50;
+</code></pre>
+
+<p>MusicBrainz ERD <a href=""https://wiki.musicbrainz.org/-/images/5/52/ngs.png"" rel=""nofollow noreferrer"">ERD</a></p>
+","2017-11-22 15:31:49","","0","<mysql><join><musicbrainz>","0","0"
+"How to get information about the series a release belongs to via Musicbrainz","<p>I plan to extend the music library manager <a href=""http://beets.io/"" rel=""nofollow"">beets</a>, which relies on Musicbrainz as backend.</p>
+
+<p>What I want to do is find out the Series a Compilation belongs to given the MBID of the compilation.
+When you open a release in the WEB-Interface, the ""release group"" is written at the bottom of the page.</p>
+
+<p>For example there is <a href=""https://musicbrainz.org/release/bfaa7806-0628-4e81-a553-b88e379b6c3b"" rel=""nofollow"">Bravo Hits 45</a>.
+It belongs to the series <a href=""https://musicbrainz.org/series/1350fce9-08ab-40ba-a7bb-ed3cfb869499"" rel=""nofollow"">Bravo Hits</a> and is no 45.</p>
+
+<p>But how do I get this information given the MBID e.g. <code>bfaa7806-0628-4e81-a553-b88e379b6c3b</code> of a release using the XML-API?</p>
+
+<p>(PS: I am not 100% sure if keywords <code>series</code> and <code>release-group</code> have anything in common.)</p>
+
+<p>I tried to request metadata to include series relations and collection information:
+<code>http://musicbrainz.org/ws/2/release/bfaa7806-0628-4e81-a553-b88e379b6c3b?inc=series-rels+collections</code> 
+No information.</p>
+
+<p>Or maybe via release group?
+<code>http://musicbrainz.org/ws/2/release-group?release=bfaa7806-0628-4e81-a553-b88e379b6c3b</code> 
+No information.</p>
+
+<p>I thought there should even be a browse request for series, but this query doesn't even exist:
+<code>https://musicbrainz.org/ws/2/series?release=1350fce9-08ab-40ba-a7bb-ed3cfb869499</code></p>
+
+<hr>
+
+<p>Anyway, I could do a query using the name, getting a lot of inexact results including the right one:
+<code>https://musicbrainz.org/search?query=Bravo+Hits+45&amp;type=series&amp;method=indexed</code></p>
+
+<p><strong>But I guess there should be a way, to do an exact lookup using the MBID of the release, right?</strong></p>
+","2016-06-23 12:05:50","38002081","0","<xml><api><musicbrainz>","1","0"
+"Manage with limit and offset in php","<p>I am currently developing a web application that will find artists and their associates titles. To do this, I decided to parse the API MusicBrainz, through <a href=""https://packagist.org/packages/mikealmond/musicbrainz"" rel=""nofollow"">this package</a> (which documentation is <a href=""https://github.com/mikealmond/musicbrainz"" rel=""nofollow"">here</a>).</p>
+
+<p>Suppose I already have the artist mbid (unique identifier for MusicBrainz).</p>
+
+<p>The problem is that if I do a search on David Guetta (<code>mbid = 302bd7b9-d012-4360-897a-93b00c855680</code>) for example, the script tells me that the number of releases is 196. However, the API provides 100 maximum results per request.</p>
+
+<pre><code>// Instantiate a MusicBrainz object
+$brainz = new MusicBrainz(new GuzzleHttpAdapter(new Client()));
+$brainz-&gt;setUserAgent('ApplicationName', '0.2', 'http://example.com');
+
+$limit = 100;
+$offset = 0;
+
+$includes = array('labels', 'recordings');
+try {
+  $details = $brainz-&gt;browseRelease('artist', '302bd7b9-d012-4360-897a-93b00c855680', $includes, $limit, $offset);
+  print_r($details);
+} catch (Exception $e) {
+  print $e-&gt;getMessage();
+}
+</code></pre>
+
+<p>The function <strong><code>browseRelease</code></strong> below allows us to define such parameters as <strong><code>limit</code></strong> and <strong><code>offset</code></strong>.</p>
+
+<pre><code>public function browseRelease($entity, $mbid, $includes = array(), $limit = 25, $offset = null, $releaseType = array(), $releaseStatus = array())
+{
+  if (!in_array($entity, array('artist', 'label', 'recording', 'release-group'))) {
+    throw new Exception('Invalid browse entity for release');
+  }
+  return $this-&gt;browse(
+    new Filters\ReleaseFilter(array()),
+      $entity,
+      $mbid,
+      $includes,
+      $limit,
+      $offset,
+      $releaseType,
+      $releaseStatus
+  );
+}
+</code></pre>
+
+<p>Now we come to my real question in this post.</p>
+
+<p>If I defined <code>$limit = 100</code> and <code>$offset = 0</code> for the first query, I don't understand how to change these values depending on the number of total releases, and thus get the results that are between 100 and 196 (in this example).</p>
+","2015-06-05 07:42:02","30681959","1","<php><limit><offset><musicbrainz>","2","3"
+"How to get an Album's MusicBrainz ID","<p>I want to use the <a href=""https://github.com/lastfm/coverartarchive-api"" rel=""nofollow"">CoverArtArchiveClient</a> to load Album Images from MusicBrainz but it requires a MusicBrainz ID (<a href=""http://musicbrainz.org/doc/MusicBrainz_Identifier"" rel=""nofollow"">MBID</a>). Can someone provide info on how to get the MBID for a particular Album? Code samples would be much appreciated.</p>
+
+<p>Thanks</p>
+","2013-04-13 03:24:02","","3","<android><musicbrainz>","1","0"
+"Musicbrainz database - MySQL lasts too much time to delete or insert","<p>I am trying to import the <strong>Musicbrainz</strong> db into a MySQL database using Perl scripts from <a href=""https://github.com/hangar18cc/mbzdb"" rel=""nofollow"">Churruka</a>, not the ""official"" ones due to not working properly (I consulted <a href=""https://github.com/elliotchance/mbzdb/issues/68"" rel=""nofollow"">here</a>).</p>
+
+<p>Now I have inserted all the tables except 'recording', whose size is <strong>1.39 GB</strong>. I have tried to insert the downloaded file two times. However, the insertions lasts too much and I'm afraid some configuration is not correctly set in MySQL. I just downloaded it for this import, so no more databases are present.</p>
+
+<p>Both times, something happened to my laptop so I had to restart the process. I deleted all the rows from the 'recording' table to restart again, but the process lasts sooooo many seconds. Currently is <strong>above 110000s</strong> !!!</p>
+
+<p>Any idea of how this process could be speeded up? Thanks in advance</p>
+","2015-08-01 13:19:52","","1","<mysql><musicbrainz>","0","5"
+"How to extract Freebase Data Dump for a particular topic","<p>I want to extract music data from the freebase data dumps. (<a href=""http://www.freebase.com/music"">http://www.freebase.com/music</a>)</p>
+
+<p>Once I have the data dump how to I extract say the following properties <a href=""http://www.freebase.com/music/recording?schema="">http://www.freebase.com/music/recording?schema=</a></p>
+
+<p>Will a better approach be get all songs and then fetch relevant information from it? If this is a good approach how should I go about extracting it?</p>
+","2013-05-16 18:19:15","","6","<rdf><freebase><musicbrainz>","1","0"
+"Process MusicBrainz Web Service","<p>I know MusicBrainz has a version 2 available but v1 is the only way I got this far.
+(This is 1 return, it is usually hundreds...):
+  XML:</p>
+
+<pre><code>&lt;metadata xmlns=""http://musicbrainz.org/ns/mmd-1.0#"" xmlns:ext=""http://musicbrainz.org/ns/ext-1.0#""&gt;
+   &lt;release-list count=""928"" offset=""0""&gt;
+      &lt;release id=""bea5602c-53bc-4416-af49-238aae51e8ea"" type=""Live Bootleg"" ext:score=""100""&gt;
+         &lt;title&gt;Seattle 1988&lt;/title&gt;
+         &lt;text-representation language=""ENG"" script=""Latn"" /&gt;
+         &lt;artist id=""5b11f4ce-a62d-471e-81fc-a69a8278c7da""&gt;
+            &lt;name&gt;Nirvana&lt;/name&gt;
+            &lt;sort-name&gt;Nirvana&lt;/sort-name&gt;
+         &lt;/artist&gt;
+         &lt;release-event-list&gt;
+            &lt;event format=""CD"" /&gt;
+         &lt;/release-event-list&gt;
+         &lt;disc-list count=""0"" /&gt;
+         &lt;track-list count=""10"" /&gt;
+      &lt;/release&gt;
+   &lt;/release-list&gt;
+&lt;/metadata&gt;
+</code></pre>
+
+<p>I am able to get all albums returned with this :</p>
+
+<pre><code>client = new WebClient();
+        client.OpenReadCompleted += client_OpenReadCompleted;
+        // Call public web service.
+        string requestUri =
+        ""http://musicbrainz.org/ws/1/release/?limit=100&amp;type=xml&amp;artist={0}"";
+        client.OpenReadAsync(
+          new Uri(String.Format(
+          requestUri, ""Jimi Hendrix"")));
+
+ private void client_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
+    {
+          // Process returned data.
+        XElement results;
+        albums = new List&lt;string&gt;();
+
+        if (e.Error != null)
+        { return; }
+        else
+        {
+            XNamespace ns =
+            @""http://musicbrainz.org/ns/mmd-1.0#"";
+            results = XElement.Load(e.Result);
+
+            var q = from r in results.Descendants(ns + ""release"")
+                    select new { Title = r.Element(ns + ""title"").Value };
+
+            foreach (var i in q)
+            {
+                albums.Add(i.Title);
+                Console.WriteLine(i.Title);
+            }
+        }
+</code></pre>
+
+<p>How can I also get the release id for each album?</p>
+","2015-01-26 18:02:55","28156168","0","<c#><xml><linq><musicbrainz>","3","0"
+"Using AcoustID API in Android app","<p>I want to make an Android app that uses <code>AcoustID</code> API. From my understanding that is a c++ API and i should use Android NDK for this. The curious thing is that i found a sample of this API written in Java and i don't know if this is actually AcoustID API or some adaptation. </p>
+
+<p>Also if using AcoustID means that i have to use NDK i would like to know if there is a Java alternative for it. I couldn't find satisfying results.</p>
+
+<p>This is the Java sample i've found:</p>
+
+<pre><code>package net.filebot.web;
+
+import static java.util.Collections.*;
+import static net.filebot.util.FileUtilities.*;
+import static net.filebot.web.WebRequest.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.ProcessBuilder.Redirect;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.Icon;
+
+import net.filebot.Cache;
+import net.filebot.ResourceManager;
+
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class AcoustIDClient implements MusicIdentificationService {
+
+    private static final FloodLimit REQUEST_LIMIT = new FloodLimit(3, 1, TimeUnit.SECONDS);
+
+    private String apikey;
+
+    public AcoustIDClient(String apikey) {
+        this.apikey = apikey;
+    }
+
+    @Override
+    public String getName() {
+        return ""AcoustID"";
+    }
+
+    @Override
+    public Icon getIcon() {
+        return ResourceManager.getIcon(""search.acoustid"");
+    }
+
+    @Override
+    public Map&lt;File, AudioTrack&gt; lookup(Iterable&lt;File&gt; files) throws Exception {
+        Map&lt;File, AudioTrack&gt; results = new LinkedHashMap&lt;File, AudioTrack&gt;();
+
+        for (Map&lt;String, String&gt; fp : fpcalc(files)) {
+            results.put(new File(fp.get(""FILE"")), parse(lookup(fp.get(""DURATION""), fp.get(""FINGERPRINT""))));
+        }
+        return results;
+    }
+
+    public String lookup(File file) throws Exception {
+        Map&lt;String, String&gt; fp = fpcalc(singleton(file)).get(0);
+        return lookup(fp.get(""DURATION""), fp.get(""FINGERPRINT""));
+    }
+
+    public String lookup(String duration, String fingerprint) throws IOException, InterruptedException, ParseException {
+        // http://api.acoustid.org/v2/lookup?client=8XaBELgH&amp;meta=recordings+releasegroups+compress&amp;duration=641&amp;fingerprint=AQABz0qUkZK4oOfhL-CPc4e5C_wW2H2QH9uDL4cvoT8UNQ-eHtsE8cceeFJx-LiiHT-aPzhxoc-Opj_eI5d2hOFyMJRzfDk-QSsu7fBxqZDMHcfxPfDIoPWxv9C1o3yg44d_3Df2GJaUQeeR-cb2HfaPNsdxHj2PJnpwPMN3aPcEMzd-_MeB_Ej4D_CLP8ghHjkJv_jh_UDuQ8xnILwunPg6hF2R8HgzvLhxHVYP_ziJX0eKPnIE1UePMByDJyg7wz_6yELsB8n4oDmDa0Gv40hf6D3CE3_wH6HFaxCPUD9-hNeF5MfWEP3SCGym4-SxnXiGs0mRjEXD6fgl4LmKWrSChzzC33ge9PB3otyJMk-IVC6R8MTNwD9qKQ_CC8kPv4THzEGZS8GPI3x0iGVUxC1hRSizC5VzoamYDi-uR7iKPhGSI82PkiWeB_eHijvsaIWfBCWH5AjjCfVxZ1TQ3CvCTclGnEMfHbnZFA8pjD6KXwd__Cn-Y8e_I9cq6CR-4S9KLXqQcsxxoWh3eMxiHI6TIzyPv0M43YHz4yte-Cv-4D16Hv9F9C9SPUdyGtZRHV-OHEeeGD--BKcjVLOK_NCDXMfx44dzHEiOZ0Z44Rf6DH5R3uiPj4d_PKolJNyRJzyu4_CTD2WOvzjKH9GPb4cUP1Av9EuQd8fGCFee4JlRHi18xQh96NLxkCgfWFKOH6WGeoe4I3za4c5hTscTPEZTES1x8kE-9MQPjT8a8gh5fPgQZtqCFj9MDvp6fDx6NCd07bjx7MLR9AhtnFnQ70GjOcV0opmm4zpY3SOa7HiwdTtyHa6NC4e-HN-OfC5-OP_gLe2QDxfUCz_0w9l65HiPAz9-IaGOUA7-4MZ5CWFOlIfe4yUa6AiZGxf6w0fFxsjTOdC6Itbh4mGD63iPH9-RFy909XAMj7mC5_BvlDyO6kGTZKJxHUd4NDwuZUffw_5RMsde5CWkJAgXnDReNEaP6DTOQ65yaD88HoeX8fge-DSeHo9Qa8cTHc80I-_RoHxx_UHeBxrJw62Q34Kd7MEfpCcu6BLeB1ePw6OO4sOF_sHhmB504WWDZiEu8sKPpkcfCT9xfej0o0lr4T5yNJeOvjmu40w-TDmqHXmYgfFhFy_M7tD1o0cO_B2ms2j-ACEEQgQgAIwzTgAGmBIKIImNQAABwgQATAlhDGCCEIGIIM4BaBgwQBogEBIOESEIA8ARI5xAhxEFmAGAMCKAURKQQpQzRAAkCCBQEAKkQYIYIQQxCixCDADCABMAE0gpJIgyxhEDiCKCCIGAEIgJIQByAhFgGACCACMRQEyBAoxQiHiCBCFOECQFAIgAABR2QAgFjCDMA0AUMIoAIMChQghChASGEGeYEAIAIhgBSErnJPPEGWYAMgw05AhiiGHiBBBGGSCQcQgwRYJwhDDhgCSCSSEIQYwILoyAjAIigBFEUQK8gAYAQ5BCAAjkjCCAEEMZAUQAZQCjCCkpCgFMCCiIcVIAZZgilAQAiSHQECOcQAQIc4QClAHAjDDGkAGAMUoBgyhihgEChFCAAWEIEYwIJYwViAAlHCBIGEIEAEIQAoBwwgwiEBAEEEOoEwBY4wRwxAhBgAcKAESIQAwwIowRFhoBhAE
+        URL url = new URL(""http://api.acoustid.org/v2/lookup?client="" + apikey + ""&amp;meta=recordings+releasegroups+releases+tracks+compress&amp;duration="" + duration + ""&amp;fingerprint="" + fingerprint);
+
+        Cache cache = Cache.getCache(""web-datasource"");
+        String response = cache.get(url, String.class);
+        if (response != null) {
+            return response;
+        }
+
+        // respect rate limit
+        REQUEST_LIMIT.acquirePermit();
+        response = readAll(getReader(url.openConnection()));
+        cache.put(url, response);
+
+        return response;
+    }
+
+    public AudioTrack parse(String json) throws IOException, InterruptedException, ParseException {
+        Map&lt;?, ?&gt; data = (Map&lt;?, ?&gt;) new JSONParser().parse(json);
+
+        if (!data.get(""status"").equals(""ok"")) {
+            throw new IOException(""acoustid responded with error: "" + data.get(""status""));
+        }
+        try {
+            for (Object result : (List&lt;?&gt;) data.get(""results"")) {
+                try {
+                    Map&lt;?, ?&gt; recording = (Map&lt;?, ?&gt;) ((List&lt;?&gt;) ((Map&lt;?, ?&gt;) result).get(""recordings"")).get(0);
+
+                    String artist = (String) ((Map&lt;?, ?&gt;) ((List&lt;?&gt;) recording.get(""artists"")).get(0)).get(""name"");
+                    String title = (String) recording.get(""title"");
+
+                    AudioTrack audioTrack = new AudioTrack(artist, title, null);
+                    try {
+                        Map&lt;?, ?&gt; releaseGroup = (Map&lt;?, ?&gt;) ((List&lt;?&gt;) recording.get(""releasegroups"")).get(0);
+                        List&lt;?&gt; releases = (List&lt;?&gt;) releaseGroup.get(""releases"");
+
+                        for (Object it : releases) {
+                            try {
+                                AudioTrack thisRelease = new AudioTrack(artist, title, null);
+                                Map&lt;?, ?&gt; release = (Map&lt;?, ?&gt;) it;
+                                Map&lt;?, ?&gt; date = (Map&lt;?, ?&gt;) release.get(""date"");
+                                try {
+                                    thisRelease.albumReleaseDate = new SimpleDate(Integer.parseInt(date.get(""year"").toString()), Integer.parseInt(date.get(""month"").toString()), Integer.parseInt(date.get(""day"").toString()));
+                                } catch (Exception e) {
+                                    // ignore
+                                }
+
+                                if (thisRelease.albumReleaseDate == null || thisRelease.albumReleaseDate.getTimeStamp() &gt;= (audioTrack.albumReleaseDate == null ? Long.MAX_VALUE : audioTrack.albumReleaseDate.getTimeStamp())) {
+                                    continue;
+                                }
+
+                                Map&lt;?, ?&gt; medium = (Map&lt;?, ?&gt;) ((List&lt;?&gt;) release.get(""mediums"")).get(0);
+                                thisRelease.mediumIndex = new Integer(medium.get(""position"").toString());
+                                thisRelease.mediumCount = new Integer(release.get(""medium_count"").toString());
+
+                                Map&lt;?, ?&gt; track = (Map&lt;?, ?&gt;) ((List&lt;?&gt;) medium.get(""tracks"")).get(0);
+                                thisRelease.trackIndex = new Integer(track.get(""position"").toString());
+                                thisRelease.trackCount = new Integer(medium.get(""track_count"").toString());
+
+                                try {
+                                    thisRelease.album = release.get(""title"").toString();
+                                } catch (Exception e) {
+                                    thisRelease.album = (String) releaseGroup.get(""title"");
+                                }
+                                try {
+                                    thisRelease.albumArtist = (String) ((Map&lt;?, ?&gt;) ((List&lt;?&gt;) releaseGroup.get(""artists"")).get(0)).get(""name"");
+                                } catch (Exception e) {
+                                    thisRelease.albumArtist = null;
+                                }
+                                thisRelease.trackTitle = (String) track.get(""title"");
+
+                                if (!""Various Artists"".equalsIgnoreCase(thisRelease.albumArtist) &amp;&amp; (thisRelease.album == null || !thisRelease.album.contains(""Greatest Hits""))) {
+                                    audioTrack = thisRelease;
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        // allow album to be null
+                    }
+                    return audioTrack;
+                } catch (Exception e) {
+                }
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public String getChromaprintCommand() {
+        // use fpcalc executable path as specified by the cmdline or default to ""fpcalc"" and let the shell figure it out
+        return System.getProperty(""net.filebot.AcoustID.fpcalc"", ""fpcalc"");
+    }
+
+    public List&lt;Map&lt;String, String&gt;&gt; fpcalc(Iterable&lt;File&gt; files) throws IOException, InterruptedException {
+        List&lt;String&gt; command = new ArrayList&lt;String&gt;();
+        command.add(getChromaprintCommand());
+        for (File f : files) {
+            command.add(f.toString());
+        }
+
+        Process process = null;
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            try {
+                processBuilder.redirectError(Redirect.INHERIT);
+            } catch (Throwable e) {
+                Logger.getLogger(AcoustIDClient.class.getName()).log(Level.WARNING, ""Unable to inherit IO: "" + e.getMessage());
+            }
+            process = processBuilder.start();
+        } catch (Exception e) {
+            throw new IOException(""Failed to exec fpcalc: "" + e.getMessage());
+        }
+
+        Scanner scanner = new Scanner(new InputStreamReader(process.getInputStream(), ""UTF-8""));
+        LinkedList&lt;Map&lt;String, String&gt;&gt; results = new LinkedList&lt;Map&lt;String, String&gt;&gt;();
+
+        try {
+            while (scanner.hasNextLine()) {
+                String[] value = scanner.nextLine().split(""="", 2);
+                if (value.length != 2)
+                    continue;
+
+                if (results.isEmpty() || results.getLast().containsKey(value[0])) {
+                    results.addLast(new HashMap&lt;String, String&gt;(3));
+                }
+                results.getLast().put(value[0], value[1]);
+            }
+        } finally {
+            scanner.close();
+        }
+
+        if (process.waitFor() != 0) {
+            throw new IOException(""Failed to exec fpcalc: Exit code "" + process.exitValue());
+        }
+
+        return results;
+    }
+}
+</code></pre>
+
+<p><strong>EDIT:</strong>
+I've found the source of the sample :
+<a href=""http://code.ohloh.net/file?fid=h3_5XlkS_5m4gDpCH8Q2WUgygRg&amp;cid=zOoT9U5sG98&amp;s=&amp;fp=2012&amp;mp&amp;projSelected=true#L0"" rel=""nofollow"">Link to sample</a>
+But i can't figure what is is or how to use it.</p>
+","2014-07-11 20:09:09","","-1","<android><api><musicbrainz>","1","0"
+"How long until a song shows up on the Musicbrainz XML/JSON service?","<p>I just added a release that wasn't on musicbrainz before:</p>
+
+<p><a href=""http://musicbrainz.org/release-group/8f6f6155-20dd-4960-9381-47805e6b50f5"" rel=""nofollow"">http://musicbrainz.org/release-group/8f6f6155-20dd-4960-9381-47805e6b50f5</a></p>
+
+<p>Here's my query for that song that's returning 0 results:</p>
+
+<p><a href=""http://musicbrainz.org/ws/2/recording/?query=recording:%22When%22%20AND%20artist:%22Life+On+Planet+9%22%20AND%20dur:[268473%20TO%20293473]%20AND%20number:6%20AND%20release:%22Bittersweet"" rel=""nofollow"">http://musicbrainz.org/ws/2/recording/?query=recording:%22When%22%20AND%20artist:%22Life+On+Planet+9%22%20AND%20dur:[268473%20TO%20293473]%20AND%20number:6%20AND%20release:%22Bittersweet</a>
+%22&amp;limit=1&amp;fmt=json</p>
+
+<p>and the actual song:</p>
+
+<p><a href=""http://musicbrainz.org/recording/78c84a0c-8b79-46ff-af4d-653ce52540ca"" rel=""nofollow"">http://musicbrainz.org/recording/78c84a0c-8b79-46ff-af4d-653ce52540ca</a></p>
+","2015-10-12 19:22:19","","0","<musicbrainz>","1","0"
+"How to tag the correct release or a recording using MusicBrainz?","<p>I'm using the xml web service of MusicBrainz to fetch as much data as I can about every recording that I have. When quering Bohemian Rhapsody by Queen for example. What I get is this:<a href=""http://musicbrainz.org/ws/2/recording/ebf79ba5-085e-48d2-9eb8-2d992fbf0f6d?inc=artist-credits%2Breleases"" rel=""nofollow"">http://musicbrainz.org/ws/2/recording/ebf79ba5-085e-48d2-9eb8-2d992fbf0f6d?inc=artist-credits%2Breleases.</a>
+You can see that I get all the releases of the recording that are out there. </p>
+
+<p>What I want is to know how can i distinguish between them. Which of them is the one that belongs to my release. </p>
+
+<p>I know there must be some way to aproach this since the lookup tool in MusicBrainz Picard gives me only one of them. And its usually one from the middle and not from the beggining. Meaning there is some mechanizem that can pin-point the correct release. </p>
+
+<p>Any ideas how its doing it?</p>
+","2014-08-11 14:22:24","","0","<xml><web-services><musicbrainz>","0","2"
+"How to sort results from the MusicBrainz search API","<p>I'm trying to retrieve track information from the MusicBrainz API, using only the artist and title as search queries:</p>
+
+<pre><code>http://musicbrainz.org/ws/2/recording/?query=artist:Coldplay+AND+recording:The+Scientist
+</code></pre>
+
+<p>This will return every version of the song that the artist released, including  compilations, 'best of' albums and live recordings. I want to find the 'original' version, which should be the first one that was released.</p>
+
+<p>Without retrieving every single result (which may not be possible in a single request) the obvious way to do this would be to have the response sorted by ascending release date, so that the first result is always the one I'm after.</p>
+
+<p>The <a href=""https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search"" rel=""nofollow noreferrer"">API documentation</a> doesn't seem to mention sorting results, so is this possible?</p>
+","2016-12-30 10:54:39","41395550","1","<search><musicbrainz>","2","0"
+"Beets error: sqlite3.InterfaceError: Error binding parameter 25 - probably unsupported type","<p>I was trying to add an album using <a href=""https://github.com/beetbox/beets"" rel=""nofollow noreferrer"">beets</a> and the plugin, <a href=""https://github.com/elarkham/VGMdb-BeetsPlug"" rel=""nofollow noreferrer"">VGMdb</a> and I ended up with the following error: <code>sqlite3.InterfaceError: Error binding parameter 25 - probably unsupported type</code>. I asked the VGMdb dev, but have gotten no response yet. (SysInfo: Win7x64, Python: 2.7.14/Beets: 1.4.6) Verbose code below (my <a href=""https://pastebin.com/JrZzDpJY"" rel=""nofollow noreferrer"">config file</a>, if needed):</p>
+
+<pre><code>PS C:\Users\ME&gt; beet -vv import C:\Users\ME\Downloads\Muzik\[TESTOO]
+user configuration: C:\Users\ME\AppData\Roaming\beets\config.yaml
+data directory: C:\Users\ME\AppData\Roaming\beets
+plugin paths: C:\Users\ME\AppData\Roaming\beets\beetsplug
+Sending event: pluginload
+Querying VGMdb
+lyrics: Disabling google source: no API key configured.
+inline: adding item field multidisc
+library database: C:\Users\ME\AppData\Roaming\beets\beets_musiclibrary.db
+library directory: C:\Users\ME\Music
+Sending event: library_opened
+Sending event: import_begin
+Sending event: import_task_created
+Sending event: import_task_start
+Logged from file importer.py, line 1340
+Logged from file match.py, line 414
+No album ID found.
+Logged from file match.py, line 448
+Album might be VA: False
+Searching for MusicBrainz releases with: {'release': u'ref:rain / \u7729\u3044\u3070\u304b\u308a', 'tracks': u'5', 'artist': u'aimer'}
+Requesting MusicBrainz release 2877b5cf-4227-4a8c-a6b3-3318e2511c35
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.04
+Requesting MusicBrainz release a7336cd0-3150-476b-a9fa-da1a7c083349
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.13
+Requesting MusicBrainz release b80eb50a-5b4b-44d3-a931-292bf078aa5b
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.05
+Requesting MusicBrainz release 58ec5e8a-4a84-4d5f-bf35-e179a8261760
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.64
+Requesting MusicBrainz release 5305221f-104b-4d12-94dc-9527fd48418c
+primary MB release type: single
+Sending event: albuminfo_received
+Candidate: Aimer - Ref:rain (TV size) (5305221f-104b-4d12-94dc-9527fd48418c)
+Computing track assignment...
+...done.
+Success. Distance: 0.39
+Querying VGMdb for release 72588
+Querying VGMdb for release 72593
+Querying VGMdb for release 72594
+Logged from file vgmdb.py, line 43
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.15
+Evaluating 6 candidates.
+
+C:\Users\ME\Downloads\Muzik\[TESTOO]\[2018] (Koi wa Ameagari no You ni ED) Aimer - refrain_Mabayui bakari (眩いばかり)_SECL-2255~6\[2018] (Koi wa Ameagari no You ni ED) Aimer - refrain_Mabayui bakari (眩いばかり)_SECL-2255~6 (5 items)
+Sending event: before_choose_candidate
+Tagging:
+    Aimer - Ref:rain / 眩いばかり
+URL:
+    https://musicbrainz.org/release/2877b5cf-4227-4a8c-a6b3-3318e2511c35
+(Similarity: 96.2%) (unmatched tracks) (CD, 2018, JP, SME Records)
+ * After Rain .Scarlet ver.- -&gt; After Rain -Scarlet ver.-
+Unmatched tracks (1):
+ ! Ref:rain [TV size] (#5) (1:30)
+[A]pply, More candidates, Skip, Use as-is, as Tracks, Group albums,
+Enter search, enter Id, aBort, eDit, edit Candidates? m
+Finding tags for album ""Aimer - Ref:rain / 眩いばかり"".
+Candidates:
+1. Aimer - Ref:rain / 眩いばかり (96.2%) (unmatched tracks) (CD, 2018, JP, SME Records)
+2. Aimer - Ref:rain / 眩いばかり (95.0%) (missing tracks) (2xCD, 2018, JP, SME Records)
+3. Aimer - Ref:rain / 眩いばかり (86.9%) (tracks, missing tracks) (2xCD, 2018, JP, SME Records)
+4. Aimer - Ref:rain / 眩いばかり (84.6%) (tracks, source, missing tracks) (Discogs, 2xCD, 2018, Taiwan, SME Records)
+5. Aimer - Ref:rain (TV size) (61.4%) (unmatched tracks, album, tracks) (Digital Media, 2018, JP, SME Records)
+6. Aimer - 花の唄 / ONE / 六等星の夜 Magic Blue ver. (36.5%) (tracks, album, year) (CD, 2017, JP, SME Records, 期間生産限定盤)
+# selection (default 1), Skip, Use as-is, as Tracks, Group albums,
+Enter search, enter Id, aBort, eDit, edit Candidates? e
+Artist: Aimer
+Album: ref:rain
+Logged from file match.py, line 414
+No album ID found.
+Search terms: Aimer - ref:rain
+Album might be VA: False
+Searching for MusicBrainz releases with: {'release': u'ref:rain', 'tracks': u'5', 'artist': u'aimer'}
+Requesting MusicBrainz release 5305221f-104b-4d12-94dc-9527fd48418c
+primary MB release type: single
+Sending event: albuminfo_received
+Candidate: Aimer - Ref:rain (TV size) (5305221f-104b-4d12-94dc-9527fd48418c)
+Computing track assignment...
+...done.
+Success. Distance: 0.39
+Requesting MusicBrainz release 2877b5cf-4227-4a8c-a6b3-3318e2511c35
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.04
+Requesting MusicBrainz release a7336cd0-3150-476b-a9fa-da1a7c083349
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.13
+Requesting MusicBrainz release b80eb50a-5b4b-44d3-a931-292bf078aa5b
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.05
+Requesting MusicBrainz release 58ec5e8a-4a84-4d5f-bf35-e179a8261760
+primary MB release type: single
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.64
+Querying VGMdb for release 72588
+Querying VGMdb for release 72593
+Querying VGMdb for release 72594
+get_albums Querying VGMdb for release Aimer ref rain
+Sending event: albuminfo_received
+Candidate: Aimer - Ref:rain/Mabayui bakari / Aimer (72588)
+Computing track assignment...
+...done.
+Success. Distance: 0.24
+Sending event: albuminfo_received
+Candidate: Aimer - Ref:rain/Mabayui bakari / Aimer [Limited Edition] (72593)
+Computing track assignment...
+...done.
+Success. Distance: 0.31
+Sending event: albuminfo_received
+Candidate: Aimer - Ref:rain/Mabayui bakari / Aimer [Limited Edition] (72594)
+Computing track assignment...
+...done.
+Success. Distance: 0.24
+Sending event: albuminfo_received
+Logged from file match.py, line 355
+Computing track assignment...
+...done.
+Success. Distance: 0.15
+Evaluating 9 candidates.
+Sending event: before_choose_candidate
+Tagging:
+    Aimer - Ref:rain / 眩いばかり
+URL:
+    https://musicbrainz.org/release/2877b5cf-4227-4a8c-a6b3-3318e2511c35
+(Similarity: 96.2%) (unmatched tracks) (CD, 2018, JP, SME Records)
+ * After Rain .Scarlet ver.- -&gt; After Rain -Scarlet ver.-
+Unmatched tracks (1):
+ ! Ref:rain [TV size] (#5) (1:30)
+[A]pply, More candidates, Skip, Use as-is, as Tracks, Group albums,
+Enter search, enter Id, aBort, eDit, edit Candidates? m
+Finding tags for album ""Aimer - Ref:rain / 眩いばかり"".
+Candidates:
+1. Aimer - Ref:rain / 眩いばかり (96.2%) (unmatched tracks) (CD, 2018, JP, SME Records)
+2. Aimer - Ref:rain / 眩いばかり (95.0%) (missing tracks) (2xCD, 2018, JP, SME Records)
+3. Aimer - Ref:rain / 眩いばかり (86.9%) (tracks, missing tracks) (2xCD, 2018, JP, SME Records)
+4. Aimer - Ref:rain / 眩いばかり (84.6%) (tracks, source, missing tracks) (Discogs, 2xCD, 2018, Taiwan, SME Records)
+5. Aimer - Ref:rain/Mabayui bakari / Aimer [Limited Edition] (76.5%) (source, album, missing tracks, ...) (VGMdb, 2xCD + DVD, 2018, JP, SME Records)
+6. Aimer - Ref:rain/Mabayui bakari / Aimer (76.2%) (source, album, unmatched tracks, ...) (VGMdb, CD, 2018, JP, SME Records)
+7. Aimer - Ref:rain/Mabayui bakari / Aimer [Limited Edition] (69.2%) (source, tracks, album, ...) (VGMdb, 2xCD + DVD, 2018, JP, SME Records)
+8. Aimer - Ref:rain (TV size) (61.4%) (unmatched tracks, album, tracks) (Digital Media, 2018, JP, SME Records)
+9. Aimer - 花の唄 / ONE / 六等星の夜 Magic Blue ver. (36.5%) (tracks, album, year) (CD, 2017, JP, SME Records, 期間生産限定盤)
+# selection (default 1), Skip, Use as-is, as Tracks, Group albums,
+Enter search, enter Id, aBort, eDit, edit Candidates? 5
+Correcting tags from:
+    Aimer - Ref:rain / 眩いばかり
+To:
+    Aimer - Ref:rain/Mabayui bakari / Aimer [Limited Edition]
+URL:
+    https://vgmdb.net/album/72594?perpage=99999
+(Similarity: 76.5%) (source, album, missing tracks, tracks) (VGMdb, 2xCD + DVD, 2018, JP, SME Records)
+CD + DVD 0
+ * Ref:rain (#1)                  -&gt; Ref:rain (#0-0)
+ * 眩いばかり (#2)                     -&gt; Mabayui bakari (#0-1) (title)
+ * After Rain .Scarlet ver.- (#3) -&gt; After Rain -Scarlet ver.- (#0-2)
+ * Raining (#4)                   -&gt; Raining (#0-3)
+ * Ref:rain [TV size] (#5)        -&gt; Ref:rain (TV Size) (#0-4)
+Missing tracks (1/6 - 16.7%):
+ ! ""Koi wa Ameagari no You ni"" Non-credit Ending Movie (#1-0) (1:41)
+Apply, More candidates, Skip, Use as-is, as Tracks, Group albums,
+Enter search, enter Id, aBort, eDit, edit Candidates? a
+Sending event: import_task_choice
+Sending event: import_task_apply
+0 of 5 items replaced
+Sending event: database_change
+Sending event: database_change
+Traceback (most recent call last):
+  File ""C:\Python27\Scripts\beet-script.py"", line 11, in &lt;module&gt;
+    load_entry_point('beets==1.4.6', 'console_scripts', 'beet')()
+  File ""c:\python27\lib\site-packages\beets\ui\__init__.py"", line 1256, in main
+    _raw_main(args)
+  File ""c:\python27\lib\site-packages\beets\ui\__init__.py"", line 1243, in _raw_main
+    subcommand.func(lib, suboptions, subargs)
+  File ""c:\python27\lib\site-packages\beets\ui\commands.py"", line 937, in import_func
+    import_files(lib, paths, query)
+  File ""c:\python27\lib\site-packages\beets\ui\commands.py"", line 914, in import_files
+    session.run()
+  File ""c:\python27\lib\site-packages\beets\importer.py"", line 327, in run
+    pl.run_parallel(QUEUE_SIZE)
+  File ""c:\python27\lib\site-packages\beets\util\pipeline.py"", line 445, in run_parallel
+    six.reraise(exc_info[0], exc_info[1], exc_info[2])
+  File ""c:\python27\lib\site-packages\beets\util\pipeline.py"", line 312, in run
+    out = self.coro.send(msg)
+  File ""c:\python27\lib\site-packages\beets\util\pipeline.py"", line 171, in coro
+    task = func(*(args + (task,)))
+  File ""c:\python27\lib\site-packages\beets\importer.py"", line 1415, in user_query
+    apply_choice(session, task)
+  File ""c:\python27\lib\site-packages\beets\importer.py"", line 1486, in apply_choice
+    task.add(session.lib)
+  File ""c:\python27\lib\site-packages\beets\importer.py"", line 751, in add
+    self.album = lib.add_album(self.imported_items())
+  File ""c:\python27\lib\site-packages\beets\library.py"", line 1324, in add_album
+    item.add(self)
+  File ""c:\python27\lib\site-packages\beets\library.py"", line 354, in add
+    super(LibModel, self).add(lib)
+  File ""c:\python27\lib\site-packages\beets\dbcore\db.py"", line 476, in add
+    self.store()
+  File ""c:\python27\lib\site-packages\beets\library.py"", line 346, in store
+    super(LibModel, self).store(fields)
+  File ""c:\python27\lib\site-packages\beets\dbcore\db.py"", line 405, in store
+    tx.mutate(query, subvars)
+  File ""c:\python27\lib\site-packages\beets\dbcore\db.py"", line 717, in mutate
+    cursor = self.db._connection().execute(statement, subvals)
+sqlite3.InterfaceError: Error binding parameter 25 - probably unsupported type.
+</code></pre>
+
+<p>I tried to figure out what parameter 25 with a db query, but I can't determine what it is from the resulting output:</p>
+
+<pre><code>PS C:\Users\ME&gt; beet -vv info aimer
+user configuration: C:\Users\ME\AppData\Roaming\beets\config.yaml
+data directory: C:\Users\ME\AppData\Roaming\beets
+plugin paths: C:\Users\ME\AppData\Roaming\beets\beetsplug
+Sending event: pluginload
+lyrics: Disabling google source: no API key configured.
+inline: adding item field multidisc
+Querying VGMdb
+library database: C:\Users\ME\AppData\Roaming\beets\beets_musiclibrary.db
+library directory: C:\Users\ME\Music
+Sending event: library_opened
+C:\Users\ME\Music\ZZ_NoAlbum\%Aimer\Ref_rain.mp3
+          album: Ref:rain / 眩いばかり
+       arranger:
+            art: True
+         artist: Aimer
+  artist_credit: Aimer
+    artist_sort: Aimer
+       bitdepth: 0
+        bitrate: 320000
+            bpm: 0
+       channels: 2
+       comments: 
+           comp: False
+           date: 2018-01-01
+           disc: 0
+      disctotal: 0
+         format: MP3
+          genre: J-Pop
+         genres: J-Pop
+         length: 290.146666667
+         lyrics: 
+    mb_artistid: 9388cee2-7d57-4598-905f-106019b267d3
+     mb_trackid: 39f205b9-d9f9-491e-8959-bc7b970515d7
+  original_year: 0
+r128_album_gain: 0
+r128_track_gain: 0
+     samplerate: 44100
+          title: Ref:rain
+          track: 1
+     tracktotal: 5
+           year: 2018
+
+C:\Users\ME\Music\ZZ_NoAlbum\%Aimer\Xuan ibakari.mp3
+          album: Ref:rain / 眩いばかり
+       arranger:
+            art: True
+         artist: Aimer
+  artist_credit: Aimer
+    artist_sort: Aimer
+       bitdepth: 0
+        bitrate: 320000
+            bpm: 0
+       channels: 2
+       comments: 
+           comp: False
+           date: 2018-01-01
+           disc: 0
+      disctotal: 0
+         format: MP3
+          genre: J-Pop
+         genres: J-Pop
+         length: 251.386666667
+         lyrics:
+    mb_artistid: 9388cee2-7d57-4598-905f-106019b267d3
+     mb_trackid: 7946e8a6-f73a-4338-966b-afe124c2b9d4
+  original_year: 0
+r128_album_gain: 0
+r128_track_gain: 0
+     samplerate: 44100
+          title: 眩いばかり
+          track: 2
+     tracktotal: 5
+           year: 2018
+
+C:\Users\ME\Music\ZZ_NoAlbum\%Aimer\After Rain -Scarlet ver.-.mp3
+          album: Ref:rain / 眩いばかり
+       arranger:
+            art: True
+         artist: Aimer
+  artist_credit: Aimer
+    artist_sort: Aimer
+       bitdepth: 0
+        bitrate: 320000
+            bpm: 0
+       channels: 2
+       comments: 
+           comp: False
+           date: 2018-01-01
+           disc: 0
+      disctotal: 0
+         format: MP3
+          genre: J-Pop
+         genres: J-Pop
+         length: 301.76
+         lyrics:
+    mb_artistid: 9388cee2-7d57-4598-905f-106019b267d3
+     mb_trackid: 0b9f9ed9-706b-4e25-a651-40ddecb6add2
+  original_year: 0
+r128_album_gain: 0
+r128_track_gain: 0
+     samplerate: 44100
+          title: After Rain -Scarlet ver.-
+          track: 3
+     tracktotal: 5
+           year: 2018
+
+C:\Users\ME\Music\ZZ_NoAlbum\%Aimer\Raining.mp3
+          album: Ref:rain / 眩いばかり
+       arranger:
+            art: True
+         artist: Aimer
+  artist_credit: Aimer
+    artist_sort: Aimer
+       bitdepth: 0
+        bitrate: 320000
+            bpm: 0
+       channels: 2
+       comments: 
+           comp: False
+           date: 2018-01-01
+           disc: 0
+      disctotal: 0
+         format: MP3
+          genre: J-Pop
+         genres: J-Pop
+         length: 306.56
+         lyrics:
+    mb_artistid: 9388cee2-7d57-4598-905f-106019b267d3
+     mb_trackid: 31d26e99-320f-40c5-aea0-c2f1ab10b17f
+  original_year: 0
+r128_album_gain: 0
+r128_track_gain: 0
+     samplerate: 44100
+          title: Raining
+          track: 4
+     tracktotal: 5
+           year: 2018
+
+C:\Users\ME\Music\ZZ_NoAlbum\%Aimer\Ref_rain (TV size).mp3
+          album: Ref:rain / 眩いばかり
+       arranger:
+            art: True
+         artist: Aimer
+  artist_credit: Aimer
+    artist_sort: Aimer
+       bitdepth: 0
+        bitrate: 320000
+            bpm: 0
+       channels: 2
+       comments: 
+           comp: False
+           date: 2018-01-01
+           disc: 0
+      disctotal: 0
+         format: MP3
+          genre: J-Pop
+         genres: J-Pop
+         length: 90.68
+         lyrics: 
+    mb_artistid: 9388cee2-7d57-4598-905f-106019b267d3
+     mb_trackid: 5bb14407-1b94-4022-b2ba-9a7898581936
+  original_year: 0
+r128_album_gain: 0
+r128_track_gain: 0
+     samplerate: 44100
+          title: Ref:rain (TV size)
+          track: 5
+     tracktotal: 5
+           year: 2018
+</code></pre>
+","2018-05-24 18:14:46","","0","<python><musicbrainz>","0","0"
+"MusicBrainz writers of recordings","<p>I have noticed that there are far many more recordings than works. Having said that I need to get the writers of a song. Through works I managed but is it possible to get the writers of recordings since there are many more songs listed there?</p>
+","2018-05-25 17:16:54","","-1","<musicbrainz>","0","0"
+"Filter results from browse_release_groups by artist_id to get discography, python","<p>I'm trying to retrieve discographies for various artists. Wikipedia and the manual web interface for MusicBrainz.org seem to agree on what albums make this up, for the artists I've checked. My first thought was to attempt to screen-scrape either of these resources, but that looks like hard work to do it properly.</p>
+
+<p>Direct queries of the musicbrainz data seemed to offer a quicker way to get clean data. I would ideally construct a request like this ...</p>
+
+<pre><code>data = get_release_groups(artist=mbid,
+                          primary_type='Album',
+                          status='Official',
+                          includes=['first_release_date',
+                                    'title',
+                                    'secondary_type_list'])
+</code></pre>
+
+<p>I chose to use the python wrapper musicbrainsngs, as I am fairly experienced with python. It gave me a choice of three methods, get_, search_ and browse_. Get_ will not return sufficient records. Browse_ appeared to be what I wanted, so I tried that first, especially as search_ was documented around looking for text in the python examples, rather than the mb_id, which I already had.</p>
+
+<p>When I did a browse_release_groups(artist=artist_id,,,), I got a list of release groups, each containing the data I wanted, which was album title, type and year. However, I also got a large number of other release groups that don't appear on their manual web results for (for example The Rolling Stones) <a href=""https://musicbrainz.org/artist/b071f9fa-14b0-4217-8e97-eb41da73f598"" rel=""nofollow noreferrer"">https://musicbrainz.org/artist/b071f9fa-14b0-4217-8e97-eb41da73f598</a></p>
+
+<p>There didn't appear to be any way to filter in the query for status='official', or to include the status as part of the results so I could manually filter.</p>
+
+<p>In response to this question, Wieland has suggested I use the search_ query. I have tested search_release_groups(arid=mbid, status='official', primarytype='Album', strict=True, limit=...) and this returns many fewer release groups. As far as studio albums are concerned, it matches 1:1. There are still a few minor discrepancies in the compilations, which I can live with. However, this query did not return the first-release-date, and so far, it has been resistant to my attempts to find how to include it. I notice in the server search code linked to that every query starts off manipulating rgm.first_release_date_year etc, but it's not clear how/when this gets returned from a query.</p>
+
+<p>It's just occurred to me that I can use both a browse_ and a search_ , as together they give me all the information. So I have a work around, but it feels rather agricultural. </p>
+
+<p><strong>TL;DR</strong> I want release groups (titles, dates, types, status) by artist ID. If I browse, I get dates, but can't include or filter by status. If I search, I can filter by status, but don't get dates. How can I get both in one query?</p>
+","2017-02-01 15:21:41","41997021","1","<python><musicbrainz>","1","0"
+"Trying to create a ID3-Tag editor. TypeError: Missing filename or fileobj argument","<p>I am creating a tageditor that displays the ID3-Tags of an mp3 file in a ""before"" ""after"" style in different textLines. If there's no tag available, nothing is displayed. You are also able to edit the ""after"" textLines and any changes made to them should be saved to the file but when I press button2 I am getting the bottom traceback. How can I save the lines6-10 as the new ""audio[""title""], audio[""artist""]"" etc? <a href=""https://i.stack.imgur.com/LU3AB.png"" rel=""nofollow noreferrer"">This is the GUI</a></p>
+
+<pre><code>import sys
+import easygui
+import mutagen
+from mutagen.easyid3 import EasyID3
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QApplication, QDialog
+from PyQt5.uic import loadUi
+from PyQt5.QtWidgets import QLineEdit
+lied = None
+error = ""No ID3-Tag available.""
+class TrackTag1(QDialog):
+    def __init__(self):
+        super(TrackTag1,self).__init__()
+        loadUi(""TrackTag1.ui"",self)
+        self.setWindowTitle(""TrackTag"")
+
+@pyqtSlot()
+def on_button1_clicked(self):
+    #root.fileName = filedialog.askopenfilename( filetypes = ( (""Musik Dateien"", ""*.mp3""), (""Alle Dateien"", ""*.*"") ) )
+    #print(easygui.fileopenbox('MP3 Dateien','', '*.MP3'))
+    lied = easygui.fileopenbox('MP3 Dateien','', '*.MP3')
+    audio = EasyID3(lied)
+    self.line0.setText(lied)                    #printing filepath to line0
+    try:
+        self.line1.setText(str(audio[""title""]).strip(""[']""))        #printing the ID3 tags after they've been stripped of ""['']""
+        self.line6.setText(str(audio[""title""]).strip(""[']""))
+    except:
+        KeyError
+        self.line1.setText(error)
+    try:
+        self.line2.setText(str(audio[""album""]).strip(""[']""))
+        self.line7.setText(str(audio[""album""]).strip(""[']""))
+    except:
+        KeyError
+        self.line2.setText(error)
+    try:
+        self.line3.setText(str(audio[""date""]).strip(""[']""))
+        self.line8.setText(str(audio[""date""]).strip(""[']""))
+    except:
+        KeyError
+        self.line3.setText(error)
+    try:
+        self.line4.setText(str(audio[""artist""]).strip(""[']""))
+        self.line9.setText(str(audio[""artist""]).strip(""[']""))
+    except:
+        KeyError
+        self.line4.setText(error)
+    try:
+        self.line5.setText(str(audio[""genre""]).strip(""[']""))
+        self.line10.setText(str(audio[""genre""]).strip(""[']""))
+    except:
+        KeyError
+        self.line5.setText(error)
+
+def on_button2_clicked(self):
+    audio = EasyID3(lied)
+    audio[""title""] = self.line6.text()
+    audio.save()
+
+
+
+app=QApplication(sys.argv)
+widget=TrackTag1()
+widget.show()
+sys.exit(app.exec_())
+
+
+
+
+app=QApplication(sys.argv)
+widget=TrackTag1()
+widget.show()
+sys.exit(app.exec_())
+</code></pre>
+
+<p>I'm getting this traceback when I press the save changes button:</p>
+
+<pre><code>Traceback (most recent call last):
+  File ""&lt;string&gt;"", line 69, in on_button2_clicked
+  File ""h:\program files (x86)\python\lib\site-packages\mutagen\_util.py"",     line 139, in wrapper
+    writable, create) as h:
+  File ""h:\program files (x86)\python\lib\contextlib.py"", line 59, in     __enter__
+    return next(self.gen)
+  File ""h:\program files (x86)\python\lib\site-packages\mutagen\_util.py"",     line 270, in _openfile
+    raise TypeError(""Missing filename or fileobj argument"")
+TypeError: Missing filename or fileobj argument
+</code></pre>
+
+<p>For now, you should only be able to edit the tags but I am planning to implement a MusicBrainz query soon.</p>
+","2018-05-29 21:11:14","50595693","1","<python><typeerror><id3><musicbrainz><mutagen>","1","0"
+"I need a detailed guide on how to install and set up chromaprint on windows 10","<p>and using it to generate an mp3 fingerprint that I can submit to the musicbrainz database.</p>
+
+<p>I have written a program in python that selects an mp3 and reads out the ID3-Tags. Now I need to get the fingerprint of that mp3 in order to submit it to musicbrainz in order for musicbrainz to return the missing ID3-Tags.</p>
+","2018-05-30 15:28:46","","-5","<python><id3><musicbrainz><id3-tag>","0","0"
+"Explain Artist Credit Name in MusicBrainz Schema","<p>Can anyone please explain the tables ""artist_credit_name"" and ""artist_credit"" in MusicBrainz Database Schema here <a href=""http://wiki.musicbrainz.org/-/images/5/52/ngs.png"" rel=""nofollow"">http://wiki.musicbrainz.org/-/images/5/52/ngs.png</a>? </p>
+
+<p>What is the foreign key ""position"" in ""artist_credit_name""? and which table does it relate to?
+Can you explain the attributes in each table? I understand 'join_phrase' but why have two tables?</p>
+
+<pre><code>[artist_credit_name]
+artist_credit (PK, FK)
+position (PK)
+artist (FK)
+name
+join_phrase
+
+[artist_credit]
+id
+name
+artist_count
+ref_count
+Thanks
+</code></pre>
+","2015-10-27 06:16:47","","0","<musicbrainz>","1","0"
+"PHP: Read MusicBrainz tags from AAC files","<p>does anyone know a simple way to read the MusicBrainz tags (MBID for track, release and artist) from an AAC file?</p>
+
+<p>If there's an external binary it must be command line. This will only be run on my mac.</p>
+
+<p>I've tried the obvious things:</p>
+
+<ul>
+<li>Googling for the direct problem.</li>
+<li>Googling for more generic solutions like ""command line musicbrainz""</li>
+</ul>
+
+<p>There are many programs out there that are GUI, but none that I can find that a pure command line implementations. I do not need write capability, just reading of tags.</p>
+
+<p>Thanks</p>
+","2012-06-22 04:54:16","","1","<php><aac><musicbrainz>","0","3"
+"Problems in connecting to MusicBrainz database using psycopg2","<p>I am trying to connect to the MusicBrainz database using the psycopg2 python's module. I have followed the instructions presented on <a href=""http://musicbrainz.org/doc/MusicBrainz_Server/Setup"" rel=""nofollow"">http://musicbrainz.org/doc/MusicBrainz_Server/Setup</a>, but I cannot succeed in connecting. In particular I am using the following little script:</p>
+
+<pre><code>import psycopg2
+conn = psycopg2.connect( database = 'musicbrainz_db', user= 'musicbrainz', password = 'musicbrainz', port = 5000, host='10.16.65.250')
+print ""Connection Estabilished""
+</code></pre>
+
+<p>The problem is that when I launch it, it never reaches the print statement, and the console (I'm on linux) is block indefinitely. It does not even catches the ctrl-c kill, so I have to kill python itself in another console. What can cause this? </p>
+","2013-04-25 17:52:41","16233906","0","<python><postgresql><psycopg2><musicbrainz>","1","6"
+"Music tag finder API .NET library","<p>I'm trying to build an application that can be used to automatically get music tag information from the web and rename my music library. I have been searching on google for any API available to help me out. So far, it seems like Discogs, Freedb, Last.fm, MusicBrainz, amazon and yahoo music are all good options for this. However, I am wondering if there is any .NET library that can be easily used to access any of the above libraries. Please help if you know any .DLL file that I can easily include to my C# project.</p>
+
+<p>P.S: I have little knowledge with xml. It would help much if this API is a dll file as they are easy to work with than xml</p>
+
+<p>Thanks in advance for your much appreciated help!</p>
+","2011-09-16 05:35:02","","0","<.net><api><mp3><last.fm><musicbrainz>","2","0"
+"Howto Use musicbrainz performer tag","<p>I am working with MusicBrainz Picard Version: 1.2. If a particular track has vocals performer I would like to copy that field to the artist tag. </p>
+
+<pre><code>e.g. 
+
+[https://musicbrainz.org/release/b251f5c0-4a41-40be-9d0d-68fdcecac317][1]
+
+Track 1 ""Khallas"" I would like to copy 
+vocals:
+    Asha Bhosle, Sapna Awasthi, Sudesh Bhonsle 
+To the artist tag.
+</code></pre>
+
+<p><strong>what is the best way to achive this python plugin or tagger script.
+how should I access the vocals tag in tagger script</strong> </p>
+","2014-09-26 14:32:21","26072496","0","<python><mp3><musicbrainz>","1","0"
+"Prepared data set ""Musicbrainz"" doesn't work - Detected incorrectly shut down database, performing recovery","<p>I struggling to get the ""Musicbrainz"" data set running on my local machine (MacBook Air, Mountain Lion).</p>
+
+<p>What I did? (Basically what the video said)</p>
+
+<ol>
+<li>Downloaded data set directly from <a href=""http://www.neo4j.org/develop/example_data"" rel=""nofollow"">http://www.neo4j.org/develop/example_data</a></li>
+<li>Downloaded fresh Neo4j-Community-2.1.5</li>
+<li>Extracted the data set, renamed it to graph.db and copied to /neo4j-community-2.1.5/data/graph.db</li>
+<li>Run the server: <code>./bin/neo4j console</code>, but neo does not start - not even an exception is thrown!!!!</li>
+</ol>
+
+<blockquote>
+  <p>Gerardos-MacBook-Air:neo4j-community-2.1.5 Gery$ ./bin/neo4j console
+  WARNING: Max 256 open files allowed, minimum of 40 000 recommended.
+  See the Neo4j manual. Starting Neo4j Server console-mode... Using
+  additional JVM arguments:  -server -XX:+DisableExplicitGC
+  -Dorg.neo4j.server.properties=conf/neo4j-server.properties -Djava.util.logging.config.file=conf/logging.properties -Dlog4j.configuration=file:conf/log4j.properties -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled 2014-10-09 15:40:31.700+0000 INFO  [API] Setting startup timeout to: 120000ms
+  based on -1 Detected incorrectly shut down database, performing
+  recovery..</p>
+</blockquote>
+
+<p>I tried several settings in neo4j.properties, but nothing, see properties below ...</p>
+
+<blockquote>
+  <p>use_memory_mapped_buffers=true
+  neostore.nodestore.db.mapped_memory=300M
+  neostore.relationshipstore.db.mapped_memory=3G
+  neostore.propertystore.db.mapped_memory=500M
+  neostore.propertystore.db.strings.mapped_memory=500M
+  neostore.propertystore.db.arrays.mapped_memory=0M
+  neostore.propertystore.db.index.keys.mapped_memory=15M
+  neostore.propertystore.db.index.mapped_memory=15M</p>
+  
+  <p>allow_store_upgrade=true</p>
+</blockquote>
+
+<p>I was hoping that this would work out of the box. What am I missing ...?</p>
+","2014-10-09 16:34:42","","1","<neo4j><musicbrainz>","0","9"
+"How to get genre of the album for spotify app","<p>I would like to retrieve the genre of the track/ album being currently played in Spotify.</p>
+
+<p>I've looked at Last.FM for getting the genre from the album or from the track but it seems there is no option.</p>
+
+<p>Please can someone help me to find the genre via a web service?</p>
+","2012-02-17 13:42:05","9329538","2","<javascript><spotify><last.fm><musicbrainz>","2","0"
+"Setting up Musicbrainz prepared dataset in Neo4j fails","<p>I've downloaded the Musicbrainz prepared dataset and tried to connect it to my server, but when I try to start the database up it fails stating ""Component 'org.neo4j.kernel.impl.nioneo.xa.NeoStoreXaDataSource@629b10d1' was successfully initialized, but failed to start. Please see attached cause exception.: <strong>'neostore.nodestore.db' does not contain a store version</strong>, please ensure that the original database was shut down in a clean state.""</p>
+
+<p>Since this isn't a database of mine, I don't know whether it was shut down properly or not.
+I'm running on Ubuntu 12.04 with Neo4j 2.1.4 and the allow_store_upgrade is set to true.</p>
+","2014-09-17 09:56:21","","2","<neo4j><musicbrainz>","0","3"
+"How to get this XmlAttribute","<p>From the MusicBrainz REST service, I get the following xml:</p>
+
+<pre><code>&lt;artist-list offset=""0"" count=""59""&gt;
+  &lt;artist type=""Person"" id=""xxxxx"" ext:score=""100""&gt;
+  ...
+</code></pre>
+
+<p>Using WCF and XmlSerializationFormat, I'm able to get the type and id attributes... but How do I get the ""ext:score"" one?</p>
+
+<p>This works:</p>
+
+<pre><code>  public class Artist
+  {
+    [XmlAttribute(""id"")]
+    public string ID { get; set; }
+
+    [XmlAttribute(""type"")]
+    public ArtistType Type { get; set; }
+</code></pre>
+
+<p>But this doesnt:</p>
+
+<pre><code>[XmlAttribute(""ext:score"")]
+public string Score { get; set; }
+</code></pre>
+
+<p>It produces a serialization exception. I've also tried just using ""score"", but it doesn't work.</p>
+
+<p>Any help?</p>
+","2010-04-29 09:54:08","2736452","2","<c#><xml><rest><musicbrainz>","2","0"
+"Errors on kitchen converge step","<p>I'm trying to setup listenbrainz server <a href=""https://github.com/metabrainz/listenbrainz-server/"" rel=""nofollow"">https://github.com/metabrainz/listenbrainz-server/</a> but i have little/no knoledge about chef/ Vagrant setup.
+I noticed 2 error in log file</p>
+
+<p><a href=""https://gist.github.com/samithaj/dfb99dac67ca9b52ce9d"" rel=""nofollow"">https://gist.github.com/samithaj/dfb99dac67ca9b52ce9d</a></p>
+
+<ol>
+<li>ERROR: Failed to list data bag items in data bag: ""ssh_known_hosts""</li>
+<li>Kitchen::ActionFailed
+Message: SSH exited (1) for command: [sh -c '</li>
+</ol>
+
+<p>I tried googling but the results were specific on problems so i could't find i solution relevant to my setup</p>
+","2016-03-06 06:26:16","","-1","<vagrant><chef><test-kitchen><musicbrainz>","1","0"
+"Querying MusicBrainz search API via PHP script","<p>I'm trying to retrieve release info from the MusicBrainz database using a PHP script on my server. I have a list of songs, with song title and artist name, and I'm trying to retrieve the date of the first release of that song, along with other info about that release.</p>
+
+<p>I realise that the search won't always be 100% accurate, but the list consists of fairly rare and unique songs so it should at least get me on a good track.</p>
+
+<p>I've gotten pretty far with my script, it returns results and everything, but I'm unsure about how to write the query exactly. The documentation is quite confusing and doesn't feature an example where you search for both song title and artist.</p>
+
+<p>This is my code:</p>
+
+<pre><code>// this info is normally fetched from my DB, but just as a simple example (as it is returned):
+$artist = ""ZZTop""; 
+$song_title = ""It's only Love"";
+
+// I'm having trouble with this part:
+$mb_query = 'http://www.musicbrainz.org/ws/2/recording?query=' . $song_title .' ANDartist:' . $artist ;
+
+$xml = simplexml_load_file($mb_query);
+
+$releasedate = $xml-&gt;{'recording-list'}-&gt;recording[0]-&gt;{'release-list'}-&gt;release[0]-&gt;date;
+</code></pre>
+
+<p>At first I've tried to <code>rawurlencode()</code> the <code>$artist</code> and <code>$song_title</code>, but funnily enough, that didn't return any results, so I figured I'd just leave it as a plain string. The query returns results, but they are really off and I have the feeling only part of the query is getting picked up (for instance only the song title and not the artist).</p>
+
+<p>Does anyone know the right way to do this?</p>
+","2014-06-04 18:42:26","24228979","0","<php><xml><musicbrainz>","1","0"
+"Getting album, album art, and run time info from musicbrainz","<p>Is there any way of getting a list of albums for an artist (band), along with a link to album art and runtime?</p>
+
+<p>I've been given this endpoint, but the data it returns is confusing:
+<a href=""http://musicbrainz.org/ws/2/recording?query=artist:%22Queen%22%20and%20type:album&amp;fmt=json"" rel=""nofollow noreferrer"">http://musicbrainz.org/ws/2/recording?query=artist:%22Queen%22%20and%20type:album&amp;fmt=json</a></p>
+
+<p>The data isn't really organized around albums, and the ""length"" data returns something like 203000. But it's better if you see it in context, so here's the first bit of it (sorry I couldn't get it indented):</p>
+
+<pre><code>{
+""created"": ""2018-02-17T03:47:57.052Z"",
+""count"": 9533710,
+""offset"": 0,
+""recordings"": [
+{
+""id"": ""c2e919f7-ecb9-4fdf-9162-3c26d0127fa0"",
+""score"": ""100"",
+""title"": ""Son and Daughter"",
+""length"": 203000,
+""video"": null,
+""artist-credit"": [
+{
+""artist"": {
+""id"": ""0383dadf-2a4e-4d10-a46a-e9e041da8eb3"",
+""name"": ""Queen"",
+""sort-name"": ""Queen"",
+""disambiguation"": ""UK rock group"",
+""aliases"": [
+{
+""sort-name"": ""Queen + Adam Lambert"",
+""name"": ""Queen + Adam Lambert"",
+""locale"": null,
+""type"": null,
+""primary"": null,
+""begin-date"": ""2011"",
+""end-date"": null
+}
+]
+}
+}
+],
+""releases"": [
+{
+""id"": ""bb19abaf-80b3-4a3e-846d-5f12b12af827"",
+""title"": ""Queen"",
+""status"": ""Official"",
+""release-group"": {
+""id"": ""810068af-2b3c-3e9c-b2ab-68a3f3e3787d"",
+""primary-type"": ""Album""
+},
+""date"": ""1994"",
+""country"": ""NL"",
+""release-events"": [
+{
+""date"": ""1994"",
+""area"": {
+""id"": ""ef1b7cc0-cd26-36f4-8ea0-04d9623786c7"",
+""name"": ""Netherlands"",
+""sort-name"": ""Netherlands"",
+""iso-3166-1-codes"": [
+""NL""
+]
+}
+}
+],
+""track-count"": 10,
+""media"": [
+{
+""position"": 1,
+""format"": ""CD"",
+""track"": [
+{
+""id"": ""3a26455e-2660-30dc-a652-6a2b40f1fbe5"",
+""number"": ""8"",
+""title"": ""Son and Daughter"",
+""length"": 203400
+}
+],
+""track-count"": 10,
+""track-offset"": 7
+}
+]
+},
+{
+""id"": ""1783da6a-9315-3602-a488-1738eb733a0f"",
+""title"": ""Queen"",
+""status"": ""Official"",
+""release-group"": {
+""id"": ""810068af-2b3c-3e9c-b2ab-68a3f3e3787d"",
+""primary-type"": ""Album""
+},
+""date"": ""1973-09-04"",
+""country"": ""US"",
+""release-events"": [
+{
+""date"": ""1973-09-04"",
+""area"": {
+""id"": ""489ce91b-6658-3307-9877-795b68554c98"",
+""name"": ""United States"",
+""sort-name"": ""United States"",
+""iso-3166-1-codes"": [
+""US""
+]
+}
+}
+],
+</code></pre>
+
+<p>If someone can explain this data to me, then I don't need another endpoint. But I've been hunting around the musicbrainz docs and they're not super helpful.</p>
+
+<p>Preferably it would be with one call, but I can do successive calls if necessary.</p>
+
+<p>Thanks for your help.</p>
+","2018-02-17 23:41:37","48874364","0","<musicbrainz>","2","3"
+"Musicbrainz querying artist and release","<p>I am trying to get an artist and their albums. So reading this page <a href=""https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2"" rel=""nofollow"">https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2</a> i created the following query to get Michael Jackson's albums</p>
+
+<pre><code>http://musicbrainz.org/ws/2/artist/?query=artist:michael%20jackson?inc=releases+recordings
+</code></pre>
+
+<p>My understanding is to add <code>?inc=releases+recordings</code> at the end of the URL which should return Michael Jackson's albums however this doesnt seem to return the correct results or i cant seem to narrow down the results? I then thought to use the <code>{MBID}</code> but again thats not returned in the artists query (which is why im trying to use <code>inc</code> in my query)</p>
+
+<pre><code>http://musicbrainz.org/ws/2/artist/?query=artist:michael%20jackson
+</code></pre>
+
+<p>Can anyone suggest where im going wrong with this?</p>
+","2015-01-20 21:08:14","28071586","1","<web-services><musicbrainz>","1","1"
+"Query SQL: List the pairs of artists who have never collaborated with each other but have collaborated with a third artist in common","<p>I have this table called FEATURING:</p>
+
+<pre><code>* Artist_1,  join_phrase,  Artist_2 *
+
+  Shakira       feat.      Rihanna  
+  Eminem        feat.      Rihanna  
+  Sia           feat.      Eminem  
+  SeanPaul      feat.      Sia   
+  Queen         feat.      DavidBowie
+  LadyGaga      feat.      Beyonce   
+  LadyGaga      feat.      Eminem   
+</code></pre>
+
+<p>I need to specify a SQL query that take pairs (<strong>name of Artist_1</strong>, <strong>name of Artist_2</strong>) of artists who have <strong>never</strong> collaborated with each other but have collaborated with another <strong>artist in common</strong></p>
+
+<hr>
+
+<p>for example:  X feat Y, Z feat Y ---> (X, Z) is the solution</p>
+
+<hr>
+
+<p>The result it would be:</p>
+
+<pre><code>* Artist_1,  Artist_2 *
+
+  Shakira    Eminem  
+  Eminem     SeanPaul  
+  Beyonce    Eminem  
+  LadyGaga   Rihanna   
+  Sia        Rihanna 
+  Sia        LadyGaga
+</code></pre>
+
+<hr>
+
+<p>How I can solve? Thank you very much!</p>
+","2017-07-15 13:08:29","","0","<sql><database><musicbrainz>","2","6"
+"Getting a tracklist from MusicBrainz","<p>I am trying to learn Python, and thought I'd learn by writing something I'd actually use. SO I'm trying to write a little script to rip some music CDs.</p>
+
+<p>I am using the musicbrainzngs package. I would like to get the tracklist of the CD. My code currently:</p>
+
+<pre><code>#! /usr/bin/env python
+
+import argparse
+import musicbrainzngs
+import discid
+
+musicbrainzngs.set_useragent(""Audacious"", ""0.1"", ""https://github.com/jonnybarnes/audacious"")
+
+parser = argparse.ArgumentParser()
+parser.add_argument(""--cdrom"", help=""provide the source of the cd"", default=""/dev/cdrom"")
+args = parser.parse_args()
+
+device = args.cdrom
+
+print(""device: %s"" % device)
+disc = discid.read(device)
+print(""id: %s"" % disc.id)
+
+try:
+    result = musicbrainzngs.get_releases_by_discid(disc.id, includes=[""artists""])
+except musicbrainzngs.ResponseError:
+    print(""disc not found or bad response"")
+else:
+    if result.get(""disc""):
+        print(""artist:\t%s"" %
+            result[""disc""][""release-list""][0][""artist-credit-phrase""])
+        print(""title:\t%s"" % result[""disc""][""release-list""][0][""title""])
+    elif result.get(""cdstub""):
+        print(""artist:\t"" % result[""cdstub""][""artist""])
+        print(""title:\t"" % result[""cdstub""][""title""])
+</code></pre>
+
+<p>How can I get the tracklist, looking at the full results returned there is a <code>track-list</code> property but regardless of what CD I try the result is always empty</p>
+","2013-07-04 12:13:57","17477780","1","<python><musicbrainz>","1","0"
+"Perform substitution on regex results, but only on a given condition","<p>First of all, let me please clarify that I know absolutely nothing about regular expressions, but I need to write a ""Tagger Script"" for MusicBrainz Picard so that it doesn't mess with the way I format certain aspects of my tracks' titles.</p>
+
+<p>Here's what I need to do:
+- Find all sub-strings inside parenthesis
+- Then, for those matches that meet a given criteria and those matches only, change the parentheses to brackets</p>
+
+<p>For example, consider this string:
+DJ Fresh - Louder (Sian Evans) (Flux Pavilion &amp; Doctor P Remix)</p>
+
+<p>It needs to be changed like so:
+DJ Fresh - Louder (Sian Evans) [Flux Pavilion &amp; Doctor P Remix]</p>
+
+<p>The condition is that if the string within the parentheses contains the sub-string ""dj"" or ""mix"" or ""version"" or ""inch"", etc... then the parentheses surrounding it need to be changed to brackets.</p>
+
+<p>So, the question is:
+Is it possible to create a single regex expression that can perform this operation?</p>
+
+<p>Thank you very much in advance.</p>
+","2013-01-12 05:01:44","14290445","0","<regex><musicbrainz>","1","1"
+"How to retrieve recording relationship on release browse request on musicbrainz","<p>i'm currently getting needed information from musicbrainz, using the following
+browse request, browsing a specific artists releases + recordings.
+for example: (coldplay)</p>
+
+<blockquote>
+  <p><a href=""http://musicbrainz.org/ws/2/release?artist=cc197bad-dc9c-440d-a5b5-d52ba2e14234&amp;fmt=json&amp;inc=recordings"" rel=""nofollow"">http://musicbrainz.org/ws/2/release?artist=cc197bad-dc9c-440d-a5b5-d52ba2e14234&amp;fmt=json&amp;inc=recordings</a></p>
+</blockquote>
+
+<p>im interested in getting for each recording its work id.
+now i tried adding 'recording-rels' to the includes but it seems only to return relationship between release and recording.
+I also tried adding 'recording-level-rels' to includes as mentioned <a href=""https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Relationships"" rel=""nofollow"">here</a>
+where it states that it should return recordings relationships, but when i try using it - i get the following error:</p>
+
+<blockquote>
+  <p>{""error"":""recording-level-rels is not a valid inc parameter for the release resource.""}</p>
+</blockquote>
+
+<p>Am I using it wrongly?
+To clarify, i'm after the relationship that you get from their site, say from <a href=""https://musicbrainz.org/release/8e602038-c0f2-3c2d-9068-a1a3daca493d"" rel=""nofollow"">this page</a>, where each release has recording of that contains a link to the musicbrainz work id page.</p>
+
+<p>Any help\advice would be very appreciated,
+Thank you.</p>
+","2015-06-10 19:59:10","30776510","1","<musicbrainz>","2","0"
+"Converting unicode characters from returned JSON in python","<p>I am trying to return JSON from the API service from musicbrainz, the returned data for some songs have unicode characters which I am having trouble converting them to regular symbols etc. Kindly let me know what I should be doing here.</p>
+
+<p>JSON:</p>
+
+<pre><code>{
+    ""status"": ""ok"",
+    ""results"": [{
+        ""recordings"": [{
+            ""duration"": 402,
+            ""tracks"": [{
+                ""duration"": 402,
+                ""position"": 6,
+                ""medium"": {
+                    ""release"": {
+                        ""id"": ""dde6ecee-8e9b-4b46-8c28-0f8d659f83ac"",
+                        ""title"": ""Tecno Fes, Volume 2""
+                    },
+                    ""position"": 1,
+                    ""track_count"": 11
+                },
+                ""artists"": [{
+                    ""id"": ""57c1e5ea-e08f-413a-bcb1-f4e4b675bead"",
+                    ""name"": ""Gigi D\u2019Agostino""
+                }],
+                ""title"": ""You Spin Me Round""
+            }],
+            ""id"": ""2e0a7bce-9e44-4a63-a789-e8c4d2a12af9""
+        }, ....
+</code></pre>
+
+<p>Failed Code (example):</p>
+
+<pre><code>string = '\u0420\u043e\u0441\u0441\u0438\u044f'
+print string.encode('utf-8')
+</code></pre>
+
+<p>I am using this on a windows 7 machine and have python 2.7 and running this code on a command line terminal.. I have the output I get below:</p>
+
+<pre><code>C:\Python27&gt;python junk.py Gigi DGÇÖAgostino Gigi D?Agostino Gigi D\u2019Agostino
+</code></pre>
+
+<p>I am expecting the output to be <code>Gigi D' Agostino</code></p>
+","2013-01-15 19:09:18","14351051","2","<python><windows><json><cmd><musicbrainz>","3","9"
+"RESTful media types for audio/music collection service (with metadata)","<p>I have a large music collection, composed of mp3 files, flac files, and others.  I would like to share it with devices on my local network and computers I am using on remote networks.  It seems to me that HTTP is eminently well-suited to the sharing of files and I wonder if there's anything saner than uPNP (a.k.a DLNA) that my server could implement so that a suitable client could find out what's on the server and query information like track title, artist, composer, cd cover artwork, etc etc - the kind of stuff that would be stored in ID3 tags for an mp3 file.</p>
+
+<p>(My experience of uPNP is limited, but I know it's SOAP-based, which makes me suspicious that it has any good in it, and I know that almost all the googling I've done on it has returned other peoples libraries rather than discussion of the protocol itself, which is another red flag)</p>
+
+<p>(I know also of DAAP, the Itunes format, but that's proprietary and it would appear that Apple like to break it whenever anyone else catches up.  Not so wild about that either)</p>
+
+<p>Any pointers? </p>
+
+<p>Edit: a bit of digging reveals that MusicBrainz have an XML format -  <a href=""http://wiki.musicbrainz.org/MusicBrainz_XML_Meta_Data"" rel=""nofollow noreferrer"">http://wiki.musicbrainz.org/MusicBrainz_XML_Meta_Data</a> - and XSPF could also be (used? abused? discuss) for describing tracks and collections thereof.  Would be interested to see critiques of these formats for this purpose</p>
+","2010-09-21 22:37:30","","1","<rest><mp3><upnp><xspf><musicbrainz>","1","1"
+"How to programmatically retrieve editing history pages from MusicBrainz using python?","<p>I'm trying to programmatically retrieve editing history pages from the MusicBrainz website. (<code>musicbrainzngs</code> is a library for the MB web service, and editing history is not accessible from the web service). For this, I need to login to the MB website using my username and password.</p>
+
+<p>I've tried using the <code>mechanize</code> module, and using the login page second form (first one is the search form), I submit my username and password; from the response, it seems that I successfully login to the site; however, a further request to an editing history page raises an exception:</p>
+
+<pre><code>mechanize._response.httperror_seek_wrapper: HTTP Error 403: request disallowed by robots.txt
+</code></pre>
+
+<p>I understand the exception and the reason for it. I take full responsibility for not abusing the site (after all, any usage will be tagged with my username), I just want to avoid manually opening a page, saving the HTML and running a script on the saved HTML. Can I overcome the 403 error?</p>
+","2012-03-10 09:40:43","9645606","1","<python><web><musicbrainz>","2","0"
+"MusicBrainz alternative for JavaEE","<p>Is there any Java/J2EE website which opensource their software and data 
+(like musicbrainz.org, where a developer can easily set up a personal/development MusicBrainz website by downloading the Perl/CGI webapp and the music data in PostgreSQL dump) ?</p>
+
+<p>It would be good for other developers to learn from this kind of website.</p>
+
+<p>Thanks</p>
+","2010-03-11 15:32:37","","0","<java><open-source><java-ee><musicbrainz>","3","2"
+"Mapping musicbrainz URIs into Spotify URIs","<p>Does anybody know how can I find Spotify's URI for a given artist/album's musicbrainz URI? Spotify's web-api doesn't solve my problem cause I wanna map all the musicbrainz artists and albums and it's quite slow.</p>
+","2012-05-05 13:29:31","10467192","12","<spotify><musicbrainz>","1","0"
+"How to parse xml webservice response using java script or jquery","<p>I want to use following xml webservice.
+<a href=""http://www.musicbrainz.org/ws/2/artist/?query=artist%3amichael%20jackson"" rel=""nofollow"">www.musicbrainz.org/ws/2/artist/?query=artist:michael jackson</a></p>
+
+<p>which format is like below:</p>
+
+<pre><code>&lt;metadata&gt;&lt;artist-list offset=""0"" count=""3418""&gt;&lt;artist ext:score=""100"" type=""Person"" id=""f27ec8db-af05-4f36-916e-3d57f91ecf5e""&gt;&lt;name&gt;Michael Jackson&lt;/name&gt;&lt;sort-name&gt;Jackson, Michael&lt;/sort-name&gt;&lt;gender&gt;male&lt;/gender&gt;&lt;country&gt;US&lt;/country&gt;
+</code></pre>
+
+<p>I just want to parse this xml &amp; get the gender from it .
+I used following code to parse xml .
+Here i get ext attribute of the artist but not working .</p>
+
+<pre><code>    $.ajax({
+        type: 'GET',
+        url: 'http://www.musicbrainz.org/ws/2/artist/?query=artist:michael jackson',
+        dataType: 'xml',
+        success: function(xml){
+           // console.log(xml);
+            $(xml).find('artist-list').each(function(){
+            $(this).find('artist').each(function(){
+                            var ext = $(this).attr('ext');
+                            alert(ext);
+                    });
+            });
+    }
+</code></pre>
+
+<p>});</p>
+
+<p>Anybody can suggest me the example to parse xml using javascript or jquery.</p>
+","2012-02-21 07:42:17","9373910","0","<javascript><jquery><xml-parsing><musicbrainz>","1","1"
+"Return track-list using musicbrainzngs.search_releases()","<p>I'm getting acquainted with <a href=""http://python-musicbrainzngs.readthedocs.org/"" rel=""nofollow"">musicbrainzngs</a> and have run into a snag. All of the track-lists which are returned from the following are empty. Are there additional parameters I need to provide or is this a bug?</p>
+
+<pre><code>releases = musicbrainzngs.search_releases(
+            query='arid:' + musicbrainz_arid
+        )
+</code></pre>
+","2016-01-14 02:04:04","34800153","2","<python><musicbrainz>","1","0"
+"musicbrainzngs gives partial results when using release_type list","<p>I have the following code that returns all results ( and all types )</p>
+
+<pre><code>import musicbrainzngs
+result = musicbrainzngs.browse_release_groups(""cc2c9c3c-b7bc-4b8b-84d8-4fbd8779e493"")
+</code></pre>
+
+<p>I just want to filter the results in the API vs the code by setting <code>release_type=[]</code> list and throw everything else away</p>
+
+<pre><code>release_type=['album', 'live', 'single']
+result = musicbrainzngs.browse_release_groups(""cc2c9c3c-b7bc-4b8b-84d8-4fbd8779e493"", release_type=release_type)
+</code></pre>
+
+<p>)</p>
+
+<p>Problem is, this code gives me just the ""live &amp; single"" releases .. even though I specified <code>album</code> as well ...</p>
+
+<pre><code>{'release-group-list': [{'first-release-date': '2011-11-25',
+                         'id': '36e41dc0-2a0c-4ff7-b043-097534d52bf6',
+                         'title': 'Adele Live at the Royal Albert Hall',
+                         'type': 'Live'},
+                        {'first-release-date': '2011',
+                         'id': '37367c39-1c91-4a8c-baa7-0a09c3df4b6b',
+                         'title': '2011-02-25: Morning Becomes Eclectic, KCRW-FM, Santa Monica, CA, USA',
+                         'type': 'Live'},
+                        {'first-release-date': '2012-10-05',
+                         'id': '4307ecf9-d0f2-4b95-b7ad-2f8cba84a5e9',
+                         'title': 'Skyfall',
+                         'type': 'Single'},
+                        {'first-release-date': '2011-04-28',
+                         'id': 'c9ddd0ed-ba23-4dfc-bb7e-42f8ffb21fb7',
+                         'title': '2011-04-08: Paradiso FM, Amsterdam, Netherlands',
+                         'type': 'Live'}]}
+</code></pre>
+
+<p>And I do have releases with <code>type='Album'</code> without using <code>release_type</code> i.e:</p>
+
+<pre><code>{
+  'first-release-date': '2011-07-13',
+  'id': '763f800f-4284-432b-b056-7f6e0aa26bfe',
+  'title': 'iTunes Festival: London 2011',
+  'type': 'EP'
+},
+{
+  'first-release-date': '2011-07-04',
+  'id': '7c2071cb-598d-4a0c-b1d5-a53e2cb9b5f8',
+  'title': 'Set Fire to the Rain',
+  'type': 'Single'
+},
+{
+  'first-release-date': '2008-01-27',
+  'id': '9796da06-2d59-3176-8598-2105f31ee54a',
+  'title': '19',
+  'type': 'Album'
+},
+</code></pre>
+
+<h1>EDIT2</h1>
+
+<p>Very strange result when I use <code>release_type=['album']</code> ( without <code>live</code> &amp; <code>single</code> ) - I receive now Album &amp; Live types (?!?!)</p>
+
+<pre><code>release_type=['album']
+result = musicbrainzngs.browse_release_groups(""cc2c9c3c-b7bc-4b8b-84d8-4fbd8779e493"", release_type=release_type)
+
+{'release-group-list': [{'first-release-date': '2011-11-25',
+                         'id': '36e41dc0-2a0c-4ff7-b043-097534d52bf6',
+                         'title': 'Adele Live at the Royal Albert Hall',
+                         'type': 'Live'},
+                        {'first-release-date': '2011',
+                         'id': '37367c39-1c91-4a8c-baa7-0a09c3df4b6b',
+                         'title': '2011-02-25: Morning Becomes Eclectic, KCRW-FM, Santa Monica, CA, USA',
+                         'type': 'Live'},
+                        {'first-release-date': '2008-01-27',
+                         'id': '9796da06-2d59-3176-8598-2105f31ee54a',
+                         'title': '19',
+                         'type': 'Album'},
+                        {'first-release-date': '2012',
+                         'id': 'ad1343e8-1832-4035-8dcc-0bed2daa5ace',
+                         'title': 'Greatest Hits',
+                         'type': 'Compilation'},
+                        {'first-release-date': '2011-04-28',
+                         'id': 'c9ddd0ed-ba23-4dfc-bb7e-42f8ffb21fb7',
+                         'title': '2011-04-08: Paradiso FM, Amsterdam, Netherlands',
+                         'type': 'Live'},
+                        {'first-release-date': '2011-01-19',
+                         'id': 'e4174758-d333-4a8e-a31f-dd0edd51518e',
+                         'title': '21',
+                         'type': 'Album'}]}
+</code></pre>
+
+<p>Any idea why ?</p>
+","2015-09-27 11:27:40","","0","<python><musicbrainz>","0","6"
+"Album mbId in track's metadata","<p>I am using MusicBrainz to get a track's meta data. I want to get the track's album's mbid. I am doing the following lookup using ISRC code. </p>
+
+<blockquote>
+  <p><a href=""https://musicbrainz.org/ws/2/isrc/USRC11600201?fmt=json"" rel=""nofollow noreferrer"">https://musicbrainz.org/ws/2/isrc/USRC11600201?fmt=json</a></p>
+</blockquote>
+
+<p>But in response I don't get any metadata related to the album of the track. I get the following response: </p>
+
+<blockquote>
+  <p>{
+      ""isrc"": ""USRC11600201"",
+      ""recordings"": [
+          {
+              ""disambiguation"": ""single remix"",
+              ""title"": ""Cheap Thrills"",
+              ""id"": ""92e27a47-3546-4bc2-a9f7-b19e43d7a531"",
+              ""length"": 223000,
+              ""video"": false
+          },
+          {
+              ""length"": 218540,
+              ""video"": false,
+              ""title"": ""Cheap Thrills"",
+              ""disambiguation"": """",
+              ""id"": ""5845e975-33b4-4b0d-8e74-8f57d128b3d1""
+          }
+      ]
+  }</p>
+</blockquote>
+
+<p>I have tried various combinations of the ""inc"" sub query parameter as well but nothing works. Please help me out. I am really stuck at this.</p>
+","2018-05-03 18:40:34","50197128","1","<musicbrainz>","2","0"
+"MusicBrainz Server Update","<p>I successfully installed a freshly downloaded virtual instance a few days ago, running in VirtualBox on Windows 10. Seems to be working fine. Noticed that under 'Statistics' on the home page is was dated April 2016. Configured with a key for replication, ran 'bin/replicate start' and now the Statistics page update is 05/22/16. Interestingly the mirror <a href=""http://musicbrainz-mirror.eu:5000/"" rel=""nofollow"">http://musicbrainz-mirror.eu:5000/</a> shows the same 05/22/16 date.</p>
+
+<p>It seems the database schema changed on 05/23/16 (<a href=""https://blog.musicbrainz.org/2016/05/25/schema-change-release-2016-05-23-with-upgrade-instructions/"" rel=""nofollow"">https://blog.musicbrainz.org/2016/05/25/schema-change-release-2016-05-23-with-upgrade-instructions/</a>) but the virtual machine available for download is dated 2015-08-06 on <a href=""http://musicbrainz.org/doc/MusicBrainz_Server/Setup"" rel=""nofollow"">http://musicbrainz.org/doc/MusicBrainz_Server/Setup</a></p>
+
+<p>So automatic updating stops at 5/22 with the current virtual machine. Seems to make sense but where is the latest virtual machine build, or is that left to the user to build from the GitHub repository?</p>
+","2016-07-06 14:26:42","38233282","0","<musicbrainz>","1","0"
+"Parse XML (musicbrainz) In Python","<p>I am trying to import urls like this one (<a href=""http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8"" rel=""nofollow"">http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8</a>) into python and extract the value of the ""gender"".</p>
+
+<pre><code>import urllib2
+import codecs
+import sys
+import os
+from xml.dom import minidom
+import xml.etree.cElementTree as ET
+
+#urlbob = urllib2.urlopen('http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8')
+url = 'dylan.xml'
+
+#attempt 1 - using minidom
+xmldoc = minidom.parse(url)
+itemlist = xmldoc.getElementsByTagName('artist') 
+
+#attempt 2 - using ET
+tree = ET.parse('dylan.xml')
+root = tree.getroot()
+
+for child in root:
+    print child.tag, child.attrib 
+</code></pre>
+
+<p>I can't seem to get at gender either via the mini-dom stuff or the etree stuff. In its current form, the script returns</p>
+
+<pre><code>{http://musicbrainz.org/ns/mmd-2.0#}artist {'type': 'Person', 'id': '72c536dc-7137-4477-a521-567eeb840fa8'}
+</code></pre>
+","2014-11-16 23:24:26","","0","<python><xml><musicbrainz>","2","5"
+"Search for AcoustID on Musicbrainz","<p>Muscibrainz offers <a href=""http://acoustid.org/"" rel=""nofollow"">acoustID</a> fingerprints, e.g., <a href=""http://musicbrainz.org/recording/d486f8c5-e19d-4892-a808-4047cd05d786/fingerprints"" rel=""nofollow"">here</a></p>
+
+<p>However, i do not find a possibility to directly search for them (like it is possible for the <a href=""http://musicbrainz.org/search"" rel=""nofollow"">PUIDs</a> or <a href=""http://echoprint.musicbrainz.org/search"" rel=""nofollow"">echoprints</a>)</p>
+
+<p>Am I missing something?</p>
+
+<p>acoustid.org offers the information I want, but not as a Acoustid WebService.</p>
+
+<p>Example: given the fingerprint 
+<strong>453a8e75-ef90-4f31-a2b2-84494219bd3b</strong>
+I want the information provided by the following page:
+<a href=""http://acoustid.org/track/453a8e75-ef90-4f31-a2b2-84494219bd3b"" rel=""nofollow"">http://acoustid.org/track/453a8e75-ef90-4f31-a2b2-84494219bd3b</a></p>
+
+<p>(sidenote: I'm not interested in any fingerprint matching process, I just want all entries with a given acoustID)</p>
+","2013-03-22 13:45:03","15587096","5","<web-services><fingerprinting><audio-fingerprinting><musicbrainz>","3","3"
+"How do I calculate song popularity based on MusicBrainz ID?","<p>So I have 3 things for each song:</p>
+
+<pre><code>Name
+
+Artist
+
+MusicBrainz ID
+</code></pre>
+
+<p>How do I sort them by popularity?<br>
+What service can I use to match a song with it's 'stats'?  </p>
+
+<p>I was thinking of using YouTube, but I'm worried I'll get irrelevant results like parodies or lyrics videos etc.</p>
+
+<p>Is there any popular service (with active <code>API/Java library</code>) that I can use to get vital stats of a song (<code>plays, hits, votes, likes, shares</code>) whatever?</p>
+","2013-03-27 22:59:23","","3","<api><sorting><musicbrainz>","2","2"
+"Musicbrainz SQL database","<p>While searching for a music database I came across musicbrainz, I found a SQLite Musicbrainz database.</p>
+
+<p>You can find the database scheme <a href=""http://webhome.cs.uvic.ca/~thomo/schema.jpg"" rel=""nofollow"">here.</a></p>
+
+<p>and a file with create table statements and explanatory comments <a href=""http://webhome.cs.uvic.ca/~thomo/schema_with_comments.txt"" rel=""nofollow"">here.</a></p>
+
+<p>The problem is that I only need the artist names and their songs in my data base.</p>
+
+<p>I tried to create a new database with the artists and song names for hours yesterday, but i couldn't get it to work.</p>
+
+<p>What i'm trying to do is something like this:</p>
+
+<pre><code>Artist| Song |
+--------------
+Eminem|When i'm gone
+Eminem|Lose yourself
+The Eagles|Hotel California
+</code></pre>
+
+<p>Thanks everybody!</p>
+","2016-03-04 12:20:33","","0","<sql><database><sqlite3><musicbrainz>","1","2"
+"SQL: Take the oldest date from a table like [ date_year, date_month, date_day ]","<p>i have this table called RELEASE:</p>
+
+<pre><code>*Country, Album, Date_year, Date_month, Date_day*
+  Italy    Z      1940       2           27
+  Italy    Y      1992       11          22
+  Italy    X      1940       1           20
+  Italy    R      1998       null        null
+  France   W      1944       9           18
+  UK       L      1989       8           21
+  UK       P      1970       10          1
+  Germany  E      2002       null        null
+</code></pre>
+
+<p>I need to specify a SQL query that take the <strong>name of album</strong>, the <strong>name of country</strong> and the <strong>date (year, month, day)</strong> of the <strong>oldest album</strong>.</p>
+
+<p>(it's ok also if the values of month and day are null)</p>
+
+<p>I can't use <strong>LIMIT, OFFSET, ROWNUM</strong>... i can use only standard SQL constructs.</p>
+
+<p>I try to make this query but <strong>it isn't correct</strong>:</p>
+
+<pre><code>SELECT country, album, min(date_year), min(date_month), min(date_day)
+FROM release
+</code></pre>
+
+<hr>
+
+<p>The result it would be:</p>
+
+<pre><code> *Country, Album, Date_year, Date_month, Date_day*
+  Italy    X      1940       1           20
+</code></pre>
+
+<hr>
+
+<p>How i can solve? Thanks</p>
+","2017-07-13 14:03:04","","0","<mysql><sql><database><postgresql><musicbrainz>","2","5"
+"How to get musicbrainz track information from audio file","<p>Can anyone tell me how to get track information from the <a href=""http://musicbrainz.org/"" rel=""nofollow"">MusicBrainz</a> database from an audio file (mp3, wav, wma, ogg, etc...) using audio fingerprinting. I'm using MusicBrainz Sharp library, but any other library is ok.</p>
+
+<p>I've seen that you must use the libofa library, that you can't use MusicBrainz Sharp to get puid from the audio file, but I can't figure out how to use libofa with C#.</p>
+
+<p>Please show some examples and code snippets to help me, because I can't find them anywhere.</p>
+
+<p>Thanks in advance!</p>
+","2011-01-02 10:35:19","","3","<c#><audio><fingerprinting><audio-fingerprinting><musicbrainz>","2","0"
+"Get discography of an artist exactly like the overview page on musicbrainz","<p>I am trying to use the musicBrainz api for getting the discography of an artist using the following method: <code>http://www.musicbrainz.org/ws/2/release/?query=artist:eminem</code> but i get a lot of unsorted and repeated data. I know that i can use keywords (AND, OR, etc) but i do not really know how to sort it by date or filter repeated data. Is there a way to do this in the rest call or have i to implement these sort methods in my code?</p>
+","2014-01-09 04:00:43","21033702","2","<java><android><api><musicbrainz>","1","0"
+"Python JSON not breaking loop","<p>I am trying to use the MusicBrainz API via python and am having a harrowing time trying to figure out why my loop wont break after a certain condition is met. I am passing the duration of a song and the acoustic id via a URL that fetches JSON. I am not sure if the JSON is invaild, but am getting the formatted output to play with. The part where I am stuck is inspite of me telling the code to break when the duration of the song matches the duration of the returned JSON, it still continues to show the rest of the data that matched the duration. Also, I am getting a KeyError for one of the main data elements, which looks good to me! Please help!</p>
+
+<p>Python Code being used:</p>
+
+<pre><code>import urllib2
+import urllib
+import simplejson
+import json
+import pprint
+
+duration = 266
+output = 'AQABz0q6JJFknHgOHH0q9DyQw8lxIzmaLzl6HHyE7yO6G4dP9Mc3JDry4FJR5RfIvccWH0d_PD-O63gi9KTQPjme4-uDxl04hMqcQf0RfXgmKWDSDD8aF9dYTDl5hEPy46gnHY-iPEWZEWfw42
+
+-
+
+SIHZiQQ9xLR90ckzRw_mNez_aHZeeQnlIIdfxyHieBLl0HC_Y_Ajpo3lxnMf7DJUleJKGhk_Bw7mCvAqS53j1CE30BFdmYqeOL3pQ8vgeNAqzfKjMx_jRJ0dTMT_yZziuIE6ko1kSzcG7BMZzCU13JTglGZ9x
+
+pcVJKgjlHAlfnFGONw8uHo-xd8Pn46DGDMmeI-fx5Vid6LjwXCLKh2h-5IPy8LiP3iUsaoGU9PixE3_wZEcyqw0O_MPhiugffMcfxNSJJMcbfMqagtMDH9eP5-AfJF-OMMtRUTl4JWiebA-
+
+MnsazIzmDHP9QHU2DL-CTTMGHIfihXwqe6PjR_ugPnTlyXDmehGmCW5KDUHkO8Qg7HDPBJ8dP_MGlBHp-HD8uRuBewnoxvtCTwkvUCaeOH01MWA9ON0hupItyNJNSPELzZ-hFxAp1DXJ8nEolQu-
+
+PtGLwED_gmMfzG3fw9Hhx3mhe1Do-o5KmVIG1M8MTIdmP8D_MMagTUsaP9sd_WKg-H6eRejm-J4TOHHPyEFVPkN9Ri-HA_A6aHlcu4Tn6KHiM99iRujGe42iO48eP-0WTRoOToxb-
+
+o9nR99jR1EF_hImzrEEyJXyGiRnTwx8qo9E4H1VzPMKDvoMd-gjlLIS2C442UmhzDc-O-
+
+kVDIdePZ0dvorlwZbrw5McTP5i8Hc1jXEH0vDiEP9ilK7iUQ6qkY3qQPsNFNJoY462JL_gZoTlC10geTc5xqRPxDMWOivIOMj_e402RPEGu4R2ancKfww9YJfB3CdP34D6eHiG1FXPESRxcHf6hPfh6nJskZH
+
+Ke4DTW4w8-4wkf4sqHnkd6JCcuGl6SPCgZnMeYJiPuhbh1RGIeJMSN_3imwi4HeImeo5SOS7ij5HiMK7oQnhf0C-l0_KjUrPhx7_hxXDpC2IGmPMV_FT-
+
+Rq8aTAukX_BfU_EXOxXCTLMQlC89yPPnRZEGeC82kRGSgMzx6Isx0Ia4uPJEY9PLR9Hg04w90mEN-CfuONvrhH4ezDQ8TjEeYc9CeHmGqHD8qZ4dVnEc_41R0NAqPaj2aNQ-eIm1zI-dxZzme-
+
+HjQkuiLH36RM0j4oD8-EueDLjE8EvUyfBc-hhF-
+
+C8n4IH1QncELRoFTgjADFCCKdIOIBYQZ0UABgDAnsAGCQuGEAgwhwACGDBFgMIIAAQKsMIQY4QARQFAAiJGeEQOoBEgpEZxQAAEipDAOEYCEAU4AZAEBQAoYDGFAMGKIwIIRgIg4jiDFlIAAIEIEBMwwBJQkX
+
+hiohHEGIKAkcsIp4RAigAHBgPKSAKIIAoAxgJBjlhhkCIDAIAQkIgYAKSyQCDpCARIESWUAMYQ4YQGzGhhkADBAEOIEMAAhZRlQRgGkBBECMeAIQYAghxBAChAigANEIWKQcEbB5ZxlChGKACCAEKWEsIIyiw
+
+RiTAABgBNKAAIIQMQhJCCoTAgliAIAICYwAIRZowRgxCllDBOAAEGABQIRoQ0ABIFgHCEECSEUMhQBAhkDwABCBANIACSABMxoAYGEBFRCASBEGAMBEMAIxBQQABkkLALAAIaIYIwggoACShgEjLEKAQ0AQsY
+
+goBwAAImMFBBIQQUUQcgQARQI'
+data = {}
+data['client'] = '8XaBELgH'
+data['format'] = 'json'
+data['meta'] = '2'
+data['duration'] = str(duration)
+data['fingerprint'] = output
+resp = urllib2.urlopen('http://api.acoustid.org/v2/lookup', urllib.urlencode(data))
+str_to_load = resp.read()
+json = simplejson.loads(str_to_load)
+#pprint.pprint(json)
+for result in json['results']:
+    for recording in result['recordings']:
+        for track in recording['tracks']:
+            track_artist = ''
+            for artist in track['artists']:
+                try:
+                    track_artist += repr(artist['name']) + ' '
+                except:
+                    track_artist = ''
+            #print str(track['duration']) + '-' + track['medium']['release']['title'] + '-' + track['title'] + '-' + track_artist
+            if str(track['duration']) == str(duration):
+                print 'Matched:' + str(track['duration']) + '-' + track['medium']['release']['title'] + '-' + track['title'] + '-' + track_artist
+                break
+</code></pre>
+
+<p>Returned JSON:</p>
+
+<pre><code>{
+    ""status"": ""ok"",
+    ""results"": [{
+        ""recordings"": [{
+            ""duration"": 264,
+            ""tracks"": [{
+                ""duration"": 264,
+                ""position"": 7,
+                ""medium"": {
+                    ""release"": {
+                        ""id"": ""036ce98e-0397-4ddb-97ff-e6784fdd21a4"",
+                        ""title"": ""Live in Paris""
+                    },
+                    ""position"": 1,
+                    ""track_count"": 10,
+                    ""format"": ""CD""
+                },
+                ""artists"": [{
+                    ""id"": ""3cb25fb2-5547-4b05-adec-1a5e37830d46"",
+                    ""name"": ""Lionel Richie""
+                }],
+                ""title"": ""Sail On""
+            }],
+            ""id"": ""0083c88e-1ca2-484e-b1ff-d384358942bb""
+        }, {
+            ""duration"": 268,
+            ""tracks"": [{
+                ""duration"": 268,
+                ""position"": 12,
+                ""medium"": {
+                    ""release"": {
+                        ""id"": ""9c0a98e8-da23-49cf-a6ae-df27340deebb"",
+                        ""title"": ""Love Songs""
+                    },
+                    ""position"": 1,
+                    ""track_count"": 16,
+                    ""format"": ""CD""
+                },
+                ""artists"": [{
+                    ""id"": ""60d41417-feda-4734-bbbf-7dcc30e08a83"",
+                    ""name"": ""Diana Ross""
+                }, {
+                    ""id"": ""3cb25fb2-5547-4b05-adec-1a5e37830d46"",
+                    ""name"": ""Lionel Richie""
+                }],
+                ""title"": ""Endless Love""
+            }],
+            ""id"": ""07be8b05-a1cb-4e88-8217-2ef5e0dafcb3""
+        }, {
+            ""duration"": 267,
+            ""tracks"": [{
+                ""duration"": 267,
+                ""position"": 2,
+                ""medium"": {
+                    ""release"": {
+                        ""id"": ""a4c1dce4-0e16-483e-95de-aabff4378711"",
+                        ""title"": ""Top 40 Hitdossier 1981-1982""
+                    },
+                    ""position"": 1,
+                    ""track_count"": 20
+                },
+                ""artists"": [{
+                    ""id"": ""60d41417-feda-4734-bbbf-7dcc30e08a83"",
+                    ""name"": ""Diana Ross""
+                }, {
+                    ""id"": ""3cb25fb2-5547-4b05-adec-1a5e37830d46"",
+                    ""name"": ""Lionel Richie""
+                }],
+                ""title"": ""Endless Love""
+            }],
+            ""id"": ""1fb13442-b0e7-4891-97de-255ba7e8730f""
+        }, {
+            ""duration"": 263,
+            ""tracks"": [{
+                ""duration"": 263,
+                ""position"": 16,
+                ""medium"": {
+                    ""release"": {
+                        ""id"": ""add4c09f-b9f3-4e3f-b36b-22f30309ce2b"",
+                        ""title"": ""Steve Wright's Sunday Love Songs, Volume 2""
+                    },
+                    ""position"": 1,
+                    ""track_count"": 22,
+                    ""format"": ""CD""
+                },
+                ""artists"": [{
+                    ""id"": ""60d41417-feda-4734-bbbf-7dcc30e08a83"",
+                    ""name"": ""Diana Ross""
+                }, {
+                    ""id"": ""3cb25fb2-5547-4b05-adec-1a5e37830d46"",
+                    ""name"": ""Lionel Richie""
+                }],
+                ""title"": ""Endless Love""
+            }],
+            ""id"": ""20df4da3-005e-4bde-9337-46925e709110""
+        }, {
+            ""duration"": 264,
+            ""tracks"": [{
+                ""duration"": 264,
+                ""position"": 2,
+                ""medium"": {
+                    ""release"": {
+                        ""id"": ""d23d377b-b69a-424b-856c-b78dfde11feb"",
+                        ""title"": ""Always And Forever (disc 1)""
+                    },
+                    ""position"": 1,
+                    ""track_count"": 20,
+                    ""format"": ""CD""
+                },
+                ""artists"": [{
+                    ""id"": ""3cb25fb2-5547-4b05-adec-1a5e37830d46"",
+                    ""name"": ""Lionel Richie""
+                }],
+                ""title"": ""Endless Love""
+            }],
+            ""id"": ""2cf76055-5a41-4a39-82ba-611b7142ab91""
+        }, {
+            ""duration"": 265,
+            ""tracks"": [{
+                ""duration"": 265,
+                ""position"": 9,
+                ""medium"": {
+                    ""release"": {
+                        ""id"": ""3bc3d08b-7e50-47d0-951d-de95a10e1ee8"",
+                        ""title"": ""The Love Album II""
+                    },
+                    ""position"": 1,
+                    ""track_count"": 20,
+                    ""format"": ""CD""
+                },
+                ""artists"": [{
+                    ""id"": ""60d41417-feda-4734-bbbf-7dcc30e08a83"",
+                    ""name"": ""Diana Ross""
+                }, {
+                    ""id"": ""3cb25fb2-5547-4b05-adec-1a5e37830d46"",
+                    ""name"": ""Lionel Richie""
+                }],
+                ""title"": ""Endless Love""
+            }],
+            ""id"": ""33f02920-5832-490d-bf5f-3cce793925bf""
+        }....too big to display here..
+</code></pre>
+
+<p>Please dont mind me pasting the output here..</p>
+","2013-01-21 19:39:58","14446111","1","<python><json><musicbrainz>","1","0"
+"How Can I get all musicbrainz ids associated with an artist?","<p>Given a music brainz artist id (eg - Bob Dylan = 72c536dc-7137-4477-a521-567eeb840fa8 ), I can query music brainz xml web service for his/her tracks:</p>
+
+<p><a href=""http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8?inc=recordings"" rel=""nofollow"">http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8?inc=recordings</a></p>
+
+<p>The total ""count"" returned is 14036. Their site says that you can use ""offset"" for paging:
+<a href=""https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Paging"" rel=""nofollow"">https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Paging</a></p>
+
+<p>Though: 
+<a href=""http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8?inc=recordings&amp;offset=100"" rel=""nofollow"">http://musicbrainz.org/ws/2/artist/72c536dc-7137-4477-a521-567eeb840fa8?inc=recordings&amp;offset=100</a></p>
+
+<p>returns the same results. Can paging be used on includes? </p>
+","2014-12-08 20:41:58","27366917","1","<xml><api><http><music><musicbrainz>","1","0"
+"jquery loop conditional statement","<p>How do I write a conditional statement for a jquery $.each loop?  I tried to follow the suggestions at <a href=""https://stackoverflow.com/questions/13984962/is-there-conditional-looping-with-each-function-in-jquery"">Is there conditional looping with $.each function in jQuery</a> and other posts, however, I couldn't get it to work:</p>
+
+<pre><code>$.each((rgJson1[""release-groups""]), function(index, item) {  
+
+var workTitle = item.title;
+var pType = item['primary-type'];
+var frDate = item['first-release-date'];
+
+if (pType = ""Album"") {
+
+console.log(workTitle);
+
+}
+
+});
+</code></pre>
+
+<p>When I tried that, it set the pType variable to ""Album"".  So, I tried:</p>
+
+<pre><code>if (item['primary-type'] = ""Album"") {
+
+console.log(item.title);
+</code></pre>
+
+<p>But it still didn't work.  I also tried a variety of different combinations of brackets, quotes, and the like, but I haven't found a solution.</p>
+","2014-12-19 03:52:08","27559467","3","<javascript><jquery><musicbrainz>","1","0"
+"How do I figure out the disc numbers in a release result from py-musicbrainz2?","<p>The documentation for the Python musicbrainz2 library tells me that this is how I search for a release by disc id:</p>
+
+<pre><code>&gt;&gt;&gt; import musicbrainz2.webservice as ws
+&gt;&gt;&gt; q = ws.Query()
+&gt;&gt;&gt; filter = ws.ReleaseFilter(discId='8jJklE258v6GofIqDIrE.c5ejBE-')
+&gt;&gt;&gt; results = q.getReleases(filter=filter)
+&gt;&gt;&gt; results[0].score
+100
+&gt;&gt;&gt; results[0].release.title
+u'Under the Pink'
+</code></pre>
+
+<p>But for a double CD I get the same release (as it should be) but different tracks when I search for the disc ID for the two CDs. This is also as it should be, but I don't see a way to get the disc number from the result of the query. Is it there somewhere? I think it is there in the XML, as a ""medium"".</p>
+","2012-09-21 20:10:36","","1","<python><musicbrainz>","1","2"
+"Download image from Wikimedia","<p>I've read some documentation and after some research im not sure if there is an easy way to do this.</p>
+
+<p>I am using MusicBrainz to get an image of an artist. Which produces this URL </p>
+
+<p><a href=""https://commons.wikimedia.org/wiki/File:Michael_Jackson_in_1988.jpg"" rel=""nofollow noreferrer"">https://commons.wikimedia.org/wiki/File:Michael_Jackson_in_1988.jpg</a></p>
+
+<p>I would like to download the image (<strong>which i have worked out</strong>) but i dont know how or what the correct procedure would be?</p>
+
+<p>I have read a few links and all seem to be pretty dated including: </p>
+
+<p><a href=""https://stackoverflow.com/questions/3615800/download-image-from-the-site-in-net-c"">Download image from the site in .NET/C#</a></p>
+
+<p>which doesnt answer my question as i already have a way of downloading the image. What im after in this case is a way of getting to the image URL using the above link which contains the download links.</p>
+
+<p>I did read a link which is targeting an API but again that was dated and ready the help pages didnt mention this API (so it could have been third party).</p>
+
+<p>I have everything to download the image, its just getting the correct URL which can be found on the link i posted above but i dont know how to extract the URL?</p>
+","2015-04-01 17:34:46","29564202","0","<c#><asp.net><.net><musicbrainz>","1","4"
+"download cover art from musicbrainz with java","<p>I am struggling for a couple of hours now on how to link a discid to a musicbrainz mbid.</p>
+
+<p>So, using dietmar-steiner / JMBDiscId </p>
+
+<pre><code>JMBDiscId discId = new JMBDiscId();
+
+if (discId.init(PropertyFinder.getProperty(""libdiscid.path"")))
+{
+    String musicBrainzDiscID = discId.getDiscId(PropertyFinder.getProperty(""cdrom.path""));
+}
+</code></pre>
+
+<p>or  musicbrainzws2-java </p>
+
+<pre><code>Disc controller = new Disc();
+String drive = PropertyFinder.getProperty(""cdrom.path""); 
+
+try {
+    DiscWs2 disc =controller.lookUp(drive);
+    log.info(""DISC: "" + disc.getDiscId() + "" match: "" + disc.getReleases().size() + "" releases"");
+....
+</code></pre>
+
+<p>I can extract a discid for freedb or musicbrainz easily (more or less), but I have not found a way on calculating the id I that I need to download cover art via the CoverArtArchiveClient from last.fm.</p>
+
+<pre><code>CoverArtArchiveClient client = new DefaultCoverArtArchiveClient();
+
+try
+{
+  UUID mbid = UUID.fromString(""mbid to locate release"");
+  fm.last.musicbrainz.coverart.CoverArt coverArt = client.getByMbid(mbid);
+</code></pre>
+
+<p>Theoretically, I assume, I could you the data collected by musicbrainzws2-java to trigger a search, and then use the mbid from the result ... but that cannot be the best option to do.</p>
+
+<p>I am happy about any push into the right direction...</p>
+
+<p>Cheers,
+Ed.</p>
+","2014-02-02 16:39:40","","0","<java><albumart><musicbrainz>","1","0"
+"musicbrainz api get all release groups and release dates","<p>How do I get ALL release groups and release dates for an artist in one call with the musicbrainz api?  The closest I've been able to come to doing this is by using:</p>
+
+<pre><code>http://musicbrainz.org/ws/2/release-group?query=arid:494e8d09-f85b-4543-892f-a5096aed1cd4&amp;fmt=json
+</code></pre>
+
+<p>However, some of the release groups are not there.  For example, using the above call, the ""EP"", ""Single + Remix"" and some of the unofficial releases are not showing up.  Basically, I'd like to be able to produce the same list that musicbrainz produces when you go to an artist's main page for ""all"" releases:</p>
+
+<pre><code>https://musicbrainz.org/artist/494e8d09-f85b-4543-892f-a5096aed1cd4?all=1
+</code></pre>
+
+<p>Also, the api call above doesn't return release dates.  Any suggestions?  Are these bugs?  Where would be the best place to report it?</p>
+","2014-12-17 13:22:32","27545178","0","<api><musicbrainz>","2","0"
+"Best Way to Parse this XML File","<p>I am trying to parse the XML file that I retreive from the following URL using an Http Request in Android:</p>
+
+<p><a href=""http://www.musicbrainz.org/ws/2/recording/?query=kick%20AND%20artist:inxs"" rel=""nofollow"">http://www.musicbrainz.org/ws/2/recording/?query=kick%20AND%20artist:inxs</a></p>
+
+<p>What would be the best way to parse it? I need to find the artist name, the album title and release id. I have been trying to use the method specified here: </p>
+
+<p><a href=""http://developer.android.com/reference/org/xmlpull/v1/XmlPullParser.html"" rel=""nofollow"">http://developer.android.com/reference/org/xmlpull/v1/XmlPullParser.html</a></p>
+
+<p>But it it turning out to be really ineffecient. Any suggestion for a library or an easier method I can use to retrieve the required information?</p>
+
+<p>My code so far is as follows:</p>
+
+<pre><code>public List parse(InputStream in) throws XmlPullParserException, IOException {
+    try {
+        XmlPullParser parser = Xml.newPullParser();
+        parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+        parser.setInput(in, null);
+        parser.nextTag();
+        return readFeed(parser);
+    } finally {
+        in.close();
+    }
+}
+
+private List readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
+    List entries = new ArrayList();
+
+    parser.require(XmlPullParser.START_TAG, ns, ""metadata"");
+    Log.i(""XMLParser"", ""metadata"");
+    while (parser.next() != XmlPullParser.END_TAG) {
+        if (parser.getEventType() != XmlPullParser.START_TAG) {
+            continue;
+        }
+        String name = parser.getName();
+        // Starts by looking for the entry tag
+        if (name.equals(""recording-list"")) {
+            Log.i(""XMLParser"", ""recording-list"");
+            entries.add(readRecordingList(parser));
+        } else {
+            skip(parser);
+        }
+    }  
+    return entries;
+}
+
+private Recording readRecordingList(XmlPullParser parser) throws XmlPullParserException, IOException {
+    parser.require(XmlPullParser.START_TAG, ns, ""recording-list"");
+    Recording recording=new Recording(null,null,null,null);
+
+    while (parser.next() != XmlPullParser.END_TAG) {
+        if (parser.getEventType() != XmlPullParser.START_TAG) {
+            continue;
+        }
+        String name = parser.getName();
+        if (name.equals(""recording"")) {
+            Log.i(""XMLParser"", ""recording"");
+            recording = readRecording(parser);
+        } else {
+            skip(parser);
+        }
+    }
+    return recording;
+}
+
+private Recording readRecording(XmlPullParser parser) throws XmlPullParserException, IOException {
+    parser.require(XmlPullParser.START_TAG, ns, ""recording"");
+    Recording recording=new Recording(null,null,null,null);
+    String albumTitle=null;
+    String artistName=null;
+
+    while (parser.next() != XmlPullParser.END_TAG) {
+        if (parser.getEventType() != XmlPullParser.START_TAG) {
+            continue;
+        }
+        String name = parser.getName();
+        Log.i(""XMLParserNodeName"", name);
+        if (name.equals(""title"")) {
+            Log.i(""XMLParser"", ""title"");
+            albumTitle=readTitle(parser);
+            Log.i(""XMLParser"", albumTitle);
+            //recording = readRecording(parser);
+        }else if(name.equals(""name"")){ 
+            Log.i(""XMLParser"", ""name"");
+            name=readArtistName(parser);
+            Log.i(""XMLParser"", name);
+        }else {
+            skip(parser);
+        }
+    }
+    return recording;
+}
+
+
+private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
+    if (parser.getEventType() != XmlPullParser.START_TAG) {
+        throw new IllegalStateException();
+    }
+    int depth = 1;
+    while (depth != 0) {
+        switch (parser.next()) {
+        case XmlPullParser.END_TAG:
+            depth--;
+            break;
+        case XmlPullParser.START_TAG:
+            depth++;
+            break;
+        }
+    }
+ }
+
+private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
+    String result = """";
+    if (parser.next() == XmlPullParser.TEXT) {
+        result = parser.getText();
+        parser.nextTag();
+    }
+    return result;
+}
+
+private String readTitle(XmlPullParser parser) throws IOException, XmlPullParserException {
+    parser.require(XmlPullParser.START_TAG, ns, ""title"");
+    String title = readText(parser);
+    parser.require(XmlPullParser.END_TAG, ns, ""title"");
+    return title;
+}
+
+private String readArtistName(XmlPullParser parser) throws IOException, XmlPullParserException {
+    parser.require(XmlPullParser.START_TAG, ns, ""name"");
+    String name = readText(parser);
+    parser.require(XmlPullParser.END_TAG, ns, ""name"");
+    return name;
+}
+
+public static class Recording {
+
+
+        public final String recordingTitle;
+        public final String releaseTitle;
+        public final String releaseID;
+        public final String artistName;
+
+        public Recording(String recordingTitle, String releaseTitle,
+                String releaseID, String artistName) {
+            this.recordingTitle = recordingTitle;
+            this.releaseTitle = releaseTitle;
+            this.releaseID = releaseID;
+            this.artistName = artistName;
+        }    
+}
+</code></pre>
+
+<p>} </p>
+
+<p>Basically this is an adaptation from the XML Pull Parser Tutorial in Android but I want to avoid writing so much code each node and the xml file has a lot of them. I think I would prefer XML Pull Parser over DOM so that I don't consume a lot of memory.</p>
+","2014-01-12 23:06:03","","0","<android><xml><musicbrainz>","1","3"
+"Access Violation while parsing XML in Delphi XE2","<p>I'm trying to parse a MusicBraninz XML file in Delphi XE2 using the following code:</p>
+
+<pre><code>webquery := 'http://www.musicbrainz.org/ws/2/recording/?query='+escape(tracktitle)+'&amp;artist:'+escape(ArtistTitle);
+
+Log('WebQuery: ' + webquery, 0);
+
+begin
+  XMLDoc:= TXMLDocument.Create(nil);
+  XMLDoc.FileName := webQuery;
+  XMLDoc.Active := True;
+
+  Log('Report: ' + XMLDoc.XML.Text, 0);
+
+
+   StartItemNode := XMLDoc.DocumentElement.ChildNodes.First.ChildNodes.FindNode('release-list') ;
+
+   ANode := StartItemNode;
+   repeat
+     Result.Album := ANode.ChildNodes['title'].Text;  &lt;-- Access Violation
+     Result.Status:= ANode.ChildNodes['status'].Text;
+
+     ANode := ANode.NextSibling;
+   until ANode = nil;
+
+end;
+</code></pre>
+
+<p>The XML file is fetched correctly and looks like what's below:</p>
+
+<pre><code>&lt;metadata xmlns=""http://musicbrainz.org/ns/mmd-2.0#"" xmlns:ext=""http://musicbrainz.org/ns/ext#-2.0""&gt;
+&lt;recording-list offset=""0"" count=""1""&gt;
+&lt;recording ext:score=""100"" id=""a399eec1-d45d-4505-b475-ead0da6cad17""&gt;
+&lt;title&gt;Mestecăniș&lt;/title&gt;
+&lt;length&gt;359000&lt;/length&gt;
+&lt;artist-credit&gt;
+&lt;name-credit&gt;
+&lt;artist id=""8fb78a16-0cba-4175-8c92-d9645dfb007d""&gt;
+&lt;name&gt;Bucovina&lt;/name&gt;
+&lt;sort-name&gt;Bucovina&lt;/sort-name&gt;
+&lt;/artist&gt;
+&lt;/name-credit&gt;
+&lt;/artist-credit&gt;
+&lt;release-list&gt;
+&lt;release id=""22b00afc-86ea-445a-8805-b6bfa33da74e""&gt;
+&lt;title&gt;Duh&lt;/title&gt;
+&lt;status&gt;Official&lt;/status&gt;
+&lt;release-group type=""EP"" id=""4e8fb87c-3760-48c1-a3d7-88e7a2c839fa""&gt;
+&lt;primary-type&gt;EP&lt;/primary-type&gt;
+&lt;/release-group&gt;
+&lt;date&gt;2010&lt;/date&gt;
+&lt;country&gt;RO&lt;/country&gt;
+&lt;medium-list&gt;
+&lt;track-count&gt;5&lt;/track-count&gt;
+&lt;medium&gt;
+&lt;position&gt;1&lt;/position&gt;
+&lt;format&gt;CD&lt;/format&gt;
+&lt;track-list offset=""3"" count=""5""&gt;
+&lt;track&gt;
+&lt;number&gt;4&lt;/number&gt;
+&lt;title&gt;Mestecăniș&lt;/title&gt;
+&lt;length&gt;359000&lt;/length&gt;
+&lt;/track&gt;
+&lt;/track-list&gt;
+&lt;/medium&gt;
+&lt;/medium-list&gt;
+&lt;/release&gt;
+&lt;/release-list&gt;
+&lt;/recording&gt;
+&lt;/recording-list&gt;
+&lt;/metadata&gt;
+</code></pre>
+
+<p>My question is: am I doing anything wrong here? All variables are declared and initialized OK.</p>
+
+<p>Thanks,</p>
+","2012-10-06 12:16:10","12761791","1","<xml><delphi><delphi-xe2><musicbrainz>","1","6"
+"MusicBrainz SQL query","<p>I am using the <a href=""http://musicbrainz.org"" rel=""nofollow"">musicbrainz.org</a> postgresql database, which I have installed locally and have accessed via pgAdmin.</p>
+
+<p>The database is a list of music artists and associated criteria. <a href=""http://wiki.musicbrainz.org/-/images/5/52/ngs.png"" rel=""nofollow"">Here</a> is the schema.</p>
+
+<p>It is possible to list various relationships that an artist might have. E.g. <a href=""http://musicbrainz.org/artist/79239441-bfd5-4981-a70c-55c3f15c1287/relationships"" rel=""nofollow"">Here</a> is a link to the relationships held for Madonna, which includes a link to Madonna's wikipedia page and her twitter handle amongst others.</p>
+
+<p>How can I create a SQL query that would output all relationships for a given artist? I have tried:</p>
+
+<pre><code>SELECT 
+  url.url, 
+  artist.name
+FROM 
+  musicbrainz.artist, 
+  musicbrainz.url, 
+  musicbrainz.link
+WHERE 
+  url.id = artist.id
+ORDER BY
+  url.url ASC;
+</code></pre>
+
+<p>However, these links do not correlate with the correct artist. Am I using the wrong key?</p>
+","2015-01-10 14:37:47","27882110","0","<postgresql><musicbrainz>","1","1"
+"How can you access the original tag or filename text in a mp3 with a MusicBrainz: Picard plugin?","<p>I am trying to access the filename or MetaData I have added to my music over the years. (Live), (Demo), (Live: In Athens), (Acoustic), (Live In Las Vegas 2005), (Metallica Cover), (Bonus Track), etc. I've done this to distinguish between tracks easily.  </p>
+
+<p>I an going through trying to fix my music and organize/tag it better with MusicBrainz Picard. But Picard doesn't allow access to the original Tags, or Filename. Relying only on what is pulled from their database. (As you can see my info isn't standard. and it's just for me and my own personal collection, so most of it, would be useless to add to their database)</p>
+
+<p>So one of the Forum Admins/Programmers (I think), Suggested that maybe it was possible to do this through a plugin.</p>
+
+<p>I've never programmed in Python, and don't know the first thing about it. lately i've barely been getting into RegEx. But have a Fairly decent, though not advanced understanding of that. </p>
+
+<p>Now, Ideally I'd like to check the original metadata if possible, and then check the filename. and pull out anything in () and save it to a Several Variables in the file as they are there: ExtraInfo1, ExtraInfo2, etc. then check each against the title to make sure it's not already in the title as sometimes the titles themselves have parentheses in their titles. then if not, be able to add them back to the title. to tag and rename them.</p>
+
+<p>I did find this plugin, which pulls information out of the title and moves it to the version tag. So that is almost exactly what i'm looking for, except instead of taking it from the Title tag, i'd like to take it from the original title tag, or the filename. then add it to the new Title tag.</p>
+
+<p>Could someone maybe help me with this?</p>
+
+<p>here's the plugin I found:</p>
+
+<pre><code>PLUGIN_NAME = 'Move metadata to version tag'
+PLUGIN_AUTHOR = 'Jacob Rask'
+PLUGIN_DESCRIPTION = 'Moves song metadata such as ""demo"", ""live"" from title and titlesort to version tag.'
+PLUGIN_VERSION = ""0.1.4""
+PLUGIN_API_VERSIONS = [""0.12"", ""0.15""]
+from picard.metadata import register_track_metadata_processor
+import re
+_p_re = re.compile(r""\(.*?\)"")
+_v_re = re.compile(r""((\s|-)?(acoustic|akustisk|album|bonus|clean|club|cut|C=64|dance|dirty|disco|encore|extended|inch|maxi|live|original|radio|redux|rehearsal|reprise|reworked|ringtone|[Ss]essions?|short|studio|take|variant|version|vocal)(\s|-)?|.*?(capp?ella)\s?|(\s|-)?(alternat|demo|dub|edit|ext|fail|instr|long|orchestr|record|remaster|remix|strument|[Tt]ape|varv).*?|.*?(complete|mix|inspel).*?)"")
+def add_title_version(tagger, metadata, release, track):
+if metadata[""titlesort""]:
+title = metadata[""titlesort""]
+else:
+title = metadata[""title""]
+pmatch = _p_re.findall(title)
+if pmatch: # if there's a parenthesis, investigate
+pstr = pmatch[-1][1:-1] # get last match and strip paranthesis
+vmatch = _v_re.search(pstr)
+if vmatch:
+metadata[""titlesort""] = re.sub(""\("" + pstr + ""\)"", """", title).strip()
+metadata[""title""] = re.sub(""\("" + pstr + ""\)"", """", title).strip()
+metadata[""version""] = pstr
+register_track_metadata_processor(add_title_version)
+</code></pre>
+
+<p>Thanks,
+-Dev</p>
+","2015-04-06 00:24:31","","0","<python><regex><plugins><musicbrainz>","0","5"
+"PHP MusicBrainz get the first release date","<p>i am trying to get the first release date of a song using Musicbrainz. To get this i am using the mikealmond musicBrainz library.</p>
+
+<p>The problem i have is that when i try to execute exactly the same code as in this example (<a href=""https://github.com/mikealmond/MusicBrainz/blob/master/examples/first-recording-search.php"" rel=""nofollow"">https://github.com/mikealmond/MusicBrainz/blob/master/examples/first-recording-search.php</a>) i always get an authentication error.</p>
+
+<pre><code>Client error response [status code] 401 [reason phrase] Unauthorized [url] http://musicbrainz.org/ws/2/artist/0383dadf-2a4e-4d10-a46a-e9e041da8eb3?inc=releases+recordings+release-groups+user-ratings&amp;fmt=json
+</code></pre>
+
+<p>Therefore i tried to add my username and password to the request:</p>
+
+<pre><code>$brainz = new MusicBrainz(new GuzzleHttpAdapter(new Client()),'myusername','mypassword'); 
+$brainz-&gt;setUserAgent('myapplicationname', '0.2', 'http://localhost:443/');
+</code></pre>
+
+<p>If i call the url in the error message manually and enter my username and password i get the array i expect.</p>
+
+<p>I just had a discovery: If I removed -<code>""+ user - ratings""</code>- it does not require authentication. </p>
+
+<p>Therefore i commented the lines with <code>""user - ratings""</code> in my project </p>
+
+<p><strong>Now i think it works, but the performance of the query is very bad and often i get Error 503 // The MusicBrainz web server is currently busy. Please try again later. //
+  It takes a few seconds just for one song. Does someone know if this is normal or if i still have some kind of mistake?</strong> </p>
+
+<p>My code....</p>
+
+<pre><code>//Create new MusicBrainz object
+    $brainz = new MusicBrainz(new GuzzleHttpAdapter(new Client()), 'username', 'password');
+    $brainz-&gt;setUserAgent('applicationname', '0.2', 'http://localhost:443/');
+
+    // set defaults
+    $artistId = null;
+    $songId = null;
+    $lastScore = null;
+    $firstRecording = array(
+        'releaseDate' =&gt; new DateTime()
+    );
+    // Set the search arguments to pass into the RecordingFilter
+    $args = array(
+        ""recording"" =&gt; 'we will rock you',
+        ""artist"" =&gt; 'Queen',
+    );
+    try {
+        // Find all the recordings that match the search and loop through them
+        $recordings = $brainz-&gt;search(new RecordingFilter($args));
+</code></pre>
+
+<hr>
+
+<h2>$recorings i can print and in the loop i can print each $recording, but the error comes when i extract the informations</h2>
+
+<hr>
+
+<pre><code> /** @var $recording \MusicBrainz\Recording */
+            foreach ($recordings as $recording) {
+                // if the recording has a lower score than the previous recording, stop the loop.
+                // This is because scores less than 100 usually don't match the search well
+                if (null != $lastScore &amp;&amp; $recording-&gt;getScore() &lt; $lastScore) {
+                    break;
+                }
+                $lastScore = $recording-&gt;getScore();
+                $releaseDates = $recording-&gt;getReleaseDates();
+                $oldestReleaseKey = key($releaseDates);
+                if (strtoupper($recording-&gt;getArtist()-&gt;getName()) == strtoupper($args['artist'])
+                    &amp;&amp; $releaseDates[$oldestReleaseKey] &lt; $firstRecording['releaseDate']
+                ) {
+                    $firstRecording = array(
+                        'releaseDate' =&gt; $recording-&gt;releases[$oldestReleaseKey]-&gt;getReleaseDate()
+                    );
+                }
+            }
+            pr($firstRecording);
+        } catch (Exception $e) {
+            pr($e-&gt;getMessage());
+        }
+</code></pre>
+","2016-02-18 15:50:09","","3","<php><musicbrainz>","0","3"
+"Finding names to songs in .NET","<p>I have a collection of mp3, wma's etc that may or may not have the correct song information. </p>
+
+<p>Is there a service or an API that I can use in .NET to find the correct song title / artist for each file?</p>
+","2010-09-03 22:57:27","3640249","2","<c#><.net><mp3><music><musicbrainz>","3","1"
+"Retrieve list from Musicbrainz of all band members who played with Miles Davis","<p>I want to build a graph of all musicians who played with Miles Davis where the nodes are musicians, and the edges are releases or release groups.  But I'm having a lot more trouble than I expected associating a full list of artists with a release. </p>
+
+<p>Building on stuff posted here, this seemed a good guess:</p>
+
+<pre><code>https://musicbrainz.org/ws/2/release-group?artist=561d854a-6a28-4aa7-8c99-323e6ce46c2a&amp;inc=artist-rels&amp;limit=100&amp;offset=300
+</code></pre>
+
+<p>but the outcome doesn't seem to include the artist relationships.  Similarly:</p>
+
+<pre><code>https://musicbrainz.org/ws/2/release?artist=561d854a-6a28-4aa7-8c99-323e6ce46c2a&amp;inc=artist-rels&amp;limit=100&amp;offset=300
+</code></pre>
+
+<p>while I get more information, I'm not getting names and ids of anyone besides Miles on each release.</p>
+
+<p>I'm clearly missing something, what's the best way to proceed?</p>
+
+<p>would it be easier to do this through the discogs API?</p>
+","2017-07-26 20:05:15","","0","<musicbrainz><discogs-api>","0","0"
+"Music APIs: Way to find most downloaded?","<p>I'm trying to find the most popular songs EVER for an artist. I find that for a given API the popularity is judged by an artists most recent songs. I'm trying to find a way to get a ranked list of the most popular songs at any time by an artist, but I'm having trouble. I figure total digital downloads might be a good index of this but I can't find that information.</p>
+
+<p>So far I've used the itunes api, 7-digital, and musicbrainz, but I couldn't find what I wanted. </p>
+
+<p>Anyone have any luck with this?</p>
+","2013-03-03 15:58:05","","0","<api><itunes><music><musicbrainz>","2","0"
+"CDDB API for a Java application","<p>I'm planning to make a Java application for tagging mp3 files. My first choice was Discogs but I have problems accessing the covers: in the JSON response they are too small, and i get <code>HTTP 403 - Forbidden</code> from those that appear on the web. So I've seen some alternatives like <code>freedb</code>, <code>MusicBrainz</code> and <code>AMG LASSO</code>. So I would like to know from other users who have worked with one of these tools. Thanks.</p>
+","2014-01-02 18:07:26","","1","<java><api><mp3><musicbrainz>","1","0"
+"How to get work data by recording ID using MusicBrainz Json API?","<p>Many tracks in my library have no language information. It appears that MusicBrainz does not provide language information for a recording, only for a work.</p>
+
+<p>How can I get a work ID if I know recording ID?</p>
+","2016-04-14 19:21:22","36632235","0","<musicbrainz>","1","0"
+"Understanding the type of out put from Musicbrainz cpan module?","<p>Im using the Musicbrainz cpan module to look up an album but Im having a few issues trying to decipher the output I recieve. I used data::Dumper to have a look at it, and it appears to be a hash or array of some sort but when I try to check the type I run into problems.</p>
+
+<pre><code>my $ws = WebService::MusicBrainz::Release-&gt;new();
+
+my $response = $ws-&gt;search({ TITLE =&gt; 'ok computer' });
+
+
+if (ref($response) eq ""REF"" || ref($response) eq ""SCALAR"" || ref($response) eq ""ARRAY"" || ref($response) eq ""HASH"" || ref($response) eq ""CODE"" || ref($response) eq ""GLOBE"")
+
+ {
+ print ""\n What sort of thing is it? \n"";
+ }
+</code></pre>
+
+<p>Thanks</p>
+","2011-03-20 02:07:20","","0","<arrays><perl><hash><reference><musicbrainz>","2","0"
+"How to apply the foreign key constraints to the musicbrainz database?","<p>I’m having difficulty applying the foreign keys to the postgres musicbrainz database.<br>
+I used these excellent instructions to get me this far:<br>
+<a href=""https://bitbucket.org/lalinsky/mbslave"" rel=""nofollow""><a href=""https://bitbucket.org/lalinsky/mbslave"" rel=""nofollow"">https://bitbucket.org/lalinsky/mbslave</a></a><br>
+I have all of the data loaded in postgres.<br>
+I have primary keys and indexes created.  </p>
+
+<p>However, when I try to apply the foreign keys, I get this strange error:  </p>
+
+<pre><code>musicbrainz@ip-10-217-5-18:/home/ubuntu/mbslave$ psql &lt; sql/CreateFKConstraints.sql 
+ERROR:  insert or update on table ""annotation"" violates foreign key constraint ""annotation_fk_editor""
+DETAIL:  Key (editor)=(51298) is not present in table ""editor"".
+</code></pre>
+
+<p>It seems to be erroring on the very first line of the SQL script:</p>
+
+<pre><code>ALTER TABLE annotation
+   ADD CONSTRAINT annotation_fk_editor
+   FOREIGN KEY (editor)
+   REFERENCES editor(id);
+</code></pre>
+
+<p>I’m new to postgres and am having difficulty understanding this error message.</p>
+
+<p>The first line leads me to believe that the foreign key constraint has already been created.
+But I don’t think it has.</p>
+
+<pre><code>musicbrainz=&gt; SELECT
+musicbrainz-&gt;     tc.constraint_name, tc.table_name, kcu.column_name, 
+musicbrainz-&gt;     ccu.table_name AS foreign_table_name,
+musicbrainz-&gt;     ccu.column_name AS foreign_column_name 
+musicbrainz-&gt; FROM 
+musicbrainz-&gt;     information_schema.table_constraints AS tc 
+musicbrainz-&gt;     JOIN information_schema.key_column_usage AS kcu
+musicbrainz-&gt;       ON tc.constraint_name = kcu.constraint_name
+musicbrainz-&gt;     JOIN information_schema.constraint_column_usage AS ccu
+musicbrainz-&gt;       ON ccu.constraint_name = tc.constraint_name
+musicbrainz-&gt; WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='annotation';
+ constraint_name | table_name | column_name | foreign_table_name | foreign_column_name 
+-----------------+------------+-------------+--------------------+---------------------
+(0 rows)
+</code></pre>
+
+<p>The second line in the error message is confusing.
+It sounds like it can’t find the id column in the editor table.
+But it is there.</p>
+
+<pre><code>musicbrainz=&gt; \d editor
+                                      Table ""musicbrainz.editor""
+       Column        |           Type           |                      Modifiers                      
+---------------------+--------------------------+-----------------------------------------------------
+ id                  | integer                  | not null default nextval('editor_id_seq'::regclass)
+ name                | character varying(64)    | not null
+ privs               | integer                  | default 0
+ email               | character varying(64)    | default NULL::character varying
+ website             | character varying(255)   | default NULL::character varying
+ bio                 | text                     | 
+ member_since        | timestamp with time zone | default now()
+ email_confirm_date  | timestamp with time zone | 
+ last_login_date     | timestamp with time zone | default now()
+ edits_accepted      | integer                  | default 0
+ edits_rejected      | integer                  | default 0
+ auto_edits_accepted | integer                  | default 0
+ edits_failed        | integer                  | default 0
+ last_updated        | timestamp with time zone | default now()
+ birth_date          | date                     | 
+ gender              | integer                  | 
+ area                | integer                  | 
+ password            | character varying(128)   | not null
+ ha1                 | character(32)            | not null
+ deleted             | boolean                  | not null default false
+Indexes:
+    ""editor_pkey"" PRIMARY KEY, btree (id)
+    ""editor_idx_name"" UNIQUE, btree (lower(name::text))
+</code></pre>
+
+<p>Suggestions?</p>
+","2014-08-29 00:50:53","25560193","0","<postgresql><musicbrainz>","1","0"
+"returning band members from musicbrainz","<p>I've a reasonable amount of experience using javascript but never made a call to an external database, so this is new ground for me. I'm trying to return the members of a band as a json object from the Musicbrainz database. At the moment it doesn't matter which group so lets just say Nirvana as thats one of their examples. I've tried this:</p>
+
+<pre><code>var url = ""http://musicbrainz.org/ws/2/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da?inc=url-rels&amp;fmt=json"";
+  d3.json(url, function (json) {
+    console.log(json)
+
+  });
+</code></pre>
+
+<p>But that doesn't give me what I thought. I expected that the relationship array would contain the band members, start and end date etc, but thats not so. I get this back and the relationship array contains other data such as TV appearances</p>
+
+<pre><code>(index):19 Objectarea: Objectbegin_area: Objectcountry: ""US""disambiguation: ""90s US grunge band""end_area: nullgender: nullgender-id: nullid: ""5b11f4ce-a62d-471e-81fc-a69a8278c7da""ipis: Array[0]isnis: Array[1]life-span: Objectname: ""Nirvana""relations: Array[38]0: Object1: Object2: Object3: Object4: Object5: Object6: Object7: Object8: Object9: Object10: Object11: Object12: Object13: Object14: Object15: Object16: Object17: Object18: Object19: Object20: Object21: Object22: Object23: Object24: Object25: Object26: Object27: Object28: Object29: Object30: Object31: Object32: Object33: Object34: Object35: Object36: Object37: Objectlength: 38__proto__: Array[0]sort-name: ""Nirvana""type: ""Group""type-id: ""e431f5f6-b5d2-343d-8b36-72607fffb74b""__proto__: Object
+</code></pre>
+
+<p>Could anyone help me out please or point me in the direction. I'm working in javascript.</p>
+
+<p>Thanks</p>
+
+<p>Thanks</p>
+","2017-01-13 18:04:16","41641147","1","<javascript><d3.js><musicbrainz>","2","1"
+"How to compare two releases in a MusicBrainz Picard plugin?","<p>I have been trying to write a Picard plugin. My idea is for it to automatically insert transliterated track listings as comments for releases with track titles written in non-Latin scripts. MusicBrainz contains these transliterations as pseudo-releases existing in parallel with the actual releases. For <a href=""https://musicbrainz.org/release/1492ce2b-a9ee-4aa3-b9e2-b18ad093bc51"" rel=""nofollow"">a given release</a>, for example, I would have to first read the relation for the ID of the related release. I would then have to transfer the titles of those tracks into the comment field of my files. In pseudocode:</p>
+
+<pre><code>pseudo_release = actual_release.getTransliteration() # As indicated in a relationship
+i = 1
+while i &lt;= actual_release.numTracks():
+    actual_release.getTrack(i).setComment(pseudo_release.getTrack(i).getTitle())
+    i++
+</code></pre>
+
+<p>The first line is what I'm not sure how to do. Since the relation is not available as a Picard variable, it can't be accessed by any way indicated in the API.</p>
+
+<p>I've been looking through the source of Picard and also <a href=""http://python-musicbrainzngs.readthedocs.org/en/latest/#"" rel=""nofollow"">the standalone web service</a> but haven't been able to find anything. Is this at all possible, and if so how do I do it?</p>
+","2014-07-07 21:09:31","24637673","0","<python><metadata><music><tagging><musicbrainz>","2","0"
+"MusicBrainz API search provides different results from web page","<p>I'm trying to work with <em>MusicBrainz</em>'s API but I'm having some issues with the results of the <em>search</em> endpoint.</p>
+
+<p>Let's have an example searching for <em>Who's Who? - SIZE020 - Klack (Mix Two)</em></p>
+
+<p>Searching from their site leads to <a href=""https://musicbrainz.org/search?query=Who%27s%20Who%3F%20-%20SIZE020%20-%20Klack%20%28Mix%20Two%29&amp;type=recording"" rel=""nofollow"">this page</a>, with an almost correct first result (probably because the 100% correct infos are not on the database at all).</p>
+
+<p>Using the API leads to different situations which are causing some issues.
+I made some different attempts with no success, even if I think I know enough of <em>Lucene</em>'s syntax to write a successful query for this service.</p>
+
+<ul>
+<li><a href=""http://musicbrainz.org/ws/2/recording?query=%22Who%27s%20Who?%20-%20SIZE020%20-%20Klack%20%28Mix%20Two%29%22"" rel=""nofollow"">Take 1</a> - empty results with the query <em>""Who's Who? - SIZE020 - Klack (Mix Two)""</em></li>
+<li><a href=""http://musicbrainz.org/ws/2/recording?query=Who%27s%20Who%3F%20-%20SIZE020%20-%20Klack%20%28Mix%20Two%29"" rel=""nofollow"">Take 2</a> - completely wrong results with the query <em>Who's+Who%3F+-+SIZE020+-+Klack+(Mix+Two)</em> (same result with the unescaped <em>?</em> character)</li>
+<li><a href=""http://musicbrainz.org/ws/2/recording?query=%22Who%27s%22%20AND%20%22Who?%22%20AND%20%22SIZE020%22%20AND%20%22Klack%22%20AND%20%22Mix%22%20AND%20%22Two%22"" rel=""nofollow"">Take 3</a> - empty results with the query <em>""Who's"" AND ""Who?"" AND ""SIZE020"" AND ""Klack"" AND ""Mix"" AND ""Two""</em></li>
+</ul>
+
+<p>Now, I know that <em>SIZE020</em> shouldn't be in the query, but I don't want to deal with file names on client side so I'm just pushing the query to their service hoping that everything will work. And it works, but only if I query the service through their website, making me think that my query syntax is wrong and leaving me clueless.</p>
+
+<p>Do you have any hint on why I get different results between website and xml API?</p>
+
+<p>EDIT: as a side question, given a random file name, what's the better way to submit the query? I'm getting good result using the web version and submitting the typical mp3 filenames (like <em>artist_-_title_(version).mp3</em> but I'm not getting anything good from my client.</p>
+","2015-08-15 18:06:37","32060698","1","<lucene><musicbrainz>","1","0"
+"What's the correct interpretation of this byte string?","<p>In a friend's music directory, I came across this path and filename:</p>
+
+<pre><code>Ministry/Îšî•Î¦Î‘Î›Î—Îžî˜ (Psalm 69)/Ministry - Îšî•Î¦Î‘Î›Î—Îžî˜ (Psalm 69) - 06 - Scarecrow.mp3
+</code></pre>
+
+<p>You can google <code>Ministry Îšî•Î¦Î‘Î›Î—Îžî˜</code> and get results.  If I feed it into a url encoder, I get <code>%C2%9Ai%C2%95i%C2%A6i%C2%91i%C2%9Bi%C2%97i%C2%9Ei%C2%98</code>.</p>
+
+<p>It's clearly mangled in some way by traversing multiple incorrect encode/decode cycles.  What is it supposed to be?  How did you get that answer?</p>
+
+<p>I've tried various paper and pencil scribblings with UTF-8, but can't figure out anything that makes sense.</p>
+","2018-04-12 16:02:01","","0","<unicode><character-encoding><non-ascii-characters><musicbrainz>","1","1"
